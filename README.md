@@ -1,5 +1,8 @@
 # plate_records
 
+MongoDB = tags
+    Collections: users, 
+
 
 App that allows users to view history of a plate.
 

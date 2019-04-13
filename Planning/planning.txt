@@ -1,0 +1,149 @@
+
+
+CLIENT SIDE
+
+Display:
+
+    - tab:
+        - Enter information
+        - View information
+        - View History
+
+    * Tag entered
+    * State entered
+    * VIN entered
+
+Input:
+    * Tag
+    * State
+    * VIN
+    * Checkbox
+        - Only state entered
+        - All states
+    * Checkbox w/ Input
+        - Set default state
+
+
+--------------------------------------
+
+SERVER SIDE
+
+   Collections:
+        * Users
+        * Searches
+        * Records
+
+    Users:
+        name:
+        code:
+        org:
+        email:
+
+
+    Searches:
+        user: ref: Users,
+        searchQuery: req.data,
+        date: date.now
+
+
+    Records:
+        tag: 
+        state:
+        vehicle-make: 
+        vehicle-model: 
+        vehicle-year:
+        vehicle-color:
+        owner: 
+        address: 
+        encounters: [
+            {
+                driver:
+                date:
+                location: 
+                rs: 
+                result: 
+                encounterInfo: 
+                officer: {
+                    name:
+                    org:
+                    code:
+                }
+            }
+        ]
+
+----------------------------------
+
+
+Server Logic
+
+    User performs a search 
+        - enter tag, state 
+        - search DB collection Records with the search query(tag, state)
+                - update the DB collection Searches with the previous search query
+        - return the results from the search to client 
+
+    User enters data 
+        - inputs available
+            * Default populate from records collection = tag, state, vehicle, owner, address
+            * User Input = date, driver, location, rs, result, encounterInfo
+            * Default populate from users collection = officer.name, officer.org, officer.code
+
+
+
+Client Logic 
+
+    Store:
+        * userName:
+        * userOrg: 
+        * userCode:
+
+        * searchHistory: [{
+            search: {
+                tag: 
+                state:
+                },
+            response: [{
+                date:
+                vehicle: {
+                    make: 
+                    model: 
+                    color: 
+                    year: 
+                    },
+                driver: 
+                location: 
+                rs: 
+                result: 
+                encounterInfo: 
+                officer: {
+                    name: 
+                    org: 
+                    code:
+                    }
+                }]
+            }]
+
+        * showSearchWindow: 
+        * showResultsWindow: 
+        * showHistoryWindow: 
+
+
+
+-----------------
+Maybe user bcrypt for password hash?
+Maybe use npm passport for auth?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
