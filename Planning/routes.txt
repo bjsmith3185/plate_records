@@ -1,0 +1,44 @@
+
+
+To create a new user
+    /api/users/new
+        * userName, password
+
+
+To login a user
+    /api/users/login        
+        * userName, password
+
+
+To access the protected route
+    /api/system
+        * (in header) Authorization: Bearer token
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

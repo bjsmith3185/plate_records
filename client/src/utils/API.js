@@ -4,7 +4,7 @@ import axios from "axios";
 export default {
 
   getNames: function () {  
-    return axios.get("/api/model");
+    return axios.get("/api/users");
   },
  
 

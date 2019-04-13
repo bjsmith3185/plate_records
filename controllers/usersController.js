@@ -6,9 +6,9 @@ module.exports = {
     return db.Users
       .find({})
   },
-  findByCompany: function (company) {
+  findOne: function (data) {
     return db.Users
-      .find({ company: company })
+      .find(data)
   },
   create: function (data) {
     return db.Users

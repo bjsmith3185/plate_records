@@ -4,22 +4,16 @@ const bcrypt = require("bcrypt");
 module.exports = {
   hashPasswordThenSave: function(data) {
     return new Promise((resolve, reject) => {
-        // create salt
-      bcrypt.genSalt(10, function(err, salt) {
-        if (err) {
-          console.log("error generating salt");
-          resolve(err);
-        }
-        // create hashedpassword using salt
-        bcrypt.hash(data.password, salt, function(err, hashedPassword) {
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(data.password, salt, (err, hash) => {
           if (err) {
-            console.log("error generating hash/salt");
-            resolve(err);
+              console.log('error hashing password')
+           resolve(err)
           }
           // update data with hashed password
           const newUser = {
-            name: data.name,
-            password: hashedPassword
+            userName: data.userName,
+            password: hash
           };
           // send data to Database
           usersController
@@ -36,12 +30,15 @@ module.exports = {
     });
   },
 
-  comparePasswords: function () {
+  comparePasswords: function(password, hashedPassword) {
     return new Promise((resolve, reject) => {
-
-
-
-    })
+      bcrypt.compare(password, hashedPassword, (err, isMatch) => {
+        if (err) {
+          console.log("err matching passwords");
+          resolve(err);
+        }
+        resolve(isMatch);
+      });
+    });
   }
-
 };
