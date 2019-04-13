@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const logic = require("../../middleware/logic");
+const hash = require("../../middleware/bcrypt");
 const Users = require("../../controllers/usersController")
 
 
@@ -17,7 +18,9 @@ router.route("/")
 
   router.route("/")
   .post((req, res) => {
-    Users.create(req.body)
+    console.log("in the post route")
+    // Users.create(req.body)
+    hash.hashPasswordThenSave(req.body)
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))
   });
