@@ -13,7 +13,11 @@ module.exports = {
           // update data with hashed password
           const newUser = {
             userName: data.userName,
-            password: hash
+            password: hash,
+            name: data.name,
+            code: data.code,
+            org: data.org,
+            email: data.email
           };
           // send data to Database
           usersController

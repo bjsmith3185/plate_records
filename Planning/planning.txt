@@ -35,6 +35,8 @@ SERVER SIDE
 
     Users:
         name:
+        userName:
+        password: 
         code:
         org:
         email:
