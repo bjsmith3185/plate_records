@@ -99,7 +99,7 @@ router.route("/").get(check.validateToken, (req, res) => {
 });
 
 
-// create new or update record
+//  update record
 router.route("/").put(check.validateToken, (req, res) => {
   console.log("in the update protected route");
 

@@ -14,5 +14,13 @@ module.exports = {
       (typeof value === "object" && Object.keys(value).length === 0) ||
       (typeof value === "string" && value.trim().length === 0)
     );
+  },
+
+  hasLengthBetween: function(value, min, max) {
+    return value.length > min - 1 && value.length < max;
+  },
+
+  isValidEmail: function(value) {
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
   }
 };
