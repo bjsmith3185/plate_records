@@ -7,14 +7,20 @@ To create a new user
 
 To login a user
     /api/users/login        
-        * userName, password
+        * post  userName, password
 
 
 To access the protected route
     /api/system
-        * (in header) Authorization: Bearer token
+        * post  (in header) Authorization: Bearer token
 
+To create a new Record
+    /api/records
+        *post  data
 
+To update a Record      
+    /api/records/:id  (as of now :id is not attched)
+        * put  data
 
 
 

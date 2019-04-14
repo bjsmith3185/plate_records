@@ -2,26 +2,10 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const check = require("../../middleware/jsonWebToken");
 const records = require("../../controllers/recordsController");
+const insertRecord = require('../../middleware/insertRecord')
+
 
 // Matches with "/api/records"
-
-// router
-//   .route("/")
-//   // .post(check.validateToken, (req, res) => {
-//     console.log("in the post records route");
-
-//     jwt.verify(req.token, 'secret', (err, authData) => {
-//       if(err) {
-//         res.status(403).json({err: 'token not verified'})
-//       } else {
-//         res.json({
-//           text: "protected search route",
-//           authData: authData
-//         });
-//       }
-//     })
-//   });
-
 const recordData = {
   tag: "abc1234",
   state: "nc",
@@ -44,33 +28,57 @@ const recordData = {
   ]
 };
 
-router.route("/").post((req, res) => {
-  console.log("in the post records route");
-  records
-    .create(recordData)
-    .then(dbresults => {
-      res.json(dbresults);
+const recordData1 = {
+  tag: "abc1235",
+  state: "nc",
+  vehicleMake: "chevy",
+  vehicleModel: "pickup",
+  vehicleYear: "1990",
+  vehicleColor: "blue",
+  owner: "john petty",
+  address: "111 heartbreak ln",
+  encounters: [
+    {
+      driver: "short bird",
+      date: "2019-01-01",
+      location: "400 hucks rd",
+      rs: "no tag",
+      result: "warning",
+      encounterInfo: "the tag was inside the vehicle",
+      officer: "5cb2526f9c9f9b57f4b05228"
+    }
+  ]
+};
+
+// create new record
+router.route("/").post(check.validateToken, (req, res) => {
+    console.log("in the post records route");
+
+    jwt.verify(req.token, 'secret', (err, authData) => {
+      if(err) {
+        res.status(403).json({err: 'token not verified'})
+      } else {
+        records
+        .create(recordData)
+        .then(dbresults => {
+          res.json(dbresults);
+        })
+        .catch(err => {
+          res.status(403).json({ err: err });
+        });
+
+        // res.json({
+        //   text: "protected search route",
+        //   authData: authData
+        // });
+      }
     })
-    .catch(err => {
-      res.status(403).json({ err: err });
-    });
-});
+ });
 
-// router
-// .route("/")
-//   .get((req, res) => {
-//   console.log("in the get all records route");
-//     records.findAll()
-//     .then(dbresults => {
 
-//       res.json(dbresults)
-//     })
-//     .catch(err => {
-//       res.status(403).json({err: err})
-//     })
 
-// });
 
+// get All records
 router.route("/").get(check.validateToken, (req, res) => {
   console.log("in the get records  protected route");
 
@@ -90,4 +98,41 @@ router.route("/").get(check.validateToken, (req, res) => {
   });
 });
 
+
+// create new or update record
+router.route("/").put(check.validateToken, (req, res) => {
+  console.log("in the update protected route");
+
+  jwt.verify(req.token, "secret", (err, authData) => {
+    if (err) {
+      res.status(403).json({ err: "token not verified" });
+    } else {
+     insertRecord.updateRecord()
+     .then(dbresults => {
+       res.json(dbresults)
+
+     })
+         .catch(err => {
+      res.status(403).json({ err: err });
+    });
+    }
+  });
+});
+
 module.exports = router;
+
+
+
+
+
+// router.route("/").post((req, res) => {
+//   console.log("in the post records route");
+//   records
+//     .create(recordData)
+//     .then(dbresults => {
+//       res.json(dbresults);
+//     })
+//     .catch(err => {
+//       res.status(403).json({ err: err });
+//     });
+// });

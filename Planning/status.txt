@@ -1,0 +1,26 @@
+
+4/13
+    just added the post and put routes for the Records collection.
+
+    I am using a const {} to add the data to the collection because there is no front end.
+
+    The _id's are hard coded in right now so it must be changed to perform the update (put) request.
+
+    ------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

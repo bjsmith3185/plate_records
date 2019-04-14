@@ -5,6 +5,9 @@ module.exports = {
   findAll: function () {
     return db.Records
       .find({})
+      .populate({
+        path: 'encounters.officer'
+      })
   },
   findOne: function (data) {
     return db.Records
@@ -14,9 +17,9 @@ module.exports = {
     return db.Records
       .create(data)
   },
-  update: function (company, data) {
+  update: function (id, data) {
     return db.Records
-      .findOneAndUpdate({ company: company }, data, {upsert: true})
+      .findOneAndUpdate(id, data, {upsert: true})
   },
   remove: function (company) {
     return db.Records

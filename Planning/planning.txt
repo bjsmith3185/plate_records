@@ -133,7 +133,19 @@ Client Logic
 
 -----------------
 Maybe user bcrypt for password hash?
-Maybe use npm passport for auth?
+Maybe use jwt for token auth?
+
+------------------
+
+
+Operation:
+* User enters a tag
+    - Renders data
+    - No record found
+
+* User adds a record
+    - Add to existing record (put)
+    - Create new record (post)
 
 
 
