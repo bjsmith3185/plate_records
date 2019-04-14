@@ -41,7 +41,7 @@ SERVER SIDE
         org:
         email:
 
-
+// probably dont need this collection...
     Searches:
         user: ref: Users,
         searchQuery: req.data,
@@ -51,6 +51,7 @@ SERVER SIDE
     Records:
         tag: 
         state:
+        vin: 
         vehicle-make: 
         vehicle-model: 
         vehicle-year:

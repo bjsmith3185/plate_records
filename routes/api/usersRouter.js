@@ -2,7 +2,8 @@ const router = require("express").Router();
 const logic = require("../../middleware/logic");
 const login = require("../../middleware/login");
 const hash = require("../../middleware/bcrypt");
-const Users = require("../../controllers/usersController")
+const Users = require("../../controllers/usersController");
+const validateLogin = require("../../validate/validateLogin");
 
 
 
@@ -20,6 +21,13 @@ router.route("/")
   router.route("/new")
   .post((req, res) => {
     console.log("in the create user route")
+    // check input thru validator
+    let { errors, isValid } = validateLogin(req.body);
+
+    if (!isValid) {
+      
+      return res.status(400).json(errors)
+    }
     // Users.create(req.body)
     hash.hashPasswordThenSave(req.body)
       .then(dbresults => res.json(dbresults))
