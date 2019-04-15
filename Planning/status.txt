@@ -20,12 +20,14 @@
         * Adding an encounter _id to a state collection ( offier notes related to a specific tag)
         * Search by state/tag: focuses the tag search on the specified state collection
 
+        * Added a route to search all tag collections.
+            This uses a forEach() so it is better to use this only after a state/tag search returns []
+
     TODO:
         * If the state/tag search is empty
             - error to user: is the correct state entered?
                 * Retry search with new state data
-                
-            - Can I search each state database for the tag? (maybe by a prompt from user)
+     
 
         * Validation for data entered by officer (encounters route)
 

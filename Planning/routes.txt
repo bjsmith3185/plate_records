@@ -17,8 +17,15 @@ To add an encounter to an existing tag collection
         * post state / data  (get state when you send tagrecord_id)
 
 to enter a new tag(record) user
-    /api/tags/new
+    /api/tag/new
         * post  data
+
+To enter a state/tag search
+    /api/search/:state
+        * get data
+
+To enter a tag ONLY search
+    /api/search/all
 
 
 
