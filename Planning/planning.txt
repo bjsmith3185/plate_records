@@ -30,8 +30,8 @@ SERVER SIDE
 
    Collections:
         * Users
-        * Searches
         * Records
+        * Encounters
 
     Users:
         name:
@@ -40,13 +40,6 @@ SERVER SIDE
         code:
         org:
         email:
-
-// probably dont need this collection...
-    Searches:
-        user: ref: Users,
-        searchQuery: req.data,
-        date: date.now
-
 
     Records:
         tag: 
@@ -60,19 +53,23 @@ SERVER SIDE
         address: 
         encounters: [
             {
-                driver:
-                date:
-                location: 
-                rs: 
-                result: 
-                encounterInfo: 
-                officer: {
-                    name:
-                    org:
-                    code:
-                }
+                _id: object_id 
+                ref: 'Encounters
             }
-        ]
+         ]
+
+    Encounters:
+        driver:
+        date:
+        location: 
+        rs: 
+        result: 
+        encounterInfo: 
+        officer: {
+            name:
+            org:
+            code:
+        }
 
 ----------------------------------
 

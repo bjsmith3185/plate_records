@@ -3,35 +3,28 @@ const db = require("../models");
 module.exports = {
 
   findAll: function () {
-    return db.Records
+    return db.Encounters
       .find({})
-      .populate({
-        path: 'encounters',
-        populate: {
-          path: 'officer'
-        }
-      })
   },
-
   findOne: function (data) {
-    return db.Records
+    return db.Encounters
       .find(data)
   },
   create: function (data) {
-    return db.Records
+    return db.Encounters
       .create(data)
   },
   update: function (id, data) {
-    return db.Records
+    return db.Encounters
       .findOneAndUpdate(id, data, {upsert: true})
   },
-  remove: function (company) {
-    return db.Records
-    .findOneAndRemove({company: company})
+  remove: function (id) {
+    return db.Encounters
+    .findOneAndRemove({_id: id})
   },
 
   removeAll: function () {
-    return db.Records
+    return db.Encounters
     .deleteMany({})
   },
 

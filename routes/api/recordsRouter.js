@@ -6,6 +6,28 @@ const insertRecord = require('../../middleware/insertRecord')
 
 
 // Matches with "/api/records"
+// const recordData = {
+//   tag: "abc1234",
+//   state: "nc",
+//   vehicleMake: "ford",
+//   vehicleModel: "f150",
+//   vehicleYear: "1990",
+//   vehicleColor: "blue",
+//   owner: "tom petty",
+//   address: "111 heartbreak ln",
+//   encounters: [
+//     {
+//       driver: "tall bird",
+//       date: "2019-01-01",
+//       location: "200 hucks rd",
+//       rs: "no tag",
+//       result: "warning",
+//       encounterInfo: "the tag was inside the vehicle",
+//       officer: "5cb2526f9c9f9b57f4b05228"
+//     }
+//   ]
+// };
+
 const recordData = {
   tag: "abc1234",
   state: "nc",
@@ -15,17 +37,7 @@ const recordData = {
   vehicleColor: "blue",
   owner: "tom petty",
   address: "111 heartbreak ln",
-  encounters: [
-    {
-      driver: "tall bird",
-      date: "2019-01-01",
-      location: "200 hucks rd",
-      rs: "no tag",
-      result: "warning",
-      encounterInfo: "the tag was inside the vehicle",
-      officer: "5cb2526f9c9f9b57f4b05228"
-    }
-  ]
+  encounters: []
 };
 
 const recordData1 = {
@@ -55,6 +67,7 @@ router.route("/").post(check.validateToken, (req, res) => {
     console.log("in the post records route");
 
     jwt.verify(req.token, 'secret', (err, authData) => {
+      console.log(authData)
       if(err) {
         res.status(403).json({err: 'token not verified'})
       } else {

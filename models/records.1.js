@@ -11,7 +11,20 @@ const recordsSchema = new Schema({
   vehicleColor: { type: String },
   owner: { type: String },
   address: { type: String },
-  encounters: [{ type: Schema.Types.ObjectId, ref: "Encounters" }]
+  encounters: [
+    {
+      driver: { type: String },
+      date: { type: Date },
+      location: { type: String },
+      rs: { type: String },
+      result: { type: String },
+      encounterInfo: { type: String },
+      officer: {
+        type: Schema.Types.ObjectId,
+        ref: "Users"
+      }
+    }
+  ]
 });
 
 const Records = mongoose.model("Records", recordsSchema);
