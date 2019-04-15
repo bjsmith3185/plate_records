@@ -29,11 +29,12 @@ Input:
 SERVER SIDE
 
    Collections:
-        * Users
-        * Records
+        * users
+        * ncrecords
+        * screcords
         * Encounters
 
-    Users:
+    users:
         name:
         userName:
         password: 
@@ -41,7 +42,7 @@ SERVER SIDE
         org:
         email:
 
-    Records:
+    ncrecords/ screcords:
         tag: 
         state:
         vin: 
@@ -146,7 +147,14 @@ Operation:
     - Create new record (post)
 
 
+-------------------------
 
+Tags database
+
+* Each state will have its on collection ( ncrecords, screcords)
+* To add a tag manually
+    - api/tags/new
+        * post data  (will take data.state and determine which collection to insert it into )
 
 
 

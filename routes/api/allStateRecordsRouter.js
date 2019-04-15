@@ -4,8 +4,9 @@ const check = require("../../middleware/jsonWebToken");
 const records = require("../../controllers/recordsController");
 const insertRecord = require('../../middleware/insertRecord');
 const tagSearch = require('../../middleware/tagSearch');
+const newTag = require('../../middleware/newTag');
 
-// Matches with "/api/records"
+// Matches with "/api/tags"
 
 
 // const recordData = {
@@ -55,7 +56,7 @@ const recordData1 = {
 };
 
 // create new record
-router.route("/").post(check.validateToken, (req, res) => {
+router.route("/new").post(check.validateToken, (req, res) => {
     console.log("in the post records route");
 
     jwt.verify(req.token, 'secret', (err, authData) => {
@@ -63,8 +64,8 @@ router.route("/").post(check.validateToken, (req, res) => {
       if(err) {
         res.status(403).json({err: 'token not verified'})
       } else {
-        records
-        .create(recordData1)
+        newTag
+        .enterTag(req.body.state, req.body)
         .then(dbresults => {
           res.json(dbresults);
         })

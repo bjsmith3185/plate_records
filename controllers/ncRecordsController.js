@@ -3,7 +3,7 @@ const db = require("../models");
 module.exports = {
 
   findAll: function () {
-    return db.Records
+    return db.NCRecords
       .find({})
       .populate({
         path: 'encounters',
@@ -14,7 +14,7 @@ module.exports = {
   },
 
   findById: function (id) {
-    return db.Records
+    return db.NCRecords
       .find({_id: id})
       .populate({
         path: 'encounters',
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   findByTag: function (tag) {
-    return db.Records
+    return db.NCRecords
       .find({tag: tag})
       .populate({
         path: 'encounters',
@@ -36,32 +36,32 @@ module.exports = {
   },
 
   findTags: function (tag) {
-    return db.Records
+    return db.NCRecords
     .where({ tag: tag})
   },
 
 
   findByState: function (state) {
-    return db.Records
+    return db.NCRecords
     .find({})
     .where({state: state})
   },
 
   create: function (data) {
-    return db.Records
+    return db.NCRecords
       .create(data)
   },
   update: function (id, data) {
-    return db.Records
+    return db.NCRecords
       .findOneAndUpdate(id, data, {upsert: true})
   },
   remove: function (company) {
-    return db.Records
+    return db.NCRecords
     .findOneAndRemove({company: company})
   },
 
   removeAll: function () {
-    return db.Records
+    return db.NCRecords
     .deleteMany({})
   },
 

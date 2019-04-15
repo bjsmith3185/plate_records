@@ -5,7 +5,7 @@ module.exports = {
   createToken: function(data) {
     return new Promise((resolve, reject) => {
       // Sign Token
-      jwt.sign(data, "secret", { expiresIn: 3600 }, (err, token) => {
+      jwt.sign(data, "secret", { expiresIn: 99600 }, (err, token) => {
         if (err) {
           return resolve({ error: err });
         }

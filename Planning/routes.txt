@@ -15,16 +15,19 @@ To access the protected route
         * post  (in header) Authorization: Bearer token
 
 To create a new Record (this should be pre-populated for production)
-    /api/records
+    /api/records  (may remove this route)
         *post  data
 
 To add an encounter to an existing Record collection
     /api/encounters/(records_id)
         * post data
 
+to enter a new tag(record) user
+    /api/tags/new
+        * post  data
 
 
-        
+
 
 To update a Record      
     /api/records/:id  (as of now :id is not attched)
