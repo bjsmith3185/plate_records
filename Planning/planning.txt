@@ -146,6 +146,8 @@ Operation:
     - Add to existing record (put)
     - Create new record (post)
 
+    ** lets store the form data when the user enters an encounter form in 'session storage' until the data has been confirmed updated on the server ** 
+
 
 -------------------------
 

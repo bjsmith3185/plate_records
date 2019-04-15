@@ -1,4 +1,5 @@
-const recordsController = require("../controllers/recordsController");
+const NCController = require("../controllers/ncRecordsController");
+const SCController = require("../controllers/scRecordsController");
 const encountersController = require("../controllers/encountersController");
 
 
@@ -8,7 +9,7 @@ let tempUpdateData = {
         rs: "speeding",
         result: "citation",
         encounterInfo: "88 in 35",
-        officer: "5cb4dcd8da37f718b0bd94f2",
+        officer: "5cb4f2840a1df13eb8fe2ef5",
         date: "2019-02-02"
   };
 
@@ -18,43 +19,74 @@ let tempUpdateData = {
     rs: "speeding",
     result: "warning",
     encounterInfo: "77 in 35",
-    officer: "5cb4dcd8da37f718b0bd94f2",
+    officer: "5cb4f2840a1df13eb8fe2ef5",
     date: "2019-02-02"
 };
+
+let state = 'sc';
 
 module.exports = {
   encounter: function(recordId, data) {
     return new Promise((resolve, reject) => {
-      console.log("in newEncounter function");
+      // console.log("in newEncounter function");
     //   console.log(recordId)
     //   console.log(data.vehicle)
     
      // insert new encounter to db
      encountersController.create(tempUpdateData)
      .then(encountersResults => {
-         console.log("inserted the new data into encounters")
-         console.log(encountersResults)
+        //  console.log("inserted the new data into encounters")
+        //  console.log(encountersResults)
          let encountered_id = {
             $push: {
                 encounters: encountersResults._id
             } 
         }
-            // insert the newly crated _id into records db
-
-            recordsController.update(recordId, encountered_id)
+            // insert the newly crated _id into the correct tag collection
+     
+        switch(state) {
+          case 'sc': {
+            SCController.update(recordId, encountered_id)
             .then(updated => {
-                    console.log('pushed the new encounter into records collection')
+                    // console.log('pushed the new encounter into records collection')
                     
                 // return populated result from the original tag, records collection
-                recordsController.findById(recordId)
+                SCController.findById(recordId)
                 .then(dbresults => {
-                    console.log('find the records collection to return to user')
-                    console.log(dbresults)
+                    // console.log('find the records collection to return to user')
+                    // console.log(dbresults)
                     resolve(dbresults)
                 })
                 .catch((err) => resolve(err))
             })
             .catch((err) => resolve(err))
+            
+          }
+          break;
+
+          case 'nc': {
+            NCController.update(recordId, encountered_id)
+            .then(updated => {
+                    // console.log('pushed the new encounter into records collection')
+                    
+                // return populated result from the original tag, records collection
+               NCController.findById(recordId)
+                .then(dbresults => {
+                    // console.log('find the records collection to return to user')
+                    // console.log(dbresults)
+                    resolve(dbresults)
+                })
+                .catch((err) => resolve(err))
+            })
+            .catch((err) => resolve(err))
+
+          }
+          break;
+
+          default: {
+
+          }
+        }
      })
      .catch((err) => resolve(err))
     });

@@ -4,23 +4,17 @@ To create a new user
     /api/users/new
         * userName, password
 
-
 To login a user
     /api/users/login        
         * post  userName, password
-
 
 To access the protected route
     /api/system
         * post  (in header) Authorization: Bearer token
 
-To create a new Record (this should be pre-populated for production)
-    /api/records  (may remove this route)
-        *post  data
-
-To add an encounter to an existing Record collection
-    /api/encounters/(records_id)
-        * post data
+To add an encounter to an existing tag collection
+    /api/encounters/(tagrecord_id)
+        * post state / data  (get state when you send tagrecord_id)
 
 to enter a new tag(record) user
     /api/tags/new
@@ -29,9 +23,7 @@ to enter a new tag(record) user
 
 
 
-To update a Record      
-    /api/records/:id  (as of now :id is not attched)
-        * put  data
+
 
 
 

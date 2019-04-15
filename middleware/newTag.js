@@ -53,16 +53,16 @@ const tagSC2 = {
 module.exports = {
   enterTag: function(state, data) {
     return new Promise((resolve, reject) => {
-      console.log('in select state route')
-      console.log(state)
-      console.log(data.tag)
+      // console.log('in select state route')
+      // console.log(state)
+      // console.log(data.tag)
 
       if (state === 'sc') {
         SCController.create(tagSC1)
         .then(dbresult => { resolve(dbresult) })
         .catch(err => { resolve(err)})
       } else if ( state === 'nc') {
-        NCController.create(tagNC1)
+        NCController.create(tagNC2)
         .then(dbresult => { resolve(dbresult) })
         .catch(err => { resolve(err)})
       } else {

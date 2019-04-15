@@ -8,7 +8,26 @@
 
     ------------------------------------------------
 
+4/15
 
+    Rewired:
+        removed the records collection (it would be too big with state and tags)
+        replace with a collection for each state ( just nc and sc for now)
+        each state collection containg vehicle tags
+
+    Working;
+        * Adding new tag to the state collection
+        * Adding an encounter _id to a state collection ( offier notes related to a specific tag)
+        * Search by state/tag: focuses the tag search on the specified state collection
+
+    TODO:
+        * If the state/tag search is empty
+            - error to user: is the correct state entered?
+                * Retry search with new state data
+                
+            - Can I search each state database for the tag? (maybe by a prompt from user)
+
+        * Validation for data entered by officer (encounters route)
 
 
 

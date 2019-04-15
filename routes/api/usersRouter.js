@@ -8,8 +8,9 @@ const validateRegister = require("../../validate/validateRegister");
 
 // Matches with "/api/users"
 
+// get all users route
 router.route("/").get((req, res) => {
-  console.log("in the find all route");
+  // console.log("in the find all route");
   Users.findAll()
     .then(dbresults => {
       res.json(dbresults);
@@ -17,8 +18,9 @@ router.route("/").get((req, res) => {
     .catch(err => res.status(422).json(err));
 });
 
+// create new user route
 router.route("/new").post((req, res) => {
-  console.log("in the create user route");
+  // console.log("in the create user route");
   // check input thru validator
   let { errors, isValid } = validateRegister(req.body);
   if (!isValid) {
@@ -32,8 +34,9 @@ router.route("/new").post((req, res) => {
     .catch(err => res.status(422).json(err));
 });
 
+// login in route
 router.route("/login").post((req, res) => {
-  console.log("in login route");
+  // console.log("in login route");
   // check input thru validator
 
   let { errors, isValid } = validateLogin(req.body);
@@ -49,34 +52,6 @@ router.route("/login").post((req, res) => {
     .catch(err => res.status(422).json(err));
 });
 
-// router.route("/")
-// .get((req, res) => {
-//   model.findByCompany(req.params.company)
-//   .then(dbresults => {
-//     res.json(dbresults)})
-//     .catch(err => res.status(422).json(err))
-// });
 
-// router.route("/:company")
-// .put((req, res) => {
-//   model.update(req.params.company, req.body)
-//     .then(dbresults => res.json(dbresults))
-//     .catch(err => res.status(422).json(err))
-// });
-
-// router.route("/:company")
-// .delete((req, res) => {
-//   model.remove(req.params.company)
-//     .then(dbresults => res.json(dbresults))
-//     .catch(err => res.status(422).json(err))
-// });
-
-// router.route("/keywords")
-// .get((req, res) => {
-//   model.findAll()
-//     .then(dbresults => {
-//       res.json(dbresults)})
-//     .catch(err => res.status(422).json(err))
-// });
 
 module.exports = router;

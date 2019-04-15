@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const check = require("../../middleware/jsonWebToken");
-const records = require("../../controllers/recordsController");
-const insertRecord = require('../../middleware/insertRecord');
 const newEncounter = require('../../middleware/newEncounter');
 
 
@@ -53,7 +51,7 @@ const recordData1 = {
 
 // create new encounter
 router.route("/new/:id").post(check.validateToken, (req, res) => {
-    console.log("in the post new encounters route");
+    // console.log("in the post new encounters route");
 
     jwt.verify(req.token, 'secret', (err, authData) => {
       if (err) {
@@ -61,6 +59,8 @@ router.route("/new/:id").post(check.validateToken, (req, res) => {
       } else  {
         newEncounter.encounter(req.params.id, req.body)
         .then(dbresults => {
+          // console.log("what is here???")
+          // console.log(dbresults)
           res.json(dbresults);
         })
         .catch(err => {
