@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const check = require("../../middleware/jsonWebToken");
 const newTag = require('../../middleware/newTag');
 const searchTag = require('../../middleware/tagSearch');
+const validateSearch = require('../../validate/validateSearch');
+const conform = require('../../validate/validateOperators')
 
 // Matches with "/api/search"
 
@@ -39,20 +41,32 @@ const searchTag = require('../../middleware/tagSearch');
 
 
 // search by tag and state
-router.route("/:state").get(check.validateToken, (req, res) => {
+router.route("/").get(check.validateToken, (req, res) => {
   // console.log("in the search by tag/state  protected route");
 
   jwt.verify(req.token, "secret", (err, authData) => {
     if (err) {
       res.status(403).json({ err: "token not verified" });
     } else {
-        searchTag.searchStateThenTag(req.params.state, req.body.tag)
-        .then(dbresults => {
-          res.json(dbresults);
-        })
-        .catch(err => {
-          res.status(403).json({ err: err });
-        });
+      console.log("validating tag search")
+      req.body.tag = conform.removeHyphen(req.body.tag);
+      
+      let { errors, isValid } = validateSearch(req.body);
+      if (!isValid) {
+        return res.status(400).json(errors);
+      }
+     
+      
+      console.log('success')
+
+
+        // searchTag.searchStateThenTag(req.params.state, req.body.tag)
+        // .then(dbresults => {
+        //   res.json(dbresults);
+        // })
+        // .catch(err => {
+        //   res.status(403).json({ err: err });
+        // });
     }
   });
 });

@@ -21,7 +21,7 @@ to enter a new tag(record) user
         * post  data
 
 To enter a state/tag search
-    /api/search/:state
+    /api/search
         * get data
 
 To enter a tag ONLY search

@@ -23,6 +23,17 @@
         * Added a route to search all tag collections.
             This uses a forEach() so it is better to use this only after a state/tag search returns []
 
+        * Added validation for state entered for a tag search
+
+    In process: 
+        * Validation for tag entered for a search
+            - function to remove - works
+            - need to continue with validation in file validateSearch.js 
+-----------------------------------------------------------------
+
+
+
+
     TODO:
         * If the state/tag search is empty
             - error to user: is the correct state entered?
@@ -30,6 +41,7 @@
      
 
         * Validation for data entered by officer (encounters route)
+            - 
 
 
 

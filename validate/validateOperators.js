@@ -22,5 +22,38 @@ module.exports = {
 
   isValidEmail: function(value) {
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
-  }
+  },
+
+  // below are used for tag input
+
+  isValidState: function(value) {
+      const allStates = ['nc', 'sc'];
+      for (var i = 0; i < allStates.length; i++) {
+        if (allStates[i] === value) {
+          return true
+        }
+      }
+  }, 
+
+  removeHyphen: function(value) {
+    if(value.includes("-")) { 
+      console.log("contians - ")
+      let newValue = value.replace("-", "");
+      return newValue
+    }
+    return value;
+  },
+
+  // containsSpecialCharacters: function(value) {
+  //   const charArray = ['!', '@', '#','"','$','+','%','&','*','+',',']
+  //   const letterNumber = /^[0-9a-zA-Z]+$/;
+  //   // if((value.value.match(letterNumber)){
+  //   //   // has only letters and numbers
+  //   // }
+
+  // },
+
+
+
+
 };
