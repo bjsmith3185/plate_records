@@ -28,6 +28,11 @@ To enter a tag ONLY search
     /api/search/all
 
 
+To delete a user    
+    /api/users/remove/(id)
+    * delete 
+
+
 
 
 

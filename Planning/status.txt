@@ -36,21 +36,22 @@
 
     * Need to validate new tag input data. (Done)
 
-    * Need to validate new Encounter data. 
+    * Need to validate new Encounter data. (Done)
+
+    * Need route to delete user (Done)
+
+----------------------------------------------------------
 
 
 
-
-
+Client Side
     TODO:
         * If the state/tag search is empty
             - error to user: is the correct state entered?
                 * Retry search with new state data
      
 
-        * Validation for data entered by officer (encounters route)
-            - 
-
+  
 
 
 

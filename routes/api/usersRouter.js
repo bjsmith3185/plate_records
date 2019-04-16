@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const logic = require("../../middleware/logic");
+const jwt = require("jsonwebtoken");
+const check = require('../../middleware/jsonWebToken')
 const login = require("../../middleware/login");
 const hash = require("../../middleware/bcrypt");
 const Users = require("../../controllers/usersController");
@@ -52,6 +53,29 @@ router.route("/login").post((req, res) => {
     .catch(err => res.status(422).json(err));
 });
 
+// delete user route
+router
+  .route("/delete/:id")
+  .delete(check.validateToken, (req, res) => {
+
+    jwt.verify(req.token, 'secret', (err, authData) => {
+      if(err) {
+        res.status(403).json({err: 'token not verified'})
+      } else {
+
+          Users.remove(req.params.id)
+          .then(dbresult => {
+            console.log("user deleted")
+            res.json({status: "User was removed from db"})
+          })
+          .catch(err => {
+            console.log(err)
+            res.status(404).json(err)
+          })
+      
+      }
+    })
+  });
 
 
 module.exports = router;

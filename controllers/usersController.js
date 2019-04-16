@@ -14,13 +14,13 @@ module.exports = {
     return db.Users
       .create(data)
   },
-  update: function (company, data) {
+  update: function (id, data) {
     return db.Users
-      .findOneAndUpdate({ company: company }, data, {upsert: true})
+      .findOneAndUpdate({ _id: id }, data, {upsert: true})
   },
-  remove: function (company) {
+  remove: function (id) {
     return db.Users
-    .findOneAndRemove({company: company})
+    .findOneAndRemove({_id: id})
   },
 
   removeAll: function () {

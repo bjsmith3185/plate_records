@@ -60,9 +60,9 @@ module.exports = {
     return db.NCRecords
       .findOneAndUpdate({_id: id}, data, {upsert: true})
   },
-  remove: function (company) {
+  remove: function (id) {
     return db.NCRecords
-    .findOneAndRemove({company: company})
+    .findOneAndRemove({_id: id})
   },
 
   removeAll: function () {

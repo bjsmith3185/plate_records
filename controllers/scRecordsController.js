@@ -55,9 +55,9 @@ module.exports = {
     return db.SCRecords
       .findOneAndUpdate(id, data, {upsert: true})
   },
-  remove: function (company) {
+  remove: function (id) {
     return db.SCRecords
-    .findOneAndRemove({company: company})
+    .findOneAndRemove({_id: id})
   },
 
   removeAll: function () {
