@@ -30,7 +30,13 @@
             - function to remove - works
             - need to continue with validation in file validateSearch.js 
 -----------------------------------------------------------------
+ 4/16
 
+    * Need to make all incoming search data lowercase. (Done)
+
+    * Need to validate new tag input data.
+
+    
 
 
 

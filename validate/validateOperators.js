@@ -35,15 +35,6 @@ module.exports = {
       }
   }, 
 
-  removeHyphen: function(value) {
-    if(value.includes("-")) { 
-      console.log("contians - ")
-      let newValue = value.replace("-", "");
-      return newValue
-    }
-    return value;
-  },
-
   // containsSpecialCharacters: function(value) {
   //   const charArray = ['!', '@', '#','"','$','+','%','&','*','+',',']
   //   const letterNumber = /^[0-9a-zA-Z]+$/;
@@ -52,8 +43,6 @@ module.exports = {
   //   // }
 
   // },
-
-
 
 
 };

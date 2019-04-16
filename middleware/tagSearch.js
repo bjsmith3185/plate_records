@@ -3,7 +3,6 @@ const SCController = require("../controllers/scRecordsController");
 
 const states = require("../controllers/allStates");
 
-
 module.exports = {
   search: function(tag, state) {
     return new Promise((resolve, reject) => {
@@ -27,15 +26,10 @@ module.exports = {
 
   searchStateThenTag: function(state, tag) {
     return new Promise((resolve, reject) => {
-      // console.log("in search state then tag");
-      // console.log("tag: " + tag)
-      // console.log("state: " + state)
-
       // find out the state
       switch (state) {
         case "sc":
           {
-            // console.log('sc')
             SCController.findByTag(tag)
               .then(dbresult => {
                 resolve(dbresult);
@@ -49,7 +43,6 @@ module.exports = {
 
         case "nc":
           {
-            // console.log('nc')
             NCController.findByTag(tag)
               .then(dbresult => {
                 resolve(dbresult);
