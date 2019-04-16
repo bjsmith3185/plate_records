@@ -23,17 +23,18 @@ let tempUpdateData = {
     date: "2019-02-02"
 };
 
-let state = 'sc';
+
 
 module.exports = {
-  encounter: function(recordId, data) {
+  encounter: function(tag_id, state, data) {
     return new Promise((resolve, reject) => {
-      // console.log("in newEncounter function");
-    //   console.log(recordId)
-    //   console.log(data.vehicle)
+      console.log("in newEncounter function");
+      console.log("tag_id: " + tag_id)
+      console.log("state: " + state)
+      console.log(data)
     
      // insert new encounter to db
-     encountersController.create(tempUpdateData)
+     encountersController.create(data)
      .then(encountersResults => {
         //  console.log("inserted the new data into encounters")
         //  console.log(encountersResults)
@@ -46,12 +47,12 @@ module.exports = {
      
         switch(state) {
           case 'sc': {
-            SCController.update(recordId, encountered_id)
+            SCController.update(tag_id, encountered_id)
             .then(updated => {
                     // console.log('pushed the new encounter into records collection')
                     
                 // return populated result from the original tag, records collection
-                SCController.findById(recordId)
+                SCController.findById(tag_id)
                 .then(dbresults => {
                     // console.log('find the records collection to return to user')
                     // console.log(dbresults)
@@ -65,15 +66,18 @@ module.exports = {
           break;
 
           case 'nc': {
-            NCController.update(recordId, encountered_id)
+            console.log('pushing encounter to NC Tag')
+            console.log(tag_id)
+            NCController.update(tag_id, encountered_id)
             .then(updated => {
-                    // console.log('pushed the new encounter into records collection')
+                    console.log('pushed the new encounter into records collection')
+                    console.log(updated);
                     
                 // return populated result from the original tag, records collection
-               NCController.findById(recordId)
+               NCController.findById(tag_id)
                 .then(dbresults => {
                     // console.log('find the records collection to return to user')
-                    // console.log(dbresults)
+                    console.log(dbresults)
                     resolve(dbresults)
                 })
                 .catch((err) => resolve(err))

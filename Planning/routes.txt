@@ -13,7 +13,7 @@ To access the protected route
         * post  (in header) Authorization: Bearer token
 
 To add an encounter to an existing tag collection
-    /api/encounters/(tagrecord_id)
+    /api/encounters/(tagrecord_id)/(state)
         * post state / data  (get state when you send tagrecord_id)
 
 to enter a new tag(record) user

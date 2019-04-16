@@ -10,7 +10,7 @@ router.use("/users", usersRoutes);
 
 router.use("/system", systemRoutes);
 
-router.use("/encounters", encountersRoutes);
+router.use("/encounter", encountersRoutes);
 
 router.use("/search", searchRoutes);
 

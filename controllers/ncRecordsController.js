@@ -14,6 +14,7 @@ module.exports = {
   },
 
   findById: function (id) {
+    console.log("in nc controller: " + id)
     return db.NCRecords
       .find({_id: id})
       .populate({
@@ -51,9 +52,13 @@ module.exports = {
     return db.NCRecords
       .create(data)
   },
+  // update: function (id, data) {
+  //   return db.NCRecords
+  //     .findOneAndUpdate(id, data, {upsert: true})
+  // },
   update: function (id, data) {
     return db.NCRecords
-      .findOneAndUpdate(id, data, {upsert: true})
+      .findOneAndUpdate({_id: id}, data, {upsert: true})
   },
   remove: function (company) {
     return db.NCRecords

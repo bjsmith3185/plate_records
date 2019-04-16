@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const check = require("../../middleware/jsonWebToken");
-const newEncounter = require('../../middleware/newEncounter');
+const newEncounter = require("../../middleware/newEncounter");
+const conform = require("../../validate/conformInput");
+const validateEncounter = require("../../validate/validateEncounter");
 
-
-// Matches with "/api/encounters"
+// Matches with "/api/encounter"
 const recordData = {
   tag: "abc1234",
   state: "nc",
@@ -50,14 +51,31 @@ const recordData1 = {
 };
 
 // create new encounter
-router.route("/new/:id").post(check.validateToken, (req, res) => {
-    // console.log("in the post new encounters route");
+router.route("/new/:id/:state").post(check.validateToken, (req, res) => {
+  // console.log("in the post new encounters route");
 
-    jwt.verify(req.token, 'secret', (err, authData) => {
-      if (err) {
-        res.status(403).json({err: 'token not verified'})
-      } else  {
-        newEncounter.encounter(req.params.id, req.body)
+  jwt.verify(req.token, "secret", (err, authData) => {
+    if (err) {
+      res.status(403).json({ err: "token not verified" });
+    } else {
+      console.log("in the post new encounters route");
+
+      let { paramErrors, data } = conform.conformEncounterParams(req.params.id, req.params.state);
+      if(paramErrors) {
+        console.log(paramErrors)
+        return res.status(400).json(paramErrors);
+      }
+ 
+      req.body = conform.conformNewEncounterData(req.body);
+
+      let { errors, isValid } = validateEncounter(req.body);
+      if (!isValid) {
+        console.log(errors);
+        return res.status(400).json(errors);
+      }
+    
+      newEncounter
+        .encounter(data.tag_id, data.tagState, req.body)
         .then(dbresults => {
           // console.log("what is here???")
           // console.log(dbresults)
@@ -67,17 +85,12 @@ router.route("/new/:id").post(check.validateToken, (req, res) => {
           res.status(403).json({ err: err });
         });
 
-        // res.json({
-        //   text: "protected search route/ encounters with params",
-        //   authData: authData
-        // });
-      }
-    })
- });
-
-
-
+      // res.json({
+      //   text: "protected search route/ encounters with params",
+      //   authData: authData
+      // });
+    }
+  });
+});
 
 module.exports = router;
-
-
