@@ -1,0 +1,91 @@
+
+
+CLIENT SIDE
+
+Display:
+
+    - tab:
+        - Enter information
+        - View information
+        - View History
+
+    * Tag entered
+    * State entered
+    * VIN entered
+
+
+
+
+Mobile View
+
+    Login screen
+
+    Tabs to alternate between search / results
+
+
+
+-----------
+
+    Navbar:
+        Name of app
+        Users Name
+        menu button
+            * signout
+            * History
+            * Manage Account
+            * Color settings ( day / night )
+
+    Body:
+        Container holding 2 Tabs
+
+        Search Tab:
+            * inputs for:
+                - Tag
+                - State
+            * Button for Search
+
+        Results Tab:
+            * Vehicle Description
+            * Encounter info
+
+------------
+
+Pages:
+    * Login Pages
+    * Search/Results Pages
+    * Account Page
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

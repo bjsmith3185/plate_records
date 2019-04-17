@@ -1,0 +1,75 @@
+
+
+.landing-page-container {
+    width: 100%;
+    padding-top: 150px;
+}
+
+.landing-title {
+    color: black;
+    font-size: 36px;
+ 
+    /* margin-top: 250px; */
+}
+
+.login-form {
+    /* margin-top: 50px; */
+    padding-bottom: 200px;
+}
+
+.landing-input-area {
+    margin-top: 15px;
+}
+
+.landing-label {
+    font-size: 18px;
+    color: black;
+ 
+    font-weight: 700;
+}
+
+
+.landing-input {
+
+    /* background: yellow; */
+    color: black;
+    padding-left: 5px;
+}
+
+.password-err {
+    margin-top: 4px;
+    font-size: 12px;
+    color: red;
+ 
+}
+
+.landing-login-btn {
+    margin-top: 15px;
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

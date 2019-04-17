@@ -1,6 +1,6 @@
 {
-  "short_name": "AD add-on",
-  "name": "Advertisement Add-on",
+  "short_name": "shoppinglist",
+  "name": "shoppinglist",
   
   "start_url": "./index.html",
   "display": "standalone",

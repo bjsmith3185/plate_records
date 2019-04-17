@@ -10,6 +10,11 @@ module.exports = {
     return db.Users
       .find(data)
   },
+
+  findById: function (id) {
+    return db.Users
+      .find({_id: id})
+  },
   create: function (data) {
     return db.Users
       .create(data)

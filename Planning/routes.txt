@@ -4,9 +4,13 @@ To create a new user
     /api/users/new
         * userName, password
 
-To login a user
+To login a user (confirm password and get token)
     /api/users/login        
         * post  userName, password
+
+To get users info
+    /api/users/info 
+        * get  authorization: token
 
 To access the protected route
     /api/system

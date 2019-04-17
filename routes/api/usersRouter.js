@@ -10,7 +10,7 @@ const validateRegister = require("../../validate/validateRegister");
 // Matches with "/api/users"
 
 // get all users route
-router.route("/").get((req, res) => {
+router.route("/all").get((req, res) => {
   // console.log("in the find all route");
   Users.findAll()
     .then(dbresults => {
@@ -51,6 +51,26 @@ router.route("/login").post((req, res) => {
       res.json(dbresults);
     })
     .catch(err => res.status(422).json(err));
+});
+
+
+router.route("/info").get(check.validateToken, (req, res) => {
+  jwt.verify(req.token, 'secret', (err, authData) => {
+    if(err) {
+      res.status(403).json({err: 'token not verified'})
+    } else {
+      // request user info from Users collection 
+      // console.log(authData._id)
+      Users.findById(authData._id)
+      .then(dbresult => {
+        console.log(dbresult)
+        res.json(dbresult)
+      })
+      .catch(err => res.status(422).json(err));
+      // res.json(authData)
+    }
+  })
+  
 });
 
 // delete user route

@@ -42,7 +42,16 @@
 
 ----------------------------------------------------------
 
+4/17
+    * Set up login page in React
 
+    * working on the set user info route. need to get the header to include the bearer token. 
+
+
+
+
+
+    
 
 Client Side
     TODO:

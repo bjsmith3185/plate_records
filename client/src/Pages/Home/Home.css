@@ -1,22 +1,27 @@
 
+.home-area {
+    width: 100%;
+}
 
-.home-p {
-    font-weight: bold;
+
+/* .home-no-list {
     font-size: 20px;
-}
+    font-weight: bold;
+    color: black;
+    font-family: 'Kalam', cursive;
+    margin-top: 10px;
+} */
 
-.home-top {
-    margin-top: 25px;
-}
 
-.home-h3 {
-    font-size: 40px;
-}
 
-.home-h1 {
-    font-size: 60px;
-}
 
-.admin-header {
-    padding: 25px;
-}
+
+
+
+
+
+
+
+
+
+

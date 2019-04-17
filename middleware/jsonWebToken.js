@@ -16,9 +16,11 @@ module.exports = {
   },
 
   validateToken: function(req,res,next) {
+
     return new Promise((resolve, reject) => {
       // function validateToken(req,res,next) {
         // Get auth header value
+        // console.log(req.headers['authorization'])
         const bearerHeader = req.headers['authorization'];
         // check if bearer is undefined
         if(typeof bearerHeader !== 'undefined') {
@@ -29,6 +31,7 @@ module.exports = {
           // Set the token
           req.token = bearerToken;
           // call Next middleware
+          // console.log(req.token)
           return resolve(next());
     
         } else {
