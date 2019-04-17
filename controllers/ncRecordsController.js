@@ -7,10 +7,20 @@ module.exports = {
       .find({})
       .populate({
         path: 'encounters',
-        populate: {
+        options: {
+          sort: {date: 'desc'}
+        },
+           populate: {
           path: 'officer'
         }
+       
       })
+      // .populate({
+      //   path: 'encounters',
+      //   populate: {
+      //     path: 'officer'
+      //   }
+      // })
   },
 
   findById: function (id) {
@@ -19,9 +29,13 @@ module.exports = {
       .find({_id: id})
       .populate({
         path: 'encounters',
-        populate: {
+        options: {
+          sort: {date: 'desc'}
+        },
+           populate: {
           path: 'officer'
         }
+       
       })
   },
 
@@ -30,10 +44,15 @@ module.exports = {
       .find({tag: tag})
       .populate({
         path: 'encounters',
-        populate: {
+        options: {
+          sort: {date: 'desc'}
+        },
+           populate: {
           path: 'officer'
         }
+       
       })
+
   },
 
   findTags: function (tag) {

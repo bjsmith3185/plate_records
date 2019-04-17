@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const encountersSchema = new Schema({
       driver: { type: String },
-      date: { type: Date },
+      date: { type: Date, default: Date.now },
       location: { type: String },
       rs: { type: String },
       result: { type: String },
