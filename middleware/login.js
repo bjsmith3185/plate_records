@@ -42,13 +42,16 @@ module.exports = {
                 else {
                   let payload = {
                     userName: dbresults[0].userName,
-                    _id: dbresults[0]._id
+                    _id: dbresults[0]._id,
+                            
                   };
 
                   token
                     .createToken(payload)
                     .then(newtoken => {
-                      resolve(newtoken);
+                                        
+                      resolve({token: newtoken.token, isAuthenicated: checked});
+                      // resolve(newtoken);
                     })
                     .catch(err => console.log(err));
                 }

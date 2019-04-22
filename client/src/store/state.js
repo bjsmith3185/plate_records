@@ -5,6 +5,7 @@ const initState = {
     token: '',
     history: [],
     errors: {},
+    isAuthenicated: false,
     // passwordError: '',
     // usernameError: '', 
   

@@ -8,13 +8,15 @@ import LandingPage from '../Pages/Landing';
 
 import * as ROUTES from '../constants/routes';
 
+import withAuth from '../hoc/withAuth';
+
 
 const App = () => (
   <Router>
     <div>
 
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
-      <Route exact path={ROUTES.HOME} component={HomePage} />
+      <Route exact path={ROUTES.HOME} component={withAuth(HomePage)} />
       {/* <Route exact path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route exact path={ROUTES.POPULATE} component={PopulatePage} /> */}
        

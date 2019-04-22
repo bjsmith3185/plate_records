@@ -19,6 +19,8 @@ const setData = (state = initialState, action) => {
       token: action.val.data.token,
       history: action.val.history,
       errors: errorData,
+      isAuthenicated: action.val.data.isAuthenicated
+
       
     };
   }
