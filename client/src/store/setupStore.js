@@ -10,7 +10,6 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(setData, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(watchCheckPassword);
-// sagaMiddleware.run(watchLogIn);
 sagaMiddleware.run(watchCheckUserId);
 
 export default store;

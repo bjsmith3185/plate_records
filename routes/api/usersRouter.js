@@ -71,25 +71,6 @@ router.route("/login/:id").post((req, res) => {
     .catch(err => res.status(422).json(err));
 });
 
-router.route("/info").get(check.validateToken, (req, res) => {
-  jwt.verify(req.token, 'secret', (err, authData) => {
-    if(err) {
-      res.status(403).json({err: 'token not verified'})
-    } else {
-      // request user info from Users collection 
-      // console.log(authData._id)
-      Users.findById(authData._id)
-      .then(dbresult => {
-        console.log(dbresult)
-        res.json(dbresult)
-      })
-      .catch(err => res.status(422).json(err));
-      // res.json(authData)
-    }
-  })
-  
-});
-
 // delete user route
 router
   .route("/delete/:id")

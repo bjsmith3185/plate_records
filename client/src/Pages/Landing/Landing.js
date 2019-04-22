@@ -38,21 +38,7 @@ class LandingPage extends Component {
   componentWillMount() {
     sessionStorage.clear();
   }
-
-  // componentWillReceiveProps = (nextProps) => {
-  //   const { history } = this.props;
-  //   console.log(nextProps)
-  //   if(nextProps.token) {
-  //     console.log("token is there")
-  //     // set token to session storage
-  //     sessionStorage.setItem('token', nextProps.token);
-  //     // request to api for user info and redirect
-  //     this.props.tokenLogin(nextProps.token, history)
-  //     // redirect to home page
-
-  //   }
-  // }
-
+  
 
 
   render = () => {
@@ -79,8 +65,7 @@ class LandingPage extends Component {
             />
           </div>
           {this.props.errors.username && <div className='username-error'>{this.props.errors.username}</div>}
-          {/* <div className='username-error'>{this.props.errors.username}</div> */}
-
+    
           <div className="landing-input-area">
             <div className="landing-label text-center">Password</div>
             <input
@@ -91,10 +76,7 @@ class LandingPage extends Component {
               placeholder="Password"
             />
             {this.props.errors.password && <div className='password-error'>{this.props.errors.password}</div>}
-            {/* <div className="password-error">
-              {this.props.errors.password}
-            </div> */}
-          </div>
+           </div>
 
           <button
             className="landing-login-btn btn btn-info"
@@ -111,24 +93,18 @@ class LandingPage extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  console.log(state)
+  // console.log(state)
   return {
     token: state.token,
     errors: state.errors
-    // history: state.history
   };
 };
 
 const mapDispachToProps = dispach => {
   return {
     submitLogin: (userName, password, history) => {
-      // console.log(history)
       dispach({ type: "CHECK_PASSWORD", payload: { userName, password, history} });
     },
-
-    // tokenLogin: (token, history) => {
-    //   dispach({ type: "LOG_IN", payload: { token, history } })
-    // }
   };
 };
 

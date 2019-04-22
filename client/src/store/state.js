@@ -10,8 +10,7 @@ const initState = {
     org: '',
     code: '',
     username: '',
-    // passwordError: '',
-    // usernameError: '', 
+
   
 }
 
