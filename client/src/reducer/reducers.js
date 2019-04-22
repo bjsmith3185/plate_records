@@ -8,11 +8,17 @@ const setData = (state = initialState, action) => {
     console.log(action)
     // console.log(action.val.data.token)
     // console.log(action.val.history)
+    // console.log(action.val.data.err)
+    let errorData = {};
+    if(action.val.data.error) {
+      errorData = action.val.data.error
+    } 
 
     return {
       ...state,
       token: action.val.data.token,
-      history: action.val.history
+      history: action.val.history,
+      errors: errorData,
       
     };
   }

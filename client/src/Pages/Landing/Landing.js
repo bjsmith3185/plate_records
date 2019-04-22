@@ -17,8 +17,8 @@ class LandingPage extends Component {
     event.preventDefault();
     // const { history } = this.props;
     this.props.submitLogin(
-      this.state.userName.toLowerCase(),
-      this.state.myPassword.toString().toLowerCase(),
+      this.state.userName.toLowerCase().trim(),
+      this.state.myPassword.toString().toLowerCase().trim(),
       // history
     );
 
@@ -53,6 +53,8 @@ class LandingPage extends Component {
 
   render = () => {
     // console.log(this.props)
+    const submitForm = (this.state.userName && this.state.myPassword)
+
     return (
       <div className="landing-page-container">
         <h1 className="landing-title text-center">Stop Data</h1>
@@ -72,6 +74,8 @@ class LandingPage extends Component {
               placeholder="User Name"
             />
           </div>
+          {this.props.errors.username && <div className='username-error'>{this.props.errors.username}</div>}
+          {/* <div className='username-error'>{this.props.errors.username}</div> */}
 
           <div className="landing-input-area">
             <div className="landing-label text-center">Password</div>
@@ -82,14 +86,16 @@ class LandingPage extends Component {
               onChange={this.onChange}
               placeholder="Password"
             />
-            <div className="password-err text-center">
-              {this.props.password}
-            </div>
+            {this.props.errors.password && <div className='password-error'>{this.props.errors.password}</div>}
+            {/* <div className="password-error">
+              {this.props.errors.password}
+            </div> */}
           </div>
 
           <button
             className="landing-login-btn btn btn-info"
             onClick={this.submit}
+            disabled={!submitForm}
           >
             Sign In
           </button>
@@ -104,6 +110,7 @@ const mapStateToProps = state => {
   console.log(state)
   return {
     token: state.token,
+    errors: state.errors
     // history: state.history
   };
 };

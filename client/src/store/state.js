@@ -4,6 +4,9 @@ const initState = {
     name: '',
     token: '',
     history: [],
+    errors: {},
+    // passwordError: '',
+    // usernameError: '', 
   
 }
 
