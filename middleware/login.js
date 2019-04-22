@@ -61,5 +61,42 @@ module.exports = {
         })
         .catch(err => console.log(err));
     });
+  },
+
+  loginWithUserId: function (id) {
+    return new Promise((resolve, reject) => {
+
+      usersController.findById(id)
+      .then(dbresults => {
+        console.log(dbresults)
+        //if true, get token, if not return err
+        if(dbresults) {
+          let payload = {
+            userName: dbresults[0].userName,
+            _id: dbresults[0]._id,
+                    
+          };
+
+          token
+            .createToken(payload)
+            .then(newtoken => {
+                                
+              resolve({
+                token: newtoken.token, 
+                isAuthenicated: true,
+                username: dbresults[0].username,
+                name: dbresults[0].name,
+                org: dbresults[0].org,
+                email: dbresults[0].email,
+                code: dbresults[0].code
+              });
+
+            })
+            .catch(err => console.log(err));
+        }
+
+      })
+      .catch(err => resolve(err))
+    })
   }
 };

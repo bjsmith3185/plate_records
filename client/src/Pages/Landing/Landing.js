@@ -35,6 +35,10 @@ class LandingPage extends Component {
     });
   };
 
+  componentWillMount() {
+    sessionStorage.clear();
+  }
+
   componentWillReceiveProps = (nextProps) => {
     const { history } = this.props;
     console.log(nextProps)

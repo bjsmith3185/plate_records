@@ -7,13 +7,32 @@ export default function(ComposedComponent) {
 
     class WithAuth extends Component {
         componentWillMount() {
-         if(!this.props.isAuthenicated) {
-            console.log("not authenicated")
-            this.props.history.push('/')
-         }
+         if(this.props.isAuthenicated === false) {
+            // console.log("isAuthenicated is false")
+
+            // check to see if user _id is in session storage
+            if(sessionStorage.getItem("userId")) {
+                // console.log('here is the user id')
+                // console.log(sessionStorage.getItem('userId'))
+                // api request to get users info
+                this.props.loginUser(sessionStorage.getItem("userId"))
+            } else {
+                this.props.history.push('/')
+            }
+           
+         } 
         }
 
+        componentWillReceiveProps(nextProps) {
+            // console.log(nextProps)
+            if(nextProps.isAuthenicated === undefined) {
+                console.log("isAuth is undefined")
+                this.props.history.push('/')
+            }
         
+        }
+
+            
       
         render() {
           return (
@@ -30,34 +49,15 @@ export default function(ComposedComponent) {
         };
 };
 
-      return connect(mapStateToProps)(WithAuth);
+const mapDispachToProps = dispach => {
+    return {
+        loginUser: (userId) => {
+            dispach({ type: "CHECK_USERID", payload: { userId }})
+        }
+    };
+  };
+
+      return connect(mapStateToProps,mapDispachToProps)(WithAuth);
 }
 
 
-// // this brings in the state to display on this component
-// const mapStateToProps = state => {
-//   return {
-//     // userId: state.userId,
-//     // allList: state.allList,
-//     // myStore: state.myStore,
-//     // editing: state.editing,
-//     // storeList: state.storeList,
-//   };
-// };
-
-// const mapDispachToProps = dispach => {
-//   return {
-//     // loadAllData: (id, history) => {
-//     //   dispach({ type: "LOAD_DATA", payload: { id, history } });
-//     // },
-
-//     // setHistory: history => {
-//     //   dispach({ type: "SET_HISTORY", payload: { history } });
-//     // }
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispachToProps
-// )(HomePage);

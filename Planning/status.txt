@@ -54,7 +54,9 @@
 
     * So, im getting back a token even if the login data doesnt match.... (Fixed, added if statement)
 
-    * May change the home(logged in page) to /search instead of /home 
+    * to persist data on refresh,
+        - save user_id to session storage.
+        - on page load, api call to set user data and set isAuthinacted to true.
     
 
 

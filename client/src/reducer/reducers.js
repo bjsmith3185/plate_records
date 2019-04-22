@@ -5,7 +5,7 @@ const setData = (state = initialState, action) => {
 
   // open/close dropdown menu
   if (action.type === "SET_TOKEN") {
-    console.log(action)
+    // console.log(action)
     // console.log(action.val.data.token)
     // console.log(action.val.history)
     // console.log(action.val.data.err)
@@ -26,7 +26,7 @@ const setData = (state = initialState, action) => {
   }
 
   if (action.type === "SET_USER") {
-    console.log(action.val)
+    // console.log(action.val)
 
     return {
       ...state,
@@ -36,6 +36,22 @@ const setData = (state = initialState, action) => {
       org:action.val.org,
       userName:action.userName,
       userId: action.val._id,
+    }
+  }
+
+  if (action.type === "SET_USERINFO_TOKEN") {
+    // console.log(action.val)
+
+    return {
+      ...state,
+      code:action.val.data.code,
+      email:action.val.data.email,
+      name:action.val.data.name,
+      org:action.val.data.org,
+      userName:action.val.data.userName,
+      userId: action.val.data._id,
+      token: action.val.data.token,
+      isAuthenicated: action.val.data.isAuthenicated
     }
   }
 

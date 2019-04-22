@@ -6,6 +6,10 @@ const initState = {
     history: [],
     errors: {},
     isAuthenicated: false,
+    email: '',
+    org: '',
+    code: '',
+    username: '',
     // passwordError: '',
     // usernameError: '', 
   

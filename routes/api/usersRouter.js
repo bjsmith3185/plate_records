@@ -53,6 +53,23 @@ router.route("/login").post((req, res) => {
     .catch(err => res.status(422).json(err));
 });
 
+// login in route with user_id
+router.route("/login/:id").post((req, res) => {
+  console.log("in login route, user id: " + req.params.id);
+  // check input thru validator
+
+  // let { errors, isValid } = validateLogin(req.body);
+  // if (!isValid) {
+  //   return res.status(400).json(errors);
+  // }
+  // // if data is valid continue
+  login
+    .loginWithUserId(req.params.id)
+    .then(dbresults => {
+      res.json(dbresults);
+    })
+    .catch(err => res.status(422).json(err));
+});
 
 router.route("/info").get(check.validateToken, (req, res) => {
   jwt.verify(req.token, 'secret', (err, authData) => {

@@ -2,19 +2,9 @@ import { takeLatest, put } from "redux-saga/effects";
 import API from "../utils/API";
 
 
-// // opens closes dropdown menu
-// function* dropDownAsync(data) {
-//    yield put({ type: "SET_DROPDOWN_MENU", val: data.payload });
-// }
-
-// export function* watchDropdown() {
-//   yield takeLatest("SHOW_DROPDOWN_MENU", dropDownAsync);
-// }
-
-
 
 //------------------------
-// Log In 
+// Check username and password, return token
 function* checkPasswordAsync(data) {
 console.log(data)
   // let user = {
@@ -34,7 +24,7 @@ export function* watchCheckPassword() {
 
 
 //-------------------------------------------------------------------
-//   Log in user
+//   Set User data with token
 function* logInAsync(data) {
   console.log(data)
 
@@ -51,7 +41,7 @@ function* logInAsync(data) {
     const result = yield API.login(data.payload.token);
     console.log(result)
     if (result.data[0]._id) {
-      localStorage.setItem("userId", result.data[0]._id);
+      sessionStorage.setItem("userId", result.data[0]._id);
       yield put({ type: "SET_USER", val: result.data[0] });
       history.push("/home");
     } else {
@@ -67,5 +57,26 @@ export function* watchLogIn() {
   yield takeLatest("LOG_IN", logInAsync);
 }
 
+//-------------------------------------
 
+// Check user _id, return token
+function* checkUserIdAsync(data) {
+  // console.log(data)
+    // let user = {
+    //   userName: data.payload.userName,
+    //   password: data.payload.password
+    // }
+    const myData = yield API.checkUserId(data.payload.userId);
+    console.log(myData)
+    myData.history = data.payload.history;
+    yield put({ type: "SET_USERINFO_TOKEN", val: myData });
+  }
+  
+  export function* watchCheckUserId() {
+    yield takeLatest("CHECK_USERID", checkUserIdAsync);
+  }
+  
+  
+  
+  //-----------------------------------------------------------------
 

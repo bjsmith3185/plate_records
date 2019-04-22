@@ -14,6 +14,7 @@ class HomePage extends Component {
   }
 
   render() {
+    // console.log(this.props)
     return (
       <div className="home-area">
       <h1> Home Page</h1>
@@ -33,6 +34,13 @@ class HomePage extends Component {
 // this brings in the state to display on this component
 const mapStateToProps = state => {
   return {
+    username: state.username,
+    code: state.code,
+    org: state.org,
+    name: state.name,
+    userId: state.userId,
+    isAuthenicated: state.isAuthenicated,
+    
     // userId: state.userId,
     // allList: state.allList,
     // myStore: state.myStore,
