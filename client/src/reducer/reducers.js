@@ -4,8 +4,8 @@ const setData = (state = initialState, action) => {
   const newState = { ...state };
 
   // open/close dropdown menu
-  if (action.type === "SET_TOKEN") {
-    // console.log(action)
+  if (action.type === "SET_ERROR") {
+    console.log(action)
     // console.log(action.val.data.token)
     // console.log(action.val.history)
     // console.log(action.val.data.err)
@@ -16,14 +16,30 @@ const setData = (state = initialState, action) => {
 
     return {
       ...state,
-      token: action.val.data.token,
-      history: action.val.history,
-      errors: errorData,
-      isAuthenicated: action.val.data.isAuthenicated
-
-      
+       errors: errorData,
     };
   }
+
+  // if (action.type === "SET_TOKEN") {
+  //   // console.log(action)
+  //   // console.log(action.val.data.token)
+  //   // console.log(action.val.history)
+  //   // console.log(action.val.data.err)
+  //   let errorData = {};
+  //   if(action.val.data.error) {
+  //     errorData = action.val.data.error
+  //   } 
+
+  //   return {
+  //     ...state,
+  //     token: action.val.data.token,
+  //     history: action.val.history,
+  //     errors: errorData,
+  //     isAuthenicated: action.val.data.isAuthenicated
+
+      
+  //   };
+  // }
 
   if (action.type === "SET_USER") {
     // console.log(action.val)
@@ -40,7 +56,7 @@ const setData = (state = initialState, action) => {
   }
 
   if (action.type === "SET_USERINFO_TOKEN") {
-    // console.log(action.val)
+    console.log(action.val)
 
     return {
       ...state,

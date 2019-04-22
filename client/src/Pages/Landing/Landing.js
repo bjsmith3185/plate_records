@@ -15,11 +15,11 @@ class LandingPage extends Component {
 
   submit = event => {
     event.preventDefault();
-    // const { history } = this.props;
+    const { history } = this.props;
     this.props.submitLogin(
       this.state.userName.toLowerCase().trim(),
       this.state.myPassword.toString().toLowerCase().trim(),
-      // history
+      history
     );
 
     this.setState({
@@ -39,19 +39,19 @@ class LandingPage extends Component {
     sessionStorage.clear();
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    const { history } = this.props;
-    console.log(nextProps)
-    if(nextProps.token) {
-      console.log("token is there")
-      // set token to session storage
-      sessionStorage.setItem('token', nextProps.token);
-      // request to api for user info and redirect
-      this.props.tokenLogin(nextProps.token, history)
-      // redirect to home page
+  // componentWillReceiveProps = (nextProps) => {
+  //   const { history } = this.props;
+  //   console.log(nextProps)
+  //   if(nextProps.token) {
+  //     console.log("token is there")
+  //     // set token to session storage
+  //     sessionStorage.setItem('token', nextProps.token);
+  //     // request to api for user info and redirect
+  //     this.props.tokenLogin(nextProps.token, history)
+  //     // redirect to home page
 
-    }
-  }
+  //   }
+  // }
 
 
 
@@ -121,14 +121,14 @@ const mapStateToProps = state => {
 
 const mapDispachToProps = dispach => {
   return {
-    submitLogin: (userName, password) => {
+    submitLogin: (userName, password, history) => {
       // console.log(history)
-      dispach({ type: "CHECK_PASSWORD", payload: { userName, password} });
+      dispach({ type: "CHECK_PASSWORD", payload: { userName, password, history} });
     },
 
-    tokenLogin: (token, history) => {
-      dispach({ type: "LOG_IN", payload: { token, history } })
-    }
+    // tokenLogin: (token, history) => {
+    //   dispach({ type: "LOG_IN", payload: { token, history } })
+    // }
   };
 };
 

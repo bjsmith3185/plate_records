@@ -12,6 +12,7 @@ module.exports = {
       usersController
         .findOne(search)
         .then(dbresults => {
+          // console.log("here")
           // console.log(dbresults);
 
           // if the user is not found
@@ -50,7 +51,17 @@ module.exports = {
                     .createToken(payload)
                     .then(newtoken => {
                                         
-                      resolve({token: newtoken.token, isAuthenicated: checked});
+                      resolve({
+                        token: newtoken.token, 
+                        isAuthenicated: checked,
+                        username: dbresults[0].username,
+                        name: dbresults[0].name,
+                        org: dbresults[0].org,
+                        email: dbresults[0].email,
+                        code: dbresults[0].code,
+                        _id: dbresults[0]._id
+                      
+                      });
                       // resolve(newtoken);
                     })
                     .catch(err => console.log(err));

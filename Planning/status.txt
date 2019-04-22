@@ -54,10 +54,17 @@
 
     * So, im getting back a token even if the login data doesnt match.... (Fixed, added if statement)
 
-    * to persist data on refresh,
+    * to persist data on refresh, (dont)
         - save user_id to session storage.
         - on page load, api call to set user data and set isAuthinacted to true.
-    
+
+    * Used HOC to validate user login status to access "/home" (done)
+
+    * Need to add some validatin for login with _id, on page refresh
+
+
+    * Can I eliminate a request to the server at logon? (done)
+        _ removed the function to set user info using a token. This eliminated a request to the server.
 
 
     
