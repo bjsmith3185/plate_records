@@ -1,5 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
+
+// import history
+import history from '../history/history';
 
 import HomePage from '../Pages/Home';
 import LandingPage from '../Pages/Landing';
@@ -12,7 +15,7 @@ import withAuth from '../hoc/withAuth';
 
 
 const App = () => (
-  <Router>
+  <Router history={history}>
     <div>
 
       <Route exact path={ROUTES.LANDING} component={LandingPage} />

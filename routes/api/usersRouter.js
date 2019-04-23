@@ -4,7 +4,7 @@ const check = require('../../middleware/jsonWebToken')
 const login = require("../../middleware/login");
 const hash = require("../../middleware/bcrypt");
 const Users = require("../../controllers/usersController");
-const validateLogin = require("../../validate/validateLogin");
+const validate = require("../../validate/validateLogin");
 const validateRegister = require("../../validate/validateRegister");
 
 // Matches with "/api/users"
@@ -23,7 +23,7 @@ router.route("/all").get((req, res) => {
 router.route("/new").post((req, res) => {
   // console.log("in the create user route");
   // check input thru validator
-  let { errors, isValid } = validateRegister(req.body);
+  let { errors, isValid } = validate.validateLogin(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }
@@ -40,7 +40,7 @@ router.route("/login").post((req, res) => {
   // console.log("in login route");
   // check input thru validator
 
-  let { errors, isValid } = validateLogin(req.body);
+  let { errors, isValid } = validate.validateLogin(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }
@@ -55,14 +55,14 @@ router.route("/login").post((req, res) => {
 
 // login in route with user_id
 router.route("/login/:id").post((req, res) => {
-  console.log("in login route, user id: " + req.params.id);
+  // console.log("in login route, user id: " + req.params.id);
   // check input thru validator
 
-  // let { errors, isValid } = validateLogin(req.body);
-  // if (!isValid) {
-  //   return res.status(400).json(errors);
-  // }
-  // // if data is valid continue
+  let { errors, isValid } = validate.validateUserId(req.params.id);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+  // if data is valid continue
   login
     .loginWithUserId(req.params.id)
     .then(dbresults => {
@@ -70,6 +70,24 @@ router.route("/login/:id").post((req, res) => {
     })
     .catch(err => res.status(422).json(err));
 });
+
+// // log out user
+// router.route("/logout/:id").post((req, res) => {
+//   // console.log("in login route, user id: " + req.params.id);
+//   // check input thru validator
+
+//   // let { errors, isValid } = validate.validateUserId(req.params.id);
+//   // if (!isValid) {
+//   //   return res.status(400).json(errors);
+//   // }
+//   // if data is valid continue
+//   login
+//     .loginWithUserId(req.params.id)
+//     .then(dbresults => {
+//       res.json(dbresults);
+//     })
+//     .catch(err => res.status(422).json(err));
+// });
 
 // delete user route
 router

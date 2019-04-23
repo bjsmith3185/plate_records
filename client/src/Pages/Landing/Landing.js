@@ -3,6 +3,7 @@ import "./Landing.css";
 // Redux
 import { connect } from "react-redux";
 
+
 class LandingPage extends Component {
   state = {
     userName: "",
@@ -15,13 +16,10 @@ class LandingPage extends Component {
 
   submit = event => {
     event.preventDefault();
-    const { history } = this.props;
     this.props.submitLogin(
       this.state.userName.toLowerCase().trim(),
-      this.state.myPassword.toString().toLowerCase().trim(),
-      history
+      this.state.myPassword.toString().toLowerCase().trim()
     );
-
     this.setState({
       userName: "",
       myPassword: ""
@@ -39,7 +37,6 @@ class LandingPage extends Component {
     sessionStorage.clear();
   }
   
-
 
   render = () => {
     // console.log(this.props)
@@ -93,7 +90,7 @@ class LandingPage extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  // console.log(state)
+console.log(state)
   return {
     token: state.token,
     errors: state.errors
@@ -102,8 +99,8 @@ const mapStateToProps = state => {
 
 const mapDispachToProps = dispach => {
   return {
-    submitLogin: (userName, password, history) => {
-      dispach({ type: "CHECK_PASSWORD", payload: { userName, password, history} });
+    submitLogin: (userName, password) => {
+      dispach({ type: "CHECK_PASSWORD", payload: { userName, password} });
     },
   };
 };

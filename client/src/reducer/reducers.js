@@ -48,6 +48,23 @@ const setData = (state = initialState, action) => {
     }
   }
 
+  if (action.type === "SET_LOG_OUT") {
+    // console.log(action.val)
+
+    return {
+      ...state,
+      code: '',
+      email: '',
+      name: '',
+      org: '',
+      userName: '',
+      userId: '',
+      token: '',
+      isAuthenicated: false,
+      errors: {},
+    }
+  }
+
  
 
   return newState;

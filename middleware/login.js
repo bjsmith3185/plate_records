@@ -12,8 +12,8 @@ module.exports = {
       usersController
         .findOne(search)
         .then(dbresults => {
-          // console.log("here")
-          // console.log(dbresults);
+          console.log("here")
+          console.log(dbresults);
 
           // if the user is not found
           if (dbresults.length === 0) {
@@ -54,7 +54,7 @@ module.exports = {
                       resolve({
                         token: newtoken.token, 
                         isAuthenicated: checked,
-                        username: dbresults[0].username,
+                        userName: dbresults[0].userName,
                         name: dbresults[0].name,
                         org: dbresults[0].org,
                         email: dbresults[0].email,
@@ -79,7 +79,7 @@ module.exports = {
 
       usersController.findById(id)
       .then(dbresults => {
-        console.log(dbresults)
+        // console.log(dbresults)
         //if true, get token, if not return err
         if(dbresults) {
           let payload = {
@@ -95,11 +95,12 @@ module.exports = {
               resolve({
                 token: newtoken.token, 
                 isAuthenicated: true,
-                username: dbresults[0].username,
+                userName: dbresults[0].userName,
                 name: dbresults[0].name,
                 org: dbresults[0].org,
                 email: dbresults[0].email,
-                code: dbresults[0].code
+                code: dbresults[0].code,
+                _id: dbresults[0]._id
               });
 
             })

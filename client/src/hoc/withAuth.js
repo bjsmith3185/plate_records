@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import history from '../history/history'
 // Redux
 import { connect } from "react-redux";
 
@@ -12,7 +12,7 @@ export default function(ComposedComponent) {
           // api request to get users info
           this.props.loginUser(sessionStorage.getItem("userId"));
         } else {
-          this.props.history.push("/");
+          history.push('/')
         }
       }
     }
@@ -20,7 +20,7 @@ export default function(ComposedComponent) {
     componentWillReceiveProps(nextProps) {
       if (nextProps.isAuthenicated === undefined) {
         console.log("isAuth is undefined");
-        this.props.history.push("/");
+        history.push('/')
       }
     }
 
@@ -37,7 +37,7 @@ export default function(ComposedComponent) {
 
   const mapDispachToProps = dispach => {
     return {
-      loginUser: userId => {
+      loginUser: (userId) => {
         dispach({ type: "CHECK_USERID", payload: { userId } });
       }
     };

@@ -1,13 +1,12 @@
 import { takeLatest, put } from "redux-saga/effects";
 import API from "../utils/API";
-
+import history from "../history/history"
 
 
 //------------------------
 // Check username and password, return token
 function* checkPasswordAsync(data) {
 // console.log(data)
-let history = data.payload.history;
   let user = {
     userName: data.payload.userName,
     password: data.payload.password
@@ -16,7 +15,6 @@ let history = data.payload.history;
   // console.log(myData)
 
   if (myData.data._id) {
-    myData.data.history = history;
     sessionStorage.setItem("userId", myData.data._id);
     sessionStorage.setItem("token", myData.data.token);
     yield put({ type: "SET_USERINFO_TOKEN", val: myData });
@@ -37,10 +35,10 @@ export function* watchCheckPassword() {
 
 // Check user _id, return token
 function* checkUserIdAsync(data) {
+  console.log(data)
 
     const myData = yield API.checkUserId(data.payload.userId);
     // console.log(myData)
-    myData.history = data.payload.history;
     yield put({ type: "SET_USERINFO_TOKEN", val: myData });
   }
   
@@ -50,5 +48,16 @@ function* checkUserIdAsync(data) {
   
   
   
-  //-----------------------------------------------------------------
+  //-------------------------------------------------------
 
+// Log out user
+function* logOutAsync(data) {
+  // console.log(data)
+  yield put({ type: "SET_LOG_OUT", val: data });
+}
+
+export function* watchLogoutUser() {
+  yield takeLatest("LOG_OUT", logOutAsync);
+}
+
+//-------------------------------------------------------------

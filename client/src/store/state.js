@@ -3,7 +3,6 @@ const initState = {
     
     name: '',
     token: '',
-    history: [],
     errors: {},
     isAuthenicated: false,
     email: '',

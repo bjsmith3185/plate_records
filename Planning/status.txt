@@ -60,11 +60,20 @@
 
     * Used HOC to validate user login status to access "/home" (done)
 
-    * Need to add some validatin for login with _id, on page refresh
+    
 
 
     * Can I eliminate a request to the server at logon? (done)
         _ removed the function to set user info using a token. This eliminated a request to the server.
+
+4/23
+    * Need to add some validatin for login with _id, on page refresh (done)
+
+    * Create a logout function (done)
+
+    * Added npm 'history', using this to redirect, seemed to work a lot easier (done)
+
+    
 
 
     
