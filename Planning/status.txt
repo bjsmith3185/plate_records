@@ -76,10 +76,17 @@
     
 
 
+
+
+
     
 
 Client Side
     TODO:
+    - Function to determine if the token is valid: if false: redirect to login page.
+    - Design layout to enter the tag/state info
+    - Design layout to display the results
+
         * If the state/tag search is empty
             - error to user: is the correct state entered?
                 * Retry search with new state data

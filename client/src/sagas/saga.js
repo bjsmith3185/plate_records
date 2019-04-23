@@ -38,7 +38,7 @@ function* checkUserIdAsync(data) {
   console.log(data)
 
     const myData = yield API.checkUserId(data.payload.userId);
-    // console.log(myData)
+    console.log(myData)
     yield put({ type: "SET_USERINFO_TOKEN", val: myData });
   }
   

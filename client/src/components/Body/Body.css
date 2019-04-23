@@ -1,0 +1,95 @@
+
+
+.body-area {
+  width: 100%;
+  background: gray;
+}
+
+
+.body-header {
+  width: 100%;
+  background: orange;
+  height: 50px;
+  text-align: center;
+}
+
+.search {
+  width: 50%;
+  text-align: left;
+  margin-left: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  background: red;
+
+}
+
+.results {
+  width: 50%;
+  text-align: right;
+  margin-right: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  background: yellow
+}
+
+
+
+
+.body-search-area {
+
+  width: 90%;
+  margin-right: 10%;
+  height: 400px;
+  background: lightblue;
+}
+
+
+.body-results-area {
+  width: 90%;
+  margin-left: 10%;
+  height: 400px;
+  background: rgb(111, 111, 201);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

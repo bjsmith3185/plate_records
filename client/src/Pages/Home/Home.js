@@ -3,14 +3,12 @@ import "./Home.css";
 // Redux
 import { connect } from "react-redux";
 import Navbar from "../../components/Navbar";
-// import Header from "../../components/Header";
-// import InfoBar from "../../components/InfoBar";
+import Body from "../../components/Body";
+
 
 class HomePage extends Component {
   componentWillMount() {
-    // const { history } = this.props;
-    // const user_id = localStorage.getItem("userId");
-    // this.props.loadAllData(user_id, history);
+
   }
 
 
@@ -19,15 +17,9 @@ class HomePage extends Component {
     return (
       <div className="home-area">
       <Navbar />
-      <h1> Home Page</h1>
-    
-          {/* <Header />
-
-          {this.props.myStore && <InfoBar />}
-  
-
-          {this.props.storeList && <List />} */}
-
+      
+      <Body />
+   
       </div>
     );
   }
