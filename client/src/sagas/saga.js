@@ -38,7 +38,7 @@ function* checkUserIdAsync(data) {
   console.log(data)
 
     const myData = yield API.checkUserId(data.payload.userId);
-    console.log(myData)
+    // console.log(myData)
     yield put({ type: "SET_USERINFO_TOKEN", val: myData });
   }
   
@@ -61,3 +61,24 @@ export function* watchLogoutUser() {
 }
 
 //-------------------------------------------------------------
+
+// Search for tag info
+function* searchTagAsync(data) {
+  console.log(data)
+  let searchData = {
+    tag: data.payload.tag,
+    state: data.payload.sate
+  }
+
+    const myData = yield API.searchTag(searchData, data.payload.token);
+    // console.log(myData)
+    // yield put({ type: "SET_TAG_INFO", val: myData });
+  }
+  
+  export function* watchSearchTag() {
+    yield takeLatest("SEARCH_TAG", searchTagAsync);
+  }
+  
+  
+  
+  //-------------------------------------------------------

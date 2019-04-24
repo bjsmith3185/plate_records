@@ -73,6 +73,9 @@
 
     * Added npm 'history', using this to redirect, seemed to work a lot easier (done)
 
+    * Adding inputs on client for tag/state search (done)
+
+    ** trying to get the api request with the tag/state/token data to go thru. Need to add the 'data' to the third param of the api get request,,,,maybe
     
 
 

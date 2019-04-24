@@ -2,6 +2,8 @@
 
 module.exports = {
   conformSearchData: function(value) {
+    console.log("this is value")
+    console.log(value)
     // Modify tag data if necessary
     let objCopy = Object.assign({}, value);
     // remove '-' if entered

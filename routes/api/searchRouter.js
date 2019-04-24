@@ -37,7 +37,7 @@ const conform = require("../../validate/conformInput");
 
 // search by tag and state
 router.route("/").get(check.validateToken, (req, res) => {
-  // console.log("in the search by tag/state  protected route");
+  console.log("in the search by tag/state  protected route");
 
   jwt.verify(req.token, "secret", (err, authData) => {
     if (err) {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Body.css";
+import SearchForm from "../../components/SearchForm"
 
 // Redux
 // import { connect } from "react-redux";
@@ -55,24 +56,13 @@ class Body extends Component {
         <span onClick={this.showResultsView}  className='results'>Results</span>
       </div>
 
-      {/* { this.state.showSearch && <div className="body-search-area">Search Tag</div>}
+      { this.state.showSearch && <div className="body-search-area">
+           <SearchForm />
+           </div>}
 
-      { this.state.showResults && <div className="body-results-area">See Results</div>} */}
+      { this.state.showResults && <div className="body-results-area">See Results</div>}
 
-      <ul className="nav nav-tabs">
-  <li className="active"><a href="#">Home</a></li>
-  <li className="dropdown">
-    <a className="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1
-    <span className="caret"></span></a>
-    <ul className="dropdown-menu">
-      <li><a href="#">Submenu 1-1</a></li>
-      <li><a href="#">Submenu 1-2</a></li>
-      <li><a href="#">Submenu 1-3</a></li> 
-    </ul>
-  </li>
-  <li><a href="#">Menu 2</a></li>
-  <li><a href="#">Menu 3</a></li>
-</ul>
+     
         
       </div>
     );

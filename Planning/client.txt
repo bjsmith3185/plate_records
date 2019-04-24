@@ -57,7 +57,23 @@ Pages:
 
 
 
+------------------
 
+Validate tag/state input
+
+    * Tag   
+        - at least 1 char, max 9 char
+        - remove whitespace
+        - trim()
+        - string
+        - toLowerCase()
+
+    * State 
+        - string 
+        - trim()
+        - remove whitespace
+        - to lowercase
+          - match a state in the array
 
 
 
