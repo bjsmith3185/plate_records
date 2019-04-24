@@ -62,22 +62,22 @@ export function* watchLogoutUser() {
 
 //-------------------------------------------------------------
 
-// Search for tag info
-function* searchStateTagAsync(data) {
-  console.log(data)
-  // let searchData = {
-  //   tag: data.payload.tag,
-  //   state: data.payload.sate
-  // }
+// // Search for tag info
+// function* searchStateTagAsync(data) {
+//   console.log(data)
+//   // let searchData = {
+//   //   tag: data.payload.tag,
+//   //   state: data.payload.sate
+//   // }
 
-    const myData = yield API.searchStateTag(data.payload.state, data.payload.tag, data.payload.token);
-    console.log(myData)
-    // yield put({ type: "SET_TAG_INFO", val: myData });
-  }
+//     const myData = yield API.searchStateTag(data.payload.state, data.payload.tag, data.payload.token);
+//     console.log(myData)
+//     // yield put({ type: "SET_TAG_INFO", val: myData });
+//   }
   
-  export function* watchSearchStateTag() {
-    yield takeLatest("SEARCH_STATE_TAG", searchStateTagAsync);
-  }
+//   export function* watchSearchStateTag() {
+//     yield takeLatest("SEARCH_STATE_TAG", searchStateTagAsync);
+//   }
   
   
   
@@ -87,7 +87,7 @@ function* searchStateTagAsync(data) {
 function* searchTagAsync(data) {
   console.log(data)
   let myData = [];
-  let SearchData = {};
+  // let SearchData = {};
   let isState = '';
 
   // If a state is provided
@@ -105,7 +105,8 @@ function* searchTagAsync(data) {
     search: {
       tag: data.payload.tag,
       state: isState
-    }
+    },
+    viewSearchComponent: false
   }
 
     yield put({ type: "SET_TAG_INFO", val: setData });

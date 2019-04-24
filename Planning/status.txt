@@ -78,7 +78,7 @@
     * Request to search for tag is working. Data is set to the store. (done)
 
 4/24
-    * Need to have the screen change to show results once a search is successful
+    * Need to have the screen change to show results once a search is successful (set up this variable in the store)
 
     
     

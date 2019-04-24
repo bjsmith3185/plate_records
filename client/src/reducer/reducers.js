@@ -71,7 +71,8 @@ const setData = (state = initialState, action) => {
     return {
       ...state,
      currentResult: action.val.result,
-     currentSearch: action.val.search
+     currentSearch: action.val.search,
+     viewSearchComponent: action.val.viewSearchComponent
     }
   }
 

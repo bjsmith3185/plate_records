@@ -101,7 +101,7 @@ class SearchForm extends Component {
 
     return (
       <div className="search-body">
-        <div className="form-title text-center">Enter Tag / State to Search</div>
+        <div className="search-title text-center">Enter Tag / State to Search</div>
 
         <div className="input-line">
           <label className="input-title">Tag</label>

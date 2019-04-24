@@ -7,17 +7,12 @@ import "./DisplayResult.css";
 
 class DisplayResult extends Component {
   state = {
-    tag: '',
-    state: '',
-    errorTag: '',
-    errorState: '',
+   
   }
 
   componentDidMount() {}
 
   componentWillReceiveProps(nextProps) {
-    // console.log("what is this")
-    // console.log(nextProps)
   }
 
 
@@ -30,116 +25,25 @@ class DisplayResult extends Component {
     })
   }
 
-  
-  submit = event => {
-    event.preventDefault();
-    let newState = '';
-
-    const {isValid} = this.validate({tag: this.state.tag, state: this.state.state})
-
-    if (isValid) {
-      console.log("everthing is ok")
-
-      let newTag = this.state.tag.replace(/\s/g, "").trim().toString().toLowerCase();
-
-      if(this.state.state) {
-        newState = this.state.state.replace(/\s/g, "").trim().toString().toLowerCase();
-      }
-      
-      this.props.searchTag(newTag, sessionStorage.getItem("token"), newState)
-
-    } else {
-      console.log("errors")
-      this.setState({
-        tag: '',
-        state: ''
-      })
-    }
-      
-  };
-
-  validate = (data) => {
-    let errorTag = '';
-    let errorState = '';
-    let state = '';
-    
-    // validate tag
-    if (!data.tag) {
-      errorTag = "Please enter a tag.";
-    } else if (!data.tag.length > 1 || data.tag.length > 9) {
-      errorTag = "Tag must be min 1 and max 9 characters"
-    }
-
-    // validate state if it exists
-    if (data.state) {
-      errorState = "State is not valid"
-      const stateArray = ['nc', 'sc'];
-
-      state = data.state.replace(/\s/g, "").trim().toString().toLowerCase();
-
-      for (var i = 0; i < stateArray.length; i++) {
-        if(state === stateArray[i]) {
-         errorState = '';
-        }
-      }
-    }
-
-    if(errorTag || errorState) {
-      this.setState({
-        errorTag: errorTag,
-        errorState: errorState,
-    
-      })
-      return {isValid: false};
-    }
-    return {isValid: true};
+  capitalize = (string) => {
+     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-
-      
-  render() {
   
+        
+  render() {
+  console.log(this.props.currentResult)
+
+  const currentState = this.props.currentSearch.state ? this.props.currentSearch.state.toUpperCase() : "No State Entered"
 
     return (
-      <div className="search-body">
-        <div className="form-title text-center">Enter Tag / State to Search</div>
-
-        <div className="input-line">
-          <label className="input-title">Tag</label>
-          <input
-            className="search-input"
-            value={this.tag}
-            name="tag"
-            onChange={this.handleChange}
-            type="text"
-            placeholder="Tag"
-          />
-          <div className="form-error">{this.state.errorTag}</div>
-        </div>
-
-        <div className="input-line">
-          <label className="input-title">State</label>
-          <input
-            className="search-input"
-            value={this.state.state}
-            name="state"
-            onChange={this.handleChange}
-            type="text"
-            placeholder="State"
-          />
-          <div className="form-error" >{this.state.errorState}</div>
-        </div>
-
+      <div className="result-body">
+      <div className="result-title text-center"> Result </div>
+      <div className="result-current-search">Tag: {this.props.currentSearch.tag} State: {currentState}</div>
+      <br/>
+      <div className="result-current-result-area">
+      <div>{this.props.currentResult.vehicleYear}, {this.capitalize(this.props.currentResult.vehicleMake)}, {this.capitalize(this.props.currentResult.vehicleModel)}, {this.capitalize(this.props.currentResult.vehicleColor)}</div>
+      </div>
         
-
-        <div className="search-btn-area text-center">
-          <button
-            className="text-center search-btn btn btn-info"
-            onClick={this.submit}
-            // disabled={this.state.isValid}
-          >
-            Search
-          </button>
-        </div>
       </div>
     );
   }

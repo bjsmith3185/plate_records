@@ -57,7 +57,7 @@ class Body extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  console.log(state)
+  // console.log(state)
   return {
     currentResult: state.currentResult,
     currentSearch: state.currentSearch,
