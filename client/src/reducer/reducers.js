@@ -66,7 +66,7 @@ const setData = (state = initialState, action) => {
   }
 
   if (action.type === "SET_TAG_INFO") {
-    console.log(action.val)
+    // console.log(action.val)
 
     return {
       ...state,
@@ -77,11 +77,22 @@ const setData = (state = initialState, action) => {
   }
 
   if (action.type === "SET_SEARCH_VIEW") {
-    console.log(action.val.payload.value)
+    // console.log(action.val.payload.value)
 
     return {
       ...state,
       viewSearchComponent: action.val.payload.value
+    }
+  }
+
+  if (action.type === "SET_PREV_RESULT") {
+    // console.log(action.val.payload.data)
+
+    return {
+      ...state,
+      currentResult: action.val.payload.data.result,
+      currentSearch: action.val.payload.data.search,
+      viewSearchComponent: action.val.payload.data.viewSearchComponent
     }
   }
 

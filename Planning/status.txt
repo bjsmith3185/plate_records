@@ -82,12 +82,15 @@
 
     * Results are being displayed in the Results component (done)
 
+    * Add session storage to hold the current search and result, it will still be available on a refresh. (done)
+
+
     * Need to add some styling to Results 
         - Change date to a readable form
         - Add city field to vehicle data collection
         - Add city field to encounter collection
 
-        
+
 
     
     

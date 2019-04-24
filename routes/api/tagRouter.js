@@ -12,7 +12,6 @@ router.route("/new").post(check.validateToken, (req, res) => {
   console.log("in the create new tag route");
 
   jwt.verify(req.token, "secret", (err, authData) => {
-    // console.log(authData)
 
     if (err) {
       res.status(403).json({ err: "token not verified" });
@@ -25,7 +24,6 @@ router.route("/new").post(check.validateToken, (req, res) => {
         return res.status(400).json(errors);
       }
 
-      // console.log(req.body)
       console.log("success");
 
       newTag
@@ -36,11 +34,7 @@ router.route("/new").post(check.validateToken, (req, res) => {
         .catch(err => {
           res.status(403).json({ err: err });
         });
-
-      // res.json({
-      //   text: "protected search route",
-      //   authData: authData
-      // });
+ 
     }
   });
 });

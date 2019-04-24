@@ -8,7 +8,16 @@ import Body from "../../components/Body";
 
 class HomePage extends Component {
   componentWillMount() {
+    // Check session storage for any search data
+    this.loadPreviousSearch();
+  }
 
+  loadPreviousSearch = () => {
+    const data = JSON.parse(sessionStorage.getItem('lastResult'));
+    if (data) {
+      // Send data to store
+      this.props.setLastSearch(data)
+    }
   }
 
 
@@ -29,31 +38,16 @@ class HomePage extends Component {
 const mapStateToProps = state => {
   // console.log(state)
   return {
-    userName: state.userName,
-    code: state.code,
-    org: state.org,
-    name: state.name,
-    userId: state.userId,
-    isAuthenicated: state.isAuthenicated,
-    // history: state.history
-    
-    // userId: state.userId,
-    // allList: state.allList,
-    // myStore: state.myStore,
-    // editing: state.editing,
-    // storeList: state.storeList,
+ 
   };
 };
 
 const mapDispachToProps = dispach => {
   return {
-    // loadAllData: (id, history) => {
-    //   dispach({ type: "LOAD_DATA", payload: { id, history } });
-    // },
+    setLastSearch: (data) => {
+      dispach({ type: "PREV_RESULT", payload: { data }})
+    }
 
-    // setHistory: history => {
-    //   dispach({ type: "SET_HISTORY", payload: { history } });
-    // }
   };
 };
 

@@ -3,7 +3,7 @@ import API from "../utils/API";
 import history from "../history/history"
 
 
-//------------------------
+
 // Check username and password, return token
 function* checkPasswordAsync(data) {
 // console.log(data)
@@ -30,12 +30,11 @@ export function* watchCheckPassword() {
   yield takeLatest("CHECK_PASSWORD", checkPasswordAsync);
 }
 
-
 //-------------------------------------
 
 // Check user _id, return token
 function* checkUserIdAsync(data) {
-  console.log(data)
+  // console.log(data)
 
     const myData = yield API.checkUserId(data.payload.userId);
     // console.log(myData)
@@ -45,8 +44,7 @@ function* checkUserIdAsync(data) {
   export function* watchCheckUserId() {
     yield takeLatest("CHECK_USERID", checkUserIdAsync);
   }
-  
-  
+   
   
   //-------------------------------------------------------
 
@@ -62,30 +60,9 @@ export function* watchLogoutUser() {
 
 //-------------------------------------------------------------
 
-// // Search for tag info
-// function* searchStateTagAsync(data) {
-//   console.log(data)
-//   // let searchData = {
-//   //   tag: data.payload.tag,
-//   //   state: data.payload.sate
-//   // }
-
-//     const myData = yield API.searchStateTag(data.payload.state, data.payload.tag, data.payload.token);
-//     console.log(myData)
-//     // yield put({ type: "SET_TAG_INFO", val: myData });
-//   }
-  
-//   export function* watchSearchStateTag() {
-//     yield takeLatest("SEARCH_STATE_TAG", searchStateTagAsync);
-//   }
-  
-  
-  
-  //-------------------------------------------------------
-
   // Search for tag info
 function* searchTagAsync(data) {
-  console.log(data)
+  // console.log(data)
   let myData = [];
   // let SearchData = {};
   let isState = '';
@@ -108,7 +85,9 @@ function* searchTagAsync(data) {
     },
     viewSearchComponent: false
   }
-
+    // store the latest result in session storage
+    sessionStorage.setItem("lastResult", JSON.stringify(setData))
+    
     yield put({ type: "SET_TAG_INFO", val: setData });
   }
   
@@ -119,7 +98,7 @@ function* searchTagAsync(data) {
   //-------------------------------------------------------
 // Toggle  search / result views in the Body component
 function* switchViewAsync(data) {
-  console.log(data)
+  // console.log(data)
   yield put({ type: "SET_SEARCH_VIEW", val: data });
 }
 
@@ -128,7 +107,17 @@ export function* watchSwitchView() {
 }
 
 //-------------------------------------------------------------
+// Set last search results from session storage
+function* setPrevAsync(data) {
+  // console.log(data)
+  yield put({ type: "SET_PREV_RESULT", val: data });
+}
 
+export function* watchSetPrev() {
+  yield takeLatest("PREV_RESULT", setPrevAsync);
+}
+
+//-------------------------------------------------------------
 
 
 
