@@ -30,6 +30,7 @@ module.exports = {
       switch (state) {
         case "sc":
           {
+            console.log("in the sc database")
             SCController.findByTag(tag)
               .then(dbresult => {
                 resolve(dbresult);
@@ -43,6 +44,7 @@ module.exports = {
 
         case "nc":
           {
+            console.log("in the nc database")
             NCController.findByTag(tag)
               .then(dbresult => {
                 resolve(dbresult);

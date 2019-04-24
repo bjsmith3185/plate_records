@@ -8,51 +8,27 @@ const conform = require("../../validate/conformInput");
 
 // Matches with "/api/search"
 
-// // create new record
-// router.route("/new").post(check.validateToken, (req, res) => {
-//     // console.log("in the post records route");
 
-//     jwt.verify(req.token, 'secret', (err, authData) => {
-//       console.log(authData)
-
-//       if(err) {
-//         res.status(403).json({err: 'token not verified'})
-//       } else {
-//         newTag
-//         .enterTag(req.body.state, req.body)
-//         .then(dbresults => {
-//           res.json(dbresults);
-//         })
-//         .catch(err => {
-//           res.status(403).json({ err: err });
-//         });
-
-//         // res.json({
-//         //   text: "protected search route",
-//         //   authData: authData
-//         // });
-//       }
-//     })
-//  });
-
-// search by tag and state
-router.route("/").get(check.validateToken, (req, res) => {
-  console.log("in the search by tag/state  protected route");
-
+// search by only tag
+router.route("/all/:tag").get(check.validateToken, (req, res) => {
+  console.log("in the search by ONLY tag  protected route");
   jwt.verify(req.token, "secret", (err, authData) => {
     if (err) {
       res.status(403).json({ err: "token not verified" });
     } else {
-      console.log("validating state/tag search");
-      req.body = conform.conformSearchData(req.body);
-
-      let { errors, isValid } = validate.validateStateTagSearch(req.body);
+      // console.log("validating tag ONLY search");
+      let searchData = {
+        tag: req.params.tag
+      }
+      let { errors, isValid } = validate.validateTagOnlySearch(searchData);
       if (!isValid) {
         return res.status(400).json(errors);
       }
 
+      searchData = conform.conformTagData(searchData);
+
       search
-        .searchStateThenTag(req.body.state, req.body.tag)
+        .searchAllCollections(searchData.tag)
         .then(dbresults => {
           res.json(dbresults);
         })
@@ -63,24 +39,32 @@ router.route("/").get(check.validateToken, (req, res) => {
   });
 });
 
-// search by only tag
-router.route("/all").get(check.validateToken, (req, res) => {
-  // console.log("in the search by tag/state  protected route");
+// search by tag and state
+router.route("/:state/:tag").get(check.validateToken, (req, res) => {
+  console.log("in the search by tag/state  protected route");
+
   jwt.verify(req.token, "secret", (err, authData) => {
     if (err) {
       res.status(403).json({ err: "token not verified" });
     } else {
-      console.log("validating tag ONLY search");
-      let { errors, isValid } = validate.validateTagOnlySearch(req.body);
+      // console.log("validating state/tag search");
+      let searchData ={
+        state: req.params.state,
+        tag: req.params.tag
+      }
+      searchData = conform.conformSearchData(searchData);
+
+      let { errors, isValid } = validate.validateStateTagSearch(searchData);
       if (!isValid) {
         return res.status(400).json(errors);
       }
 
-      req.body = conform.conformTagData(req.body);
-
       search
-        .searchAllCollections(req.body.tag)
+        // .searchStateThenTag(req.body.state, req.body.tag)
+        .searchStateThenTag(searchData.state, searchData.tag)
         .then(dbresults => {
+          // console.log("see if this is valid")
+          // console.log(dbresults)
           res.json(dbresults);
         })
         .catch(err => {

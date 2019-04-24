@@ -26,19 +26,46 @@ class SearchForm extends Component {
     })
   }
 
+  // submit = event => {
+  //   event.preventDefault();
+
+  //   const {isValid} = this.validate({tag: this.state.tag, state: this.state.state})
+
+  //   if (isValid) {
+  //     console.log("everthing is ok")
+
+  //     let newTag = this.state.tag.replace(/\s/g, "").trim().toString().toLowerCase();
+  //     let newState = this.state.state.replace(/\s/g, "").trim().toString().toLowerCase();
+
+  //     this.props.searchStateTag(newTag, newState, sessionStorage.getItem("token"))
+
+  //   } else {
+  //     console.log("errors")
+  //     this.setState({
+  //       tag: '',
+  //       state: ''
+  //     })
+  //   }
+      
+  // };
+
   submit = event => {
     event.preventDefault();
+    let newState = '';
 
     const {isValid} = this.validate({tag: this.state.tag, state: this.state.state})
-
 
     if (isValid) {
       console.log("everthing is ok")
 
       let newTag = this.state.tag.replace(/\s/g, "").trim().toString().toLowerCase();
-      let newState = this.state.state.replace(/\s/g, "").trim().toString().toLowerCase();
 
-      this.props.search(newTag, newState, sessionStorage.getItem("token"))
+      if(this.state.state) {
+        newState = this.state.state.replace(/\s/g, "").trim().toString().toLowerCase();
+      }
+      
+
+      this.props.searchTag(newTag, sessionStorage.getItem("token"), newState)
 
     } else {
       console.log("errors")
@@ -47,8 +74,6 @@ class SearchForm extends Component {
         state: ''
       })
     }
-
-    
       
   };
 
@@ -64,10 +89,8 @@ class SearchForm extends Component {
       errorTag = "Tag must be min 1 and max 9 characters"
     }
 
-    // validate state
-    if (!data.state) {
-      errorState = "Please enter a state.";
-    } else {
+    // validate state if it exists
+    if (data.state) {
       errorState = "State is not valid"
       const stateArray = ['nc', 'sc'];
 
@@ -81,7 +104,6 @@ class SearchForm extends Component {
     }
 
 
-
     if(errorTag || errorState) {
       this.setState({
         errorTag: errorTag,
@@ -92,6 +114,47 @@ class SearchForm extends Component {
     }
     return {isValid: true};
   }
+
+  // validate = (data) => {
+  //   let errorTag = '';
+  //   let errorState = '';
+  //   let state = '';
+    
+  //   // validate tag
+  //   if (!data.tag) {
+  //     errorTag = "Please enter a tag.";
+  //   } else if (!data.tag.length > 1 || data.tag.length > 9) {
+  //     errorTag = "Tag must be min 1 and max 9 characters"
+  //   }
+
+  //   // validate state
+  //   if (!data.state) {
+  //     errorState = "Please enter a state.";
+  //   } else {
+  //     errorState = "State is not valid"
+  //     const stateArray = ['nc', 'sc'];
+
+  //     state = data.state.replace(/\s/g, "").trim().toString().toLowerCase();
+
+  //     for (var i = 0; i < stateArray.length; i++) {
+  //       if(state === stateArray[i]) {
+  //        errorState = '';
+  //       }
+  //     }
+  //   }
+
+
+
+  //   if(errorTag || errorState) {
+  //     this.setState({
+  //       errorTag: errorTag,
+  //       errorState: errorState,
+    
+  //     })
+  //     return {isValid: false};
+  //   }
+  //   return {isValid: true};
+  // }
 
     
   render() {
@@ -154,10 +217,17 @@ const mapStateToProps = state => {
 // functions to dispatch actions
 const mapDispachToProps = dispach => {
   return {
-    search: (tag, state, token) => {
+    searchStateTag: (tag, state, token) => {
+      dispach({
+        type: "SEARCH_STATE_TAG",
+        payload: { tag, state, token }
+      });
+    },
+
+    searchTag: (tag, token, state) => {
       dispach({
         type: "SEARCH_TAG",
-        payload: { tag, state, token }
+        payload: { tag, token, state }
       });
     }
   };

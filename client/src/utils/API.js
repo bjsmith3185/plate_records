@@ -11,16 +11,15 @@ export default {
     return axios.post("/api/users/login/" + id, data)
   },
 
-  searchTag: function (data, token) {
+  searchStateTag: function (state, tag, token) {
     var config = { "headers": {'authorization': token}};
-    console.log(config)
-    return axios.get("/api/search", config)
+    return axios.get("/api/search/" + state + "/" + tag, config)
+  },
+
+  searchTag: function (tag, token) {
+    var config = { "headers": {'authorization': token}};
+    return axios.get("/api/search/all/" + tag, config)
   },
 
 };
 
-
-// login: function (token) {
-//   var config = { "headers": {'authorization': token}};
-//   return axios.get("/api/users/info", config)
-// }
