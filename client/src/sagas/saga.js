@@ -87,23 +87,55 @@ function* searchStateTagAsync(data) {
 function* searchTagAsync(data) {
   console.log(data)
   let myData = [];
+  let SearchData = {};
+  let isState = '';
 
+  // If a state is provided
   if(data.payload.state) {
-    console.log("state value is valid")
+    isState = data.payload.state
     myData = yield API.searchStateTag(data.payload.state, data.payload.tag, data.payload.token);
-  } else {
-    console.log("state value is missing")
+  } 
+  // If the state is omitted
+  else {
     myData = yield API.searchTag(data.payload.tag, data.payload.token);
   }
 
-    console.log(myData)
-    // yield put({ type: "SET_TAG_INFO", val: myData });
+  let setData = {
+    result: myData.data[0],
+    search: {
+      tag: data.payload.tag,
+      state: isState
+    }
+  }
+
+    yield put({ type: "SET_TAG_INFO", val: setData });
   }
   
   export function* watchSearchTag() {
     yield takeLatest("SEARCH_TAG", searchTagAsync);
   }
-  
-  
-  
+   
   //-------------------------------------------------------
+// Toggle  search / result views in the Body component
+function* switchViewAsync(data) {
+  console.log(data)
+  yield put({ type: "SET_SEARCH_VIEW", val: data });
+}
+
+export function* watchSwitchView() {
+  yield takeLatest("SWITCH_VIEW", switchViewAsync);
+}
+
+//-------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

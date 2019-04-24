@@ -65,6 +65,25 @@ const setData = (state = initialState, action) => {
     }
   }
 
+  if (action.type === "SET_TAG_INFO") {
+    console.log(action.val)
+
+    return {
+      ...state,
+     currentResult: action.val.result,
+     currentSearch: action.val.search
+    }
+  }
+
+  if (action.type === "SET_SEARCH_VIEW") {
+    console.log(action.val.payload.value)
+
+    return {
+      ...state,
+      viewSearchComponent: action.val.payload.value
+    }
+  }
+
  
 
   return newState;

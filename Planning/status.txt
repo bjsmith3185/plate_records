@@ -75,7 +75,12 @@
 
     * Adding inputs on client for tag/state search (done)
 
-    ** trying to get the api request with the tag/state/token data to go thru. Need to add the 'data' to the third param of the api get request,,,,maybe
+    * Request to search for tag is working. Data is set to the store. (done)
+
+4/24
+    * Need to have the screen change to show results once a search is successful
+
+    
     
 
 

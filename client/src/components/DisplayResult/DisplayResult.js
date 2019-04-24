@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 // Redux
 import { connect } from "react-redux";
-import "./SearchForm.css";
+import "./DisplayResult.css";
 
 
 
-class SearchForm extends Component {
+class DisplayResult extends Component {
   state = {
     tag: '',
     state: '',
@@ -169,4 +169,4 @@ const mapDispachToProps = dispach => {
 export default connect(
   mapStateToProps,
   mapDispachToProps
-)(SearchForm);
+)(DisplayResult);

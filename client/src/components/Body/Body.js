@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./Body.css";
-import SearchForm from "../../components/SearchForm"
+import SearchForm from "../../components/SearchForm";
+import DisplayResult from "../../components/DisplayResult";
 
 // Redux
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 
 class Body extends Component {
   state = {
@@ -17,59 +18,69 @@ class Body extends Component {
 
   switchView = () => {
     console.log('clicked')
-    console.log(this.state)
-    if (this.showSearch) {
-      this.setState({
-        showSearch: false,
-        showResults: true
-      })
+    console.log(this.props.viewSearchComponent)
+    if (this.props.viewSearchComponent) {
+      console.log('switch view was true')
+      this.props.switchView(false)
+      
     } else {
-      this.setState({
-        showSearch: true,
-        showResults: false
-      })
+      console.log('switch view was false')
+      this.props.switchView(true)
     }
   }
 
-  showSearchView = () => {
-    console.log("search")
-    this.setState({
-      showSearch: true,
-      showResults: false
-    })
-  }
-
-  showResultsView = () => {
-    console.log("results")
-    this.setState({
-      showSearch: false,
-      showResults: true
-    })
-  }
-    
+ 
 
   render() {
     return (
       <div className="body-area">
       <div className="body-header">
-        <span onClick={this.showSearchView} className='search'>Search</span>
-        <span onClick={this.showResultsView}  className='results'>Results</span>
+        <span onClick={this.switchView} className='search'>Search</span>
+        <span onClick={this.switchView}  className='results'>Results</span>
       </div>
 
-      { this.state.showSearch && <div className="body-search-area">
-           <SearchForm />
-           </div>}
+      {this.props.viewSearchComponent ? (
+        <div className="body-search-area">
+          <SearchForm />
+        </div>
+      ) : (
+        <div className="body-results-area">
+          <DisplayResult />
+        </div>
+      )}
 
-      { this.state.showResults && <div className="body-results-area">See Results</div>}
-
-     
         
       </div>
     );
   }
 }
 
+// this brings in the state to display on this component
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    currentResult: state.currentResult,
+    currentSearch: state.currentSearch,
+    viewSearchComponent: state.viewSearchComponent,
+  };
+};
+
+// functions to dispatch actions
+const mapDispachToProps = dispach => {
+  return {
+    switchView: (value) => {
+      dispach({
+        type: "SWITCH_VIEW",
+        payload: { value }
+      });
+    }
+  };
+};
 
 
+export default connect(
+  mapStateToProps,
+  mapDispachToProps
+)(Body);
 
-export default Body;
+

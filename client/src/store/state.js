@@ -9,6 +9,9 @@ const initState = {
     org: '',
     code: '',
     username: '',
+    currentResult: {},
+    currentSearch: {},
+    viewSearchComponent: true,
 
   
 }
