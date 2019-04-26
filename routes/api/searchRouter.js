@@ -22,17 +22,22 @@ router.route("/all/:tag").get(check.validateToken, (req, res) => {
       }
       let { errors, isValid } = validate.validateTagOnlySearch(searchData);
       if (!isValid) {
+        // console.log("!!!!")
         return res.status(400).json(errors);
       }
-
+     
       searchData = conform.conformTagData(searchData);
-
+      // console.log(searchData)
       search
         .searchAllCollections(searchData.tag)
         .then(dbresults => {
+          console.log("what is this")
+          console.log(dbresults)
           res.json(dbresults);
         })
         .catch(err => {
+          // console.log("????")
+          // console.log(err)
           res.status(403).json({ err: err });
         });
     }

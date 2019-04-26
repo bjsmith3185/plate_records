@@ -3,33 +3,32 @@ import initialState from "../store/state";
 const setData = (state = initialState, action) => {
   const newState = { ...state };
 
-  // open/close dropdown menu
+  // set errors
   if (action.type === "SET_ERROR") {
-    // console.log(action)
+    console.log(action.val)
     let errorData = {};
-    if(action.val.data.error) {
-      errorData = action.val.data.error
-    } 
+    if (action.val.data.error) {
+      errorData = action.val.data.error;
+    }
 
     return {
       ...state,
-       errors: errorData,
+      errors: errorData
     };
   }
-
 
   if (action.type === "SET_USER") {
     // console.log(action.val)
 
     return {
       ...state,
-      code:action.val.code,
-      email:action.val.email,
-      name:action.val.name,
-      org:action.val.org,
-      userName:action.userName,
-      userId: action.val._id,
-    }
+      code: action.val.code,
+      email: action.val.email,
+      name: action.val.name,
+      org: action.val.org,
+      userName: action.userName,
+      userId: action.val._id
+    };
   }
 
   if (action.type === "SET_USERINFO_TOKEN") {
@@ -37,15 +36,15 @@ const setData = (state = initialState, action) => {
 
     return {
       ...state,
-      code:action.val.data.code,
-      email:action.val.data.email,
-      name:action.val.data.name,
-      org:action.val.data.org,
-      userName:action.val.data.userName,
+      code: action.val.data.code,
+      email: action.val.data.email,
+      name: action.val.data.name,
+      org: action.val.data.org,
+      userName: action.val.data.userName,
       userId: action.val.data._id,
       token: action.val.data.token,
       isAuthenicated: action.val.data.isAuthenicated
-    }
+    };
   }
 
   if (action.type === "SET_LOG_OUT") {
@@ -53,16 +52,19 @@ const setData = (state = initialState, action) => {
 
     return {
       ...state,
-      code: '',
-      email: '',
-      name: '',
-      org: '',
-      userName: '',
-      userId: '',
-      token: '',
+      code: "",
+      email: "",
+      name: "",
+      org: "",
+      userName: "",
+      userId: "",
+      token: "",
       isAuthenicated: false,
       errors: {},
-    }
+      currentResult: {},
+      currentSearch: {},
+      viewSearchComponent: true
+    };
   }
 
   if (action.type === "SET_TAG_INFO") {
@@ -70,10 +72,10 @@ const setData = (state = initialState, action) => {
 
     return {
       ...state,
-     currentResult: action.val.result,
-     currentSearch: action.val.search,
-     viewSearchComponent: action.val.viewSearchComponent
-    }
+      currentResult: action.val.result,
+      currentSearch: action.val.search,
+      viewSearchComponent: action.val.viewSearchComponent
+    };
   }
 
   if (action.type === "SET_SEARCH_VIEW") {
@@ -82,7 +84,7 @@ const setData = (state = initialState, action) => {
     return {
       ...state,
       viewSearchComponent: action.val.payload.value
-    }
+    };
   }
 
   if (action.type === "SET_PREV_RESULT") {
@@ -93,10 +95,8 @@ const setData = (state = initialState, action) => {
       currentResult: action.val.payload.data.result,
       currentSearch: action.val.payload.data.search,
       viewSearchComponent: action.val.payload.data.viewSearchComponent
-    }
+    };
   }
-
- 
 
   return newState;
 };

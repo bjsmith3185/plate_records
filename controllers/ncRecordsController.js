@@ -40,6 +40,7 @@ module.exports = {
   },
 
   findByTag: function (tag) {
+    console.log("in nc records: " + tag);
     return db.NCRecords
       .find({tag: tag})
       .populate({

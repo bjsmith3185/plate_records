@@ -84,6 +84,16 @@
 
     * Add session storage to hold the current search and result, it will still be available on a refresh. (done)
 
+4/25
+    * Need to clear store on logout. (done)
+
+    * Trouble shoot if tag entered doesnt match a record. 
+
+4/26
+    * Added a new async function to the searchTag route. This will search all collections and return the result(s) if found.
+        ( This one was a bear....) (done)
+
+
 
     * Need to add some styling to Results 
         - Change date to a readable form

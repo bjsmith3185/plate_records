@@ -77,18 +77,29 @@ function* searchTagAsync(data) {
     myData = yield API.searchTag(data.payload.tag, data.payload.token);
   }
 
-  let setData = {
-    result: myData.data[0],
-    search: {
-      tag: data.payload.tag,
-      state: isState
-    },
-    viewSearchComponent: false
+  console.log(myData)
+  // if the response contains an error
+  if(myData.data.error) {
+
+
+    yield put({ type: "SET_ERROR", val: myData });
+  } 
+  // if the response contains good data
+  else {
+    let setData = {
+      result: myData.data[0],
+      search: {
+        tag: data.payload.tag,
+        state: isState
+      },
+      viewSearchComponent: false
+    }
+      // store the latest result in session storage
+      sessionStorage.setItem("lastResult", JSON.stringify(setData))
+      
+      yield put({ type: "SET_TAG_INFO", val: setData });
   }
-    // store the latest result in session storage
-    sessionStorage.setItem("lastResult", JSON.stringify(setData))
-    
-    yield put({ type: "SET_TAG_INFO", val: setData });
+  
   }
   
   export function* watchSearchTag() {
