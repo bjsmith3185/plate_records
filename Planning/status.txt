@@ -93,7 +93,18 @@
     * Added a new async function to the searchTag route. This will search all collections and return the result(s) if found.
         ( This one was a bear....) (done)
 
+    * Add page to input data for a new encounter. (done)
 
+    * Working in the add new encounter route:
+        - Put a hard coded tag_id and state in the stop data component.
+        - Data is making its way to the server, need to check the output after encounter is added.
+    
+
+
+TODOS Later
+
+    
+    * The search all states function can return more than one result, need to set up the compoent for that.
 
     * Need to add some styling to Results 
         - Change date to a readable form

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Body.css";
 import SearchForm from "../../components/SearchForm";
 import DisplayResult from "../../components/DisplayResult";
+import NewEncounter from "../../components/NewEncounter";
 
 // Redux
 import { connect } from "react-redux";
@@ -37,9 +38,14 @@ class Body extends Component {
       <div className="body-header">
         <span onClick={this.switchView} className='search'>Search</span>
         <span onClick={this.switchView}  className='results'>Results</span>
+        <div className="body-enter-stop">
+        Enter Stop Info
+        </div>
       </div>
 
-      {this.props.viewSearchComponent ? (
+      <NewEncounter />
+
+      {/* {this.props.viewSearchComponent ? (
         <div className="body-search-area">
           <SearchForm />
         </div>
@@ -47,7 +53,7 @@ class Body extends Component {
         <div className="body-results-area">
           <DisplayResult />
         </div>
-      )}
+      )} */}
 
         
       </div>

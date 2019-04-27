@@ -130,7 +130,21 @@ export function* watchSetPrev() {
 
 //-------------------------------------------------------------
 
+// Upload new encounter data
+function* stopDataAsync(data) {
+  console.log(data)
 
+    const myData = yield API.stopData(data.payload.data.vehicle.state, data.payload.data.vehicle.tag_id,data.payload.data.encounter, data.payload.token);
+    // console.log(myData)
+    // yield put({ type: "SET_STOP_DATA", val: myData });
+  }
+  
+  export function* watchStopData() {
+    yield takeLatest("STOP_DATA", stopDataAsync);
+  }
+   
+  
+  //-------------------------------------------------------
 
 
 

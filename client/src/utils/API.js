@@ -21,5 +21,12 @@ export default {
     return axios.get("/api/search/all/" + tag, config)
   },
 
+  stopData: function (state, tag, data, token) {
+    var config = { "headers": {'authorization': token}};
+    console.log(data)
+    console.log(config)
+    return axios.post("/api/encounter/new/" + tag + "/" + state, data, config)
+  }
+
 };
 

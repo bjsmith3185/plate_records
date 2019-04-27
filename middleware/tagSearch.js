@@ -29,7 +29,7 @@ module.exports = {
     // console.log(states)
     return new Promise(async(resolve, reject) => {
 
-      try {
+      // try {
         let returnData = [];
         // console.log("!!!!!")
           for (let i = 0; i < states.all.length; i++) {
@@ -50,9 +50,9 @@ module.exports = {
         // console.log("tag not found")
         resolve({error: {tag: "tag not found" } })
     }
-      } catch (error) {
-        return reject(error);
-      }
+      // } catch (error) {
+        // return reject(error);
+      // }
 
      
       

@@ -8,9 +8,8 @@ const {
   isValidState
 } = require("./validateOperators");
 
-module.exports = function validateNewEncounter(data) {
+module.exports = function validateNewTag(data) {
   console.log("is it here")
-  console.log(data)
 
   let errors = {};
   let isValid = false;

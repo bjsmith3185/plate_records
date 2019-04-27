@@ -9,6 +9,8 @@ const encountersSchema = new Schema({
       rs: { type: String },
       result: { type: String },
       encounterInfo: { type: String },
+      encounterState: { type: String },
+      encounterCity: { type: String },
       officer: {
         type: Schema.Types.ObjectId,
         ref: "Users"
