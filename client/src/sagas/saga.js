@@ -65,19 +65,29 @@ function* searchTagAsync(data) {
   // console.log(data)
   let myData = [];
   // let SearchData = {};
+  let search = {
+    tag: data.payload.tag,
+    state: '',
+    tag_id: '',
+  };
+
   let isState = '';
 
   // If a state is provided
   if(data.payload.state) {
-    isState = data.payload.state
+    search.state = data.payload.state
+    // isState = data.payload.state
     myData = yield API.searchStateTag(data.payload.state, data.payload.tag, data.payload.token);
+    // console.log("does this have id")
+    // console.log(myData.data[0]._id)
+    search.tag_id = myData.data[0]._id
   } 
   // If the state is omitted
   else {
     myData = yield API.searchTag(data.payload.tag, data.payload.token);
   }
 
-  console.log(myData)
+  // console.log(myData)
   // if the response contains an error
   if(myData.data.error) {
 
@@ -88,11 +98,18 @@ function* searchTagAsync(data) {
   else {
     let setData = {
       result: myData.data[0],
-      search: {
-        tag: data.payload.tag,
-        state: isState
-      },
-      viewSearchComponent: false
+      search: search,
+      // search: {
+      //   tag: data.payload.tag,
+      //   state: isState,
+
+      // },
+      view: {
+        viewSearchComponent: false,
+        viewResultComponent: true,
+        viewEnterDataComponent: false
+      }
+      
     }
       // store the latest result in session storage
       sessionStorage.setItem("lastResult", JSON.stringify(setData))
@@ -109,8 +126,8 @@ function* searchTagAsync(data) {
   //-------------------------------------------------------
 // Toggle  search / result views in the Body component
 function* switchViewAsync(data) {
-  // console.log(data)
-  yield put({ type: "SET_SEARCH_VIEW", val: data });
+  console.log(data)
+  yield put({ type: "SET_VIEW", val: data });
 }
 
 export function* watchSwitchView() {
@@ -132,21 +149,41 @@ export function* watchSetPrev() {
 
 // Upload new encounter data
 function* stopDataAsync(data) {
-  console.log(data)
-  console.log(data.payload.data.vehicle)
+  // console.log(data)
+  // console.log(data.payload.data.vehicle)
 
     const myData = yield API.stopData(data.payload.data.vehicle.state, data.payload.data.vehicle.tag_id,data.payload.data.encounter, data.payload.token);
-    console.log(myData)
+    console.log(myData.data[0])
 
     // Check myData for errors
     // Set myData to currentResult in session storage
+
+    let setData = {
+      result: myData.data[0],
+ 
+      search: {
+        tag: data.payload.data.tag,
+        state: data.payload.data.state,
+        tag_id: data.payload.data.tag_id
+      },
+      view: {
+        viewSearchComponent: false,
+        viewResultComponent: true,
+        viewEnterDataComponent: false
+      }
+      
+    }
+
+
+      // store the latest result in session storage
+      sessionStorage.setItem("lastResult", JSON.stringify(setData))
     // Set data.payload.data.vehicle to currentSearch in session
     // Set/Create a field in the store to show the search component.
+
     
 
-
-
-    // yield put({ type: "SET_STOP_DATA", val: myData });
+    yield put({ type: "SET_TAG_INFO", val: setData });
+    // yield put({ type: "SET_STOP_DATA", val: setData });
   }
   
   export function* watchStopData() {

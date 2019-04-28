@@ -98,13 +98,19 @@
     * Working in the add new encounter route:
         - Put a hard coded tag_id and state in the stop data component.
         - Data is making its way to the server, need to check the output after encounter is added.
-        - Encounter is added to the tag collection. Need to decide what happens after an encounter is added? Go back to search page or view the newly created response?
-            * Can set the response to the field in session storage for now
-        * See saga.js "STOP_DATA"
-        
+        - Encounter is added to the tag collection. Need to decide what happens after an encounter is added? Go back to search page or view the newly created response? (done)
+ 
+
     
     * Need to add some form validation on the client in NewEncounter component.
 
+4/28 
+
+    * Create a new state in the store for each view: search, result, enterData. (done)
+
+    * Set the records_id to session storage (if multiple results only after a record is selected ) (done)
+
+    - Status: new encounter data can be entered. If successful the screen will show results with the new encounter added.
 
 TODOS Later
 

@@ -13,6 +13,9 @@ const initState = {
     currentSearch: {},
     viewSearchComponent: true,
 
+    viewResultComponent: false,
+    viewEnterDataComponent: false,
+
   
 }
 

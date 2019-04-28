@@ -17,8 +17,30 @@ class NewEncounter extends Component {
     state: "nc",
     tag_id: "5cc0e8c513ac8d71d4151f98",
 
+    // search data is in local storage
+    tagIsValid: false,
+
 
   };
+
+  componentWillMount = () => {
+    this.checkForTagData();
+
+  }
+
+  checkForTagData = () => {
+    let storedValue = JSON.parse(sessionStorage.getItem('lastResult'));
+    if( storedValue ) {
+      if (storedValue.search.tag_id) {
+        console.log("tag _id is in session storage")
+        this.setState({
+          tagIsValid: true
+        })
+      }
+    }
+
+
+  }
 
   handleChange = event => {
     const isCheckbox = event.target.type === "checkbox";
@@ -31,7 +53,7 @@ class NewEncounter extends Component {
 
   submit = event => {
     event.preventDefault();
-    console.log("sumbmit")
+    console.log("submit")
 
     let data = {
       encounter: {
@@ -46,7 +68,7 @@ class NewEncounter extends Component {
       },
       vehicle: {
         state: this.state.state,
-        tag_id: this.state.tag_id,
+        tag_id: this.props.tag_id,
       }
       
     }
@@ -79,7 +101,10 @@ class NewEncounter extends Component {
   render() {
     return (
       <div className="newencounter-area">
-        <div className="newencounter-title text-center">
+
+      {this.state.tagIsValid ? (
+        <div>
+ <div className="newencounter-title text-center">
           Enter information related to the vehicle stop below
         </div>
         <div onClick={this.demo} className="newencounter-demo text-center">Demo Data</div>
@@ -189,6 +214,19 @@ class NewEncounter extends Component {
             </button>
           </div>
         </form>
+          </div>
+
+      ) : (
+        <div>
+          <div className="newencounter-notag-area">Enter a vehicle tag before proceding</div>
+          </div>
+
+      )}
+
+
+
+
+       
       </div>
     );
   }
@@ -200,9 +238,8 @@ const mapStateToProps = state => {
   return {
     userId: state.userId,
     token: state.token,
-    // currentResult: state.currentResult,
-    // currentSearch: state.currentSearch,
-    // viewSearchComponent: state.viewSearchComponent,
+    tag_id: state.currentSearch.tag_id,
+   
   };
 };
 

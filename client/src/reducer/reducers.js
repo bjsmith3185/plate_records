@@ -74,16 +74,20 @@ const setData = (state = initialState, action) => {
       ...state,
       currentResult: action.val.result,
       currentSearch: action.val.search,
-      viewSearchComponent: action.val.viewSearchComponent
+      viewSearchComponent: action.val.view.viewSearchComponent,
+      viewResultComponent: action.val.view.viewResultComponent,
+      viewEnterDataComponent: action.val.view.viewEnterDataComponent
     };
   }
 
-  if (action.type === "SET_SEARCH_VIEW") {
-    // console.log(action.val.payload.value)
+  if (action.type === "SET_VIEW") {
+    console.log(action.val.payload.data)
 
     return {
       ...state,
-      viewSearchComponent: action.val.payload.value
+      viewSearchComponent: action.val.payload.data.viewSearchComponent,
+      viewResultComponent: action.val.payload.data.viewResultComponent,
+      viewEnterDataComponent: action.val.payload.data.viewEnterDataComponent
     };
   }
 
