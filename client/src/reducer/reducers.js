@@ -63,7 +63,9 @@ const setData = (state = initialState, action) => {
       errors: {},
       currentResult: {},
       currentSearch: {},
-      viewSearchComponent: true
+      viewSearchComponent: true,
+      viewEnterDataComponent: false,
+      viewResultComponent: false
     };
   }
 
@@ -72,8 +74,8 @@ const setData = (state = initialState, action) => {
 
     return {
       ...state,
-      currentResult: action.val.result,
-      currentSearch: action.val.search,
+      currentResult: action.val.previousData.result,
+      currentSearch: action.val.previousData.search,
       viewSearchComponent: action.val.view.viewSearchComponent,
       viewResultComponent: action.val.view.viewResultComponent,
       viewEnterDataComponent: action.val.view.viewEnterDataComponent
@@ -92,13 +94,15 @@ const setData = (state = initialState, action) => {
   }
 
   if (action.type === "SET_PREV_RESULT") {
-    // console.log(action.val.payload.data)
+    console.log(action.val.payload)
 
     return {
       ...state,
       currentResult: action.val.payload.data.result,
       currentSearch: action.val.payload.data.search,
-      viewSearchComponent: action.val.payload.data.viewSearchComponent
+      viewSearchComponent: action.val.payload.view.viewSearchComponent,
+      viewResultComponent: action.val.payload.view.viewResultComponent,
+      viewEnterDataComponent: action.val.payload.view.viewEnterDataComponent
     };
   }
 

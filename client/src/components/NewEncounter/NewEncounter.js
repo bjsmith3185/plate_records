@@ -69,6 +69,7 @@ class NewEncounter extends Component {
       vehicle: {
         state: this.state.state,
         tag_id: this.props.tag_id,
+        tag: this.props.tag
       }
       
     }
@@ -239,6 +240,7 @@ const mapStateToProps = state => {
     userId: state.userId,
     token: state.token,
     tag_id: state.currentSearch.tag_id,
+    tag: state.currentSearch.tag
    
   };
 };

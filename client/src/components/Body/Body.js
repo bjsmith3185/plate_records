@@ -62,21 +62,6 @@ class Body extends Component {
         {this.props.viewEnterDataComponent && <NewEncounter />}
 
         </div>
-
-
-        {/* {this.props.viewEnterDataComponent && <NewEntounter />}
-
-
-      {this.props.viewSearchComponent ? (
-        <div className="body-search-area">
-          <SearchForm />
-        </div>
-      ) : (
-        <div className="body-results-area">
-          <DisplayResult />
-        </div>
-      )} */}
-
         
       </div>
     );
@@ -85,7 +70,7 @@ class Body extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  // console.log(state)
+  console.log(state)
   return {
     currentResult: state.currentResult,
     currentSearch: state.currentSearch,

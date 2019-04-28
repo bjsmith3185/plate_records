@@ -12,7 +12,6 @@ const initState = {
     currentResult: {},
     currentSearch: {},
     viewSearchComponent: true,
-
     viewResultComponent: false,
     viewEnterDataComponent: false,
 

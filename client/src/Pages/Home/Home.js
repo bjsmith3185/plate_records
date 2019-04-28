@@ -13,10 +13,11 @@ class HomePage extends Component {
   }
 
   loadPreviousSearch = () => {
-    const data = JSON.parse(sessionStorage.getItem('lastResult'));
-    if (data) {
+    const savedView = JSON.parse(sessionStorage.getItem('view'))
+    const savedData = JSON.parse(sessionStorage.getItem('lastResult'));
+    if (savedView && savedData) {
       // Send data to store
-      this.props.setLastSearch(data)
+      this.props.setLastSearch(savedData, savedView)
     }
   }
 
@@ -44,8 +45,8 @@ const mapStateToProps = state => {
 
 const mapDispachToProps = dispach => {
   return {
-    setLastSearch: (data) => {
-      dispach({ type: "PREV_RESULT", payload: { data }})
+    setLastSearch: (data, view) => {
+      dispach({ type: "PREV_RESULT", payload: { data, view }})
     }
 
   };

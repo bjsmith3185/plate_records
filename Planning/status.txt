@@ -110,7 +110,9 @@
 
     * Set the records_id to session storage (if multiple results only after a record is selected ) (done)
 
-    - Status: new encounter data can be entered. If successful the screen will show results with the new encounter added.
+    - Status: new encounter data can be entered. If successful the screen will show results with the new encounter added. (done)
+
+    * Creating a new field in session storeage to hold the view data. This way the view can be changed and remain on refresh.
 
 TODOS Later
 

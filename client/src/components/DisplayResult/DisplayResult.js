@@ -25,7 +25,7 @@ class DisplayResult extends Component {
   };
 
   render() {
-    console.log(this.props.currentResult);
+    // console.log(this.props.currentResult);
 
     const currentState = this.props.currentSearch.state
       ? this.props.currentSearch.state.toUpperCase()
@@ -70,6 +70,7 @@ class DisplayResult extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
+  
   return {
     currentResult: state.currentResult,
     currentSearch: state.currentSearch
