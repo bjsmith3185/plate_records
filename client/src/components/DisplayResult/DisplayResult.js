@@ -25,8 +25,7 @@ class DisplayResult extends Component {
   };
 
   render() {
-    // console.log(this.props.currentResult);
-
+ 
     const currentState = this.props.currentSearch.state
       ? this.props.currentSearch.state.toUpperCase()
       : "No State Entered";

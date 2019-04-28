@@ -90,7 +90,7 @@ class LandingPage extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-console.log(state)
+// console.log(state)
   return {
     token: state.token,
     errors: state.errors

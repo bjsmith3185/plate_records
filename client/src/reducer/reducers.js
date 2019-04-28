@@ -70,7 +70,7 @@ const setData = (state = initialState, action) => {
   }
 
   if (action.type === "SET_TAG_INFO") {
-    console.log(action.val)
+    // console.log(action.val)
 
     return {
       ...state,
@@ -83,7 +83,7 @@ const setData = (state = initialState, action) => {
   }
 
   if (action.type === "SET_VIEW") {
-    console.log(action.val.payload.data)
+    // console.log(action.val.payload.data)
 
     return {
       ...state,
@@ -94,7 +94,7 @@ const setData = (state = initialState, action) => {
   }
 
   if (action.type === "SET_PREV_RESULT") {
-    console.log(action.val.payload)
+    // console.log(action.val.payload)
 
     return {
       ...state,

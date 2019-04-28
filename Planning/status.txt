@@ -112,7 +112,15 @@
 
     - Status: new encounter data can be entered. If successful the screen will show results with the new encounter added. (done)
 
-    * Creating a new field in session storeage to hold the view data. This way the view can be changed and remain on refresh.
+    * Creating a new field in session storeage to hold the view data. This way the view can be changed and remain on refresh. (done)
+
+    * Create a conditional to display results or "no results to display" (done)
+
+    * Would like to create a clear history or search button maybe in the navbar, this would clear store and session storage.
+    
+    * Would like to add a line in the Results component to show how many encounters are listed.
+
+
 
 TODOS Later
 

@@ -30,6 +30,7 @@ class NewEncounter extends Component {
 
   checkForTagData = () => {
     let storedValue = JSON.parse(sessionStorage.getItem('lastResult'));
+    // console.log(storedValue)
     if( storedValue ) {
       if (storedValue.search.tag_id) {
         console.log("tag _id is in session storage")
@@ -53,7 +54,7 @@ class NewEncounter extends Component {
 
   submit = event => {
     event.preventDefault();
-    console.log("submit")
+    // console.log("submit")
 
     let data = {
       encounter: {
@@ -235,7 +236,7 @@ class NewEncounter extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     userId: state.userId,
     token: state.token,

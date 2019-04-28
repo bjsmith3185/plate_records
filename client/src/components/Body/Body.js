@@ -9,7 +9,16 @@ import { connect } from "react-redux";
 
 class Body extends Component {
   state = {
+    isActive: false
   };
+
+  componentWillMount = () => {
+    this.hasDataSaved();
+  }
+
+  componentWillReceiveProps = () => {
+    this.hasDataSaved();
+  }
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -39,17 +48,40 @@ class Body extends Component {
     
   };
 
+  hasDataSaved = () => {
+    let searchData = JSON.parse(sessionStorage.getItem("lastResult"));
+    // console.log(searchData)
+    if (searchData) {
+      this.setState({
+        isActive: true
+      })
+    }
+  }
  
 
   render() {
+
+    // const isActive = this.isActive();
+
     return (
       <div className="body-area">
       <div className="body-header">
+
         <span onClick={() => this.switchView('search')} className='search'>Search</span>
 
-        <span onClick={() => this.switchView('result')}  className='results'>Results</span>
+        {this.state.isActive ? (
+          <span onClick={() => this.switchView('result')}  className='results'>Results</span>
+        ) : (
+          <span className='results-inactive'>Results</span>
+        )}
 
-        <span onClick={() => this.switchView('enterData')}  className='results'>Enter Data</span>
+        {this.state.isActive ? (
+          <span onClick={() => this.switchView('enterData')}  className='results'>Enter Data</span>
+        ) : (
+          <span className='results-inactive'>Enter Data</span>
+        )}
+
+        
 
       </div>
 
@@ -70,7 +102,7 @@ class Body extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  console.log(state)
+  // console.log(state)
   return {
     currentResult: state.currentResult,
     currentSearch: state.currentSearch,
