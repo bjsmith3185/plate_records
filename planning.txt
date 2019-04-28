@@ -2,7 +2,8 @@
 
 Use yarn start,
 
-- add name of database to server.js
+MongoDB = tags
+    Collections: users, encounters, ncrecords, screcords
 
 
 

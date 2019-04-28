@@ -68,7 +68,7 @@ const setData = (state = initialState, action) => {
   }
 
   if (action.type === "SET_TAG_INFO") {
-    // console.log(action.val)
+    console.log(action.val)
 
     return {
       ...state,

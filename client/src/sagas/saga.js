@@ -133,9 +133,19 @@ export function* watchSetPrev() {
 // Upload new encounter data
 function* stopDataAsync(data) {
   console.log(data)
+  console.log(data.payload.data.vehicle)
 
     const myData = yield API.stopData(data.payload.data.vehicle.state, data.payload.data.vehicle.tag_id,data.payload.data.encounter, data.payload.token);
-    // console.log(myData)
+    console.log(myData)
+
+    // Check myData for errors
+    // Set myData to currentResult in session storage
+    // Set data.payload.data.vehicle to currentSearch in session
+    // Set/Create a field in the store to show the search component.
+    
+
+
+
     // yield put({ type: "SET_STOP_DATA", val: myData });
   }
   

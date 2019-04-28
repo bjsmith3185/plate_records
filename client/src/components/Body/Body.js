@@ -45,7 +45,7 @@ class Body extends Component {
 
       <NewEncounter />
 
-      {/* {this.props.viewSearchComponent ? (
+      {this.props.viewSearchComponent ? (
         <div className="body-search-area">
           <SearchForm />
         </div>
@@ -53,7 +53,7 @@ class Body extends Component {
         <div className="body-results-area">
           <DisplayResult />
         </div>
-      )} */}
+      )}
 
         
       </div>

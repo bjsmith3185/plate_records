@@ -111,6 +111,32 @@ class NewEncounter extends Component {
           </div>
 
           <div className="line-item">
+            <label className="line-title">State</label>
+            <input
+              className="stop-input"
+              value={this.state.encounterState}
+              name="encounterState"
+              onChange={this.handleChange}
+              type="text"
+              placeholder="State"
+            />
+            <div className="stop-form-error">{this.state.encounterStateError}</div>
+          </div>
+
+          <div className="line-item">
+            <label className="line-title">City</label>
+            <input
+              className="stop-input"
+              value={this.state.encounterCity}
+              name="encounterCity"
+              onChange={this.handleChange}
+              type="text"
+              placeholder="City"
+            />
+            <div className="stop-form-error">{this.state.encounterCityError}</div>
+          </div>
+
+          <div className="line-item">
             <label className="line-title">Reason for Stop</label>
             <input
               className="stop-input"
@@ -149,31 +175,7 @@ class NewEncounter extends Component {
             <div className="stop-form-error">{this.state.encounterInfoError}</div>
           </div>
 
-          <div className="line-item">
-            <label className="line-title">State</label>
-            <input
-              className="stop-input"
-              value={this.state.encounterState}
-              name="encounterState"
-              onChange={this.handleChange}
-              type="text"
-              placeholder="State"
-            />
-            <div className="stop-form-error">{this.state.encounterStateError}</div>
-          </div>
-
-          <div className="line-item">
-            <label className="line-title">City</label>
-            <input
-              className="stop-input"
-              value={this.state.encounterCity}
-              name="encounterCity"
-              onChange={this.handleChange}
-              type="text"
-              placeholder="City"
-            />
-            <div className="stop-form-error">{this.state.encounterCityError}</div>
-          </div>
+          
 
           
 
