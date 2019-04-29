@@ -18,7 +18,7 @@ class HomePage extends Component {
     if (savedView && savedData) {
       // Send data to store
       this.props.setLastSearch(savedData, savedView)
-    }
+    } 
   }
 
 

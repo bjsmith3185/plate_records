@@ -25,8 +25,20 @@ class MultipleResults extends Component {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  selectTag = (id) => {
-    console.log("select this tag " + id)
+  selectTag = (index) => {
+    console.log("select this tag " + index)
+    // set this id to the store, change multipleMatches: false
+    let data = {
+      currentResult: this.props.currentResult[index],
+      multipleMatches: false,
+      currentSearch: {
+        tag: this.props.currentSearch.tag,
+        tag_id: this.props.currentResult[index]._id,
+        state: this.props.currentResult[index].state
+      }
+    }
+    // console.log(data)
+    this.props.selectTag(data)
   }
 
   render() {
@@ -57,10 +69,10 @@ const mapStateToProps = state => {
 // functions to dispatch actions
 const mapDispachToProps = dispach => {
   return {
-    searchTag: (tag, token, state) => {
+    selectTag: (data) => {
       dispach({
-        type: "SEARCH_TAG",
-        payload: { tag, token, state }
+        type: "SELECT_TAG",
+        payload: { data }
       });
     }
   };

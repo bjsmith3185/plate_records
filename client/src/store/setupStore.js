@@ -3,7 +3,7 @@ import setData from "../reducer/reducers";
 // Saga
 import createSagaMiddleware from "redux-saga";
 
-import { watchCheckPassword, watchCheckUserId, watchLogoutUser, watchSearchTag, watchSwitchView, watchSetPrev, watchStopData } from "../sagas/saga";
+import { watchCheckPassword, watchCheckUserId, watchLogoutUser, watchSearchTag, watchSwitchView, watchSetPrev, watchStopData, watchSelectTag } from "../sagas/saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,5 +16,6 @@ sagaMiddleware.run(watchSearchTag);
 sagaMiddleware.run(watchSwitchView);
 sagaMiddleware.run(watchSetPrev);
 sagaMiddleware.run(watchStopData);
+sagaMiddleware.run(watchSelectTag);
 
 export default store;

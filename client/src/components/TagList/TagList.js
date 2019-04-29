@@ -4,11 +4,11 @@ import "./TagList.css";
 const TagList = props => (
   <div className="tags-area">
     <div className="tags-heading text-center">Results, Select one to continue</div>
-    {props.tags.map(item => (
+    {props.tags.map((item, index) => (
       <div 
       key={item._id} 
       className="tag-occurance"
-      onClick={() => props.selectTag(item._id)}>
+      onClick={() => props.selectTag(index)}>
         <div className="tag-make">Make: {item.vehicleMake} </div>
         <div className="tag-model">Model: {item.vehicleModel} </div>
         <div className="tag-year">Year: {item.vehicleYear} </div>

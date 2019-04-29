@@ -224,6 +224,42 @@ export function* watchSearchTag() {
 
 //-------------------------------------------------------
 // Toggle  search / result views in the Body component
+function* selectTagAsync(data) {
+  console.log(data.payload);
+
+  let setData = {
+    previousData: {
+      result: data.payload.data.currentResult,
+      search: data.payload.data.currentSearch
+    },
+
+    view: {
+      viewSearchComponent: false,
+      viewResultComponent: true,
+      viewEnterDataComponent: false
+    },
+    multipleMatches: data.payload.data.multipleMatches
+  };
+
+// going to use existing action SET_TAG_INFO
+  // store the latest result in session storage
+  sessionStorage.setItem("lastResult", JSON.stringify(setData.previousData));
+  sessionStorage.setItem("view", JSON.stringify(setData.view));
+  sessionStorage.setItem("multipleMatches", JSON.stringify(setData.multipleMatches))
+  // clear any existing data saved in encounter form
+  sessionStorage.removeItem("encounterData");
+    
+  yield put({ type: "SET_TAG_INFO", val: setData });
+
+  // yield put({ type: "SET_SELECT_TAG", val: data });
+}
+
+export function* watchSelectTag() {
+  yield takeLatest("SELECT_TAG", selectTagAsync);
+}
+
+//-------------------------------------------------------
+// Toggle  search / result views in the Body component
 function* switchViewAsync(data) {
   console.log(data.payload.data);
   // set view status in session storage

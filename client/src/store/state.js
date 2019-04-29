@@ -16,6 +16,7 @@ const initState = {
     viewEnterDataComponent: false,
     // may need to leave multipleMatches set to : ''
     multipleMatches: false,
+    // multipleCurrentResult: {},
 
   
 }
