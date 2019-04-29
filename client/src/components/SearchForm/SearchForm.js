@@ -104,7 +104,7 @@ class SearchForm extends Component {
   };
 
   render() {
-    console.log(this.props.errors)
+    // console.log(this.props.errors)
     const errorDiv = this.props.errors.tag ? (<div className="search-error">{this.props.errors.tag}</div>) : (<div className="search-no-error"></div>)
 
     return (

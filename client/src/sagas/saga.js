@@ -59,9 +59,70 @@ export function* watchLogoutUser() {
 //-------------------------------------------------------------
 
 // Search for tag info
+// function* searchTagAsync(data) {
+//   // console.log(data)
+//   let myData = [];
+//   // let SearchData = {};
+//   let search = {
+//     tag: data.payload.tag,
+//     state: "",
+//     tag_id: ""
+//   };
+
+//   // let isState = '';
+
+//   // If a state is provided
+//   if (data.payload.state) {
+//     search.state = data.payload.state;
+//     // isState = data.payload.state
+//     myData = yield API.searchStateTag(
+//       data.payload.state,
+//       data.payload.tag,
+//       data.payload.token
+//     );
+//     // console.log("does this have id")
+//     // console.log(myData.data[0]._id)
+//     search.tag_id = myData.data[0]._id;
+//   }
+//   // If the state is omitted
+//   else {
+//     myData = yield API.searchTag(data.payload.tag, data.payload.token);
+//   }
+
+//   // console.log(myData)
+//   // if the response contains an error
+//   if (myData.data.error) {
+//     yield put({ type: "SET_ERROR", val: myData });
+//   }
+//   // if the response contains good data
+//   else {
+//     let setData = {
+//       previousData: {
+//         result: myData.data[0],
+//         search: search
+//       },
+
+//       view: {
+//         viewSearchComponent: false,
+//         viewResultComponent: true,
+//         viewEnterDataComponent: false
+//       }
+//     };
+// ;
+//     // store the latest result in session storage
+//     sessionStorage.setItem("lastResult", JSON.stringify(setData.previousData));
+//     sessionStorage.setItem("view", JSON.stringify(setData.view));
+//     // clear any existing data saved in encounter form
+//     sessionStorage.removeItem("encounterData");
+    
+//     yield put({ type: "SET_TAG_INFO", val: setData });
+//   }
+// }
+//***************************************************************** */
 function* searchTagAsync(data) {
   // console.log(data)
   let myData = [];
+  let multipleMatches = false;
   // let SearchData = {};
   let search = {
     tag: data.payload.tag,
@@ -73,6 +134,7 @@ function* searchTagAsync(data) {
 
   // If a state is provided
   if (data.payload.state) {
+    console.log("this is with a state search")
     search.state = data.payload.state;
     // isState = data.payload.state
     myData = yield API.searchStateTag(
@@ -87,9 +149,44 @@ function* searchTagAsync(data) {
   // If the state is omitted
   else {
     myData = yield API.searchTag(data.payload.tag, data.payload.token);
+    // console.log("this is multiple")
+    // console.log(myData.data)
+    if(myData.data.length > 1) {
+      console.log("more than one result")
+      multipleMatches = true;
+       // define a new dispach action for a multiple result
+
+              let setData = {
+                previousData: {
+                  result: myData.data,
+                  search: search
+                },
+          
+                view: {
+                  viewSearchComponent: false,
+                  viewResultComponent: true,
+                  viewEnterDataComponent: false
+                },
+                multipleMatches: multipleMatches
+              };
+          
+              // store the latest result in session storage
+              sessionStorage.setItem("lastResult", JSON.stringify(setData.previousData));
+              sessionStorage.setItem("view", JSON.stringify(setData.view));
+              sessionStorage.setItem("multipleMatches", JSON.stringify(setData.multipleMatches))
+              // clear any existing data saved in encounter form
+              sessionStorage.removeItem("encounterData");
+
+
+       return yield put({ type: "SET_MULTI_TAG_INFO", val: setData });
+    
+    }
+
   }
 
-  // console.log(myData)
+  console.log(myData)
+
+
   // if the response contains an error
   if (myData.data.error) {
     yield put({ type: "SET_ERROR", val: myData });
@@ -106,12 +203,14 @@ function* searchTagAsync(data) {
         viewSearchComponent: false,
         viewResultComponent: true,
         viewEnterDataComponent: false
-      }
+      },
+      multipleMatches: multipleMatches
     };
-;
+
     // store the latest result in session storage
     sessionStorage.setItem("lastResult", JSON.stringify(setData.previousData));
     sessionStorage.setItem("view", JSON.stringify(setData.view));
+    sessionStorage.setItem("multipleMatches", JSON.stringify(setData.multipleMatches))
     // clear any existing data saved in encounter form
     sessionStorage.removeItem("encounterData");
     

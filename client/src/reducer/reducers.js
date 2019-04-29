@@ -78,7 +78,22 @@ const setData = (state = initialState, action) => {
       currentSearch: action.val.previousData.search,
       viewSearchComponent: action.val.view.viewSearchComponent,
       viewResultComponent: action.val.view.viewResultComponent,
-      viewEnterDataComponent: action.val.view.viewEnterDataComponent
+      viewEnterDataComponent: action.val.view.viewEnterDataComponent,
+      multipleMatches: action.val.multipleMatches,
+    };
+  }
+
+  if (action.type === "SET_MULTI_TAG_INFO") {
+    console.log(action.val)
+
+    return {
+      ...state,
+      currentResult: action.val.previousData.result,
+      currentSearch: action.val.previousData.search,
+      viewSearchComponent: action.val.view.viewSearchComponent,
+      viewResultComponent: action.val.view.viewResultComponent,
+      viewEnterDataComponent: action.val.view.viewEnterDataComponent,
+      multipleMatches: action.val.multipleMatches,
     };
   }
 

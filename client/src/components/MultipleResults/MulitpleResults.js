@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 // Redux
 import { connect } from "react-redux";
-import "./DisplayResult.css";
-import SingleResult from "../SingleResult";
-import MultipleResults from "../MultipleResults";
+import "./MultipleResults.css";
+import TagList from "../TagList";
 
 
-class DisplayResult extends Component {
+class MultipleResults extends Component {
   state = {};
 
   componentDidMount() {}
@@ -26,19 +25,19 @@ class DisplayResult extends Component {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  selectTag = (id) => {
+    console.log("select this tag " + id)
+  }
+
   render() {
  
-  
+
 
     return (
-      <div className="result-body">
-        <div className="result-title text-center"> Result Component </div>
-        <MultipleResults />
-        {/* {this.props.multipleMatches ? (
-          <MultipleResults />
-        ) : (
-          <SingleResult />
-        )} */}
+      <div className="multi-result-body">
+        <div className="multi-result-title text-center"> Multiple States matches for tag  </div>
+        <div className="multi-result-current-search text-center">{this.props.currentSearch.tag}</div>
+        <TagList tags={this.props.currentResult} selectTag={this.selectTag} />
         
       </div>
     );
@@ -47,12 +46,11 @@ class DisplayResult extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  // console.log(state)
+  console.log(state)
   return {
     currentResult: state.currentResult,
     currentSearch: state.currentSearch,
     multipleMatches: state.multipleMatches,
-
   };
 };
 
@@ -71,4 +69,4 @@ const mapDispachToProps = dispach => {
 export default connect(
   mapStateToProps,
   mapDispachToProps
-)(DisplayResult);
+)(MultipleResults);
