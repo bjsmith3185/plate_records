@@ -112,6 +112,9 @@ function* searchTagAsync(data) {
     // store the latest result in session storage
     sessionStorage.setItem("lastResult", JSON.stringify(setData.previousData));
     sessionStorage.setItem("view", JSON.stringify(setData.view));
+    // clear any existing data saved in encounter form
+    sessionStorage.removeItem("encounterData");
+    
     yield put({ type: "SET_TAG_INFO", val: setData });
   }
 }

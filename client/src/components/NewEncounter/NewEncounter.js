@@ -13,9 +13,11 @@ class NewEncounter extends Component {
     encounterInfo: '',
     encounterState: '',
     encounterCity: '',
-    // temp data for development
-    state: "nc",
-    tag_id: "5cc0e8c513ac8d71d4151f98",
+
+    // data related to the current vehicle search
+    state: '',
+    tag_id: '',
+    tag: '', 
 
     // search data is in local storage
     tagIsValid: false,
@@ -25,23 +27,24 @@ class NewEncounter extends Component {
 
   componentWillMount = () => {
     this.checkForTagData();
+    this.checkSession();
 
-  }
+  };
 
   checkForTagData = () => {
     let storedValue = JSON.parse(sessionStorage.getItem('lastResult'));
-    // console.log(storedValue)
     if( storedValue ) {
       if (storedValue.search.tag_id) {
-        console.log("tag _id is in session storage")
+        // console.log("tag _id is in session storage")
         this.setState({
-          tagIsValid: true
+          tagIsValid: true,
+          tag: storedValue.search.tag,
+          state: storedValue.search.state,
+          tag_id: storedValue.search.tag_id,
         })
       }
     }
-
-
-  }
+  };
 
   handleChange = event => {
     const isCheckbox = event.target.type === "checkbox";
@@ -50,7 +53,38 @@ class NewEncounter extends Component {
         ? event.target.checked
         : event.target.value
     });
+    this.saveToSession();
   };
+
+  saveToSession = () => {
+    // console.log("saved")
+    let save = {
+      driver: this.state.driver,
+      location: this.state.location,
+      rs: this.state.rs,
+      encounterState: this.state.encounterState,
+      encounterCity: this.state.encounterCity,
+      encounterInfo: this.state.encounterInfo
+
+    }
+    sessionStorage.setItem("encounterData", JSON.stringify(save) )
+  };
+
+  checkSession = () => {
+    // console.log("checking")
+    let saved = JSON.parse(sessionStorage.getItem("encounterData"));
+    // console.log(saved)
+    if(saved) {
+      this.setState({
+        driver: saved.driver,
+        location: saved.location,
+        rs: saved.rs,
+        encounterState: saved.encounterState,
+        encounterCity: saved.encounterCity,
+        encounterInfo: saved.encounterInfo
+      })
+    }
+  }
 
   submit = event => {
     event.preventDefault();
@@ -69,13 +103,13 @@ class NewEncounter extends Component {
       },
       vehicle: {
         state: this.state.state,
-        tag_id: this.props.tag_id,
-        tag: this.props.tag
+        tag_id: this.state.tag_id,
+        tag: this.state.tag
       }
       
     }
     this.props.sendData(data, this.props.token);
-
+    // reset state
     this.setState({
       driver: '',
       location: '',
@@ -85,6 +119,9 @@ class NewEncounter extends Component {
       encounterCity: '',
       encounterState:'',
     })
+    // clear session related to encounter form
+    sessionStorage.removeItem("encounterData");
+
   }
 
   demo = () => {
@@ -191,20 +228,19 @@ class NewEncounter extends Component {
 
           <div className="line-item">
             <label className="line-title">Information about the Stop</label>
-            <input
+            <textarea
               className="stop-input"
               value={this.state.encounterInfo}
               name="encounterInfo"
               onChange={this.handleChange}
               type="text"
               placeholder="Text"
-            />
+              rows="3"
+              cols="50"
+            ></textarea>
             <div className="stop-form-error">{this.state.encounterInfoError}</div>
           </div>
-
-          
-
-          
+         
 
           <div className="stop-form-btn-area text-center">
             <button

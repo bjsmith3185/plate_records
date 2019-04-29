@@ -52,9 +52,9 @@ class DisplayResult extends Component {
           State: {this.props.currentResult.state}
         </div>
         <br />
-
         {this.props.currentResult.encounters.length > 0 ? (
           <div className="result-encounters-area">
+            <div className="result-encounters-qty">This vehicle has had <span className="result-encounters-qty-result">{this.props.currentResult.encounters.length}</span> encounters with a LEO</div>
             <Encounters encounters={this.props.currentResult.encounters} />
           </div>
         ) : (
@@ -62,6 +62,31 @@ class DisplayResult extends Component {
             No vehicle stops recorded
           </div>
         )}
+
+
+
+        {/* {this.props.currentResult.encounters.length > 0 ? (
+          // if result.length = 0  or if result.lenght is more that one 
+          <div>
+          {this.props.currentResult.enconters.length === 1 ? (
+          <div className="result-encounters-area">
+            <Encounters encounters={this.props.currentResult.encounters} />
+          </div>
+          ) : (
+          <div className="result-encounters-area">
+            <div className="result-encounters-qty">{this.props.currentResult.encounters.length}</div>
+            <Encounters encounters={this.props.currentResult.encounters} />
+          </div>
+          )}
+
+          </div>
+        ) : (
+          <div className="result-encoutners-none">
+            No vehicle stops recorded
+          </div>
+        )} */}
+
+        
       </div>
     );
   }

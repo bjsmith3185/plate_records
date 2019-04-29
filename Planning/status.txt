@@ -102,7 +102,7 @@
  
 
     
-    * Need to add some form validation on the client in NewEncounter component.
+    
 
 4/28 
 
@@ -116,14 +116,31 @@
 
     * Create a conditional to display results or "no results to display" (done)
 
-    * Would like to create a clear history or search button maybe in the navbar, this would clear store and session storage.
     
-    * Would like to add a line in the Results component to show how many encounters are listed.
+
+    
+
+4/29
+
+    * Would like to add a line in the Results component to show how many encounters are listed. (done)
+
+    * Add text area to encounter input data form (done)
+
+    * Save the data entered in the encounter for to session storage in case the page is refreshed 
+        - saving the data in the eventHandler(), need to clear the session data when submit() is clicked (done)
+        
+    * Need to create a component to display multiple results for a search without a state. (maybe when one of these results is clicked it can to to the current displayResults component)
+
+
+    Encounter Form Validation:
+        * Need to add some form validation on the client in NewEncounter component.
+        * Add a disable funciton to encounter form submit button ( just require rs and result)
 
 
 
 TODOS Later
 
+    * Would like to create a clear history or search button maybe in the navbar, this would clear store and session storage.
     
     * The search all states function can return more than one result, need to set up the compoent for that.
 
