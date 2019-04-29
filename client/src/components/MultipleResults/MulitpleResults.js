@@ -26,7 +26,7 @@ class MultipleResults extends Component {
   };
 
   selectTag = (index) => {
-    console.log("select this tag " + index)
+    // console.log("select this tag " + index)
     // set this id to the store, change multipleMatches: false
     let data = {
       currentResult: this.props.currentResult[index],
@@ -47,7 +47,7 @@ class MultipleResults extends Component {
 
     return (
       <div className="multi-result-body">
-        <div className="multi-result-title text-center"> Multiple States matches for tag  </div>
+        <div className="multi-result-title text-center">A search without a state entered can provide multiple results</div>
         <div className="multi-result-current-search text-center">{this.props.currentSearch.tag}</div>
         <TagList tags={this.props.currentResult} selectTag={this.selectTag} />
         
@@ -58,7 +58,7 @@ class MultipleResults extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  console.log(state)
+  // console.log(state)
   return {
     currentResult: state.currentResult,
     currentSearch: state.currentSearch,

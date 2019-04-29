@@ -32,8 +32,7 @@ class DisplayResult extends Component {
 
     return (
       <div className="result-body">
-        <div className="result-title text-center"> Result Component </div>
-        {/* <MultipleResults /> */}
+        <div className="result-title text-center"> Search Results </div>
         {this.props.multipleMatches ? (
           <MultipleResults />
         ) : (

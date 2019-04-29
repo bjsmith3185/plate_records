@@ -15,16 +15,11 @@ module.exports = {
         }
        
       })
-      // .populate({
-      //   path: 'encounters',
-      //   populate: {
-      //     path: 'officer'
-      //   }
-      // })
+
   },
 
   findById: function (id) {
-    console.log("in nc controller: " + id)
+    // console.log("in nc controller: " + id)
     return db.NCRecords
       .find({_id: id})
       .populate({
@@ -40,7 +35,7 @@ module.exports = {
   },
 
   findByTag: function (tag) {
-    console.log("in nc records: " + tag);
+    // console.log("in nc records: " + tag);
     return db.NCRecords
       .find({tag: tag})
       .populate({

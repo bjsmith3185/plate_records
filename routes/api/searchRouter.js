@@ -65,12 +65,9 @@ router.route("/:state/:tag").get(check.validateToken, (req, res) => {
       }
 
       search
-        // .searchStateThenTag(req.body.state, req.body.tag)
         .searchStateThenTag(searchData.state, searchData.tag)
         .then(dbresults => {
-          // console.log("see if this is valid")
-          // console.log(dbresults)
-          res.json(dbresults);
+           res.json(dbresults);
         })
         .catch(err => {
           res.status(403).json({ err: err });

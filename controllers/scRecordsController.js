@@ -7,9 +7,13 @@ module.exports = {
       .find({})
       .populate({
         path: 'encounters',
-        populate: {
+        options: {
+          sort: {date: 'desc'}
+        },
+           populate: {
           path: 'officer'
         }
+       
       })
   },
 
@@ -18,9 +22,13 @@ module.exports = {
       .find({_id: id})
       .populate({
         path: 'encounters',
-        populate: {
+        options: {
+          sort: {date: 'desc'}
+        },
+           populate: {
           path: 'officer'
         }
+       
       })
   },
 
@@ -29,9 +37,13 @@ module.exports = {
       .find({tag: tag})
       .populate({
         path: 'encounters',
-        populate: {
+        options: {
+          sort: {date: 'desc'}
+        },
+           populate: {
           path: 'officer'
         }
+       
       })
   },
 

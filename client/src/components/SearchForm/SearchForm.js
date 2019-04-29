@@ -13,10 +13,18 @@ class SearchForm extends Component {
 
   componentDidMount() {}
 
-  componentWillReceiveProps(nextProps) {
-    // console.log("what is this")
-    // console.log(nextProps)
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log("what is this")
+  //   console.log(nextProps)
+  //   if(nextProps.errors) {
+  //     console.log("true")
+  //     this.setState({
+  //       tag: '',
+  //       state: '',
+  //     })
+  //   }
+    
+  // }
 
   handleChange = event => {
     const isCheckbox = event.target.type === "checkbox";
@@ -54,6 +62,11 @@ class SearchForm extends Component {
       }
 
       this.props.searchTag(newTag, sessionStorage.getItem("token"), newState);
+      // why doesnt this work
+      this.setState({
+        tag: "",
+        state: ""
+      });
     } else {
       console.log("errors");
       this.setState({
@@ -117,7 +130,7 @@ class SearchForm extends Component {
             <label className="input-title">Tag</label>
             <input
               className="search-input"
-              value={this.tag}
+              value={this.state.tag}
               name="tag"
               onChange={this.handleChange}
               type="text"
@@ -152,7 +165,7 @@ class SearchForm extends Component {
         {/* {this.props.errors.tag ? (<div className="search-error-area">{this.props.errors.tag}</div>) : (<div className="search-no-error"></div>)} */}
 
 
-        <div className="search-error-area">
+        <div className="search-error-area text-center">
         {errorDiv}
         </div>
      

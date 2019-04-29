@@ -58,67 +58,6 @@ export function* watchLogoutUser() {
 
 //-------------------------------------------------------------
 
-// Search for tag info
-// function* searchTagAsync(data) {
-//   // console.log(data)
-//   let myData = [];
-//   // let SearchData = {};
-//   let search = {
-//     tag: data.payload.tag,
-//     state: "",
-//     tag_id: ""
-//   };
-
-//   // let isState = '';
-
-//   // If a state is provided
-//   if (data.payload.state) {
-//     search.state = data.payload.state;
-//     // isState = data.payload.state
-//     myData = yield API.searchStateTag(
-//       data.payload.state,
-//       data.payload.tag,
-//       data.payload.token
-//     );
-//     // console.log("does this have id")
-//     // console.log(myData.data[0]._id)
-//     search.tag_id = myData.data[0]._id;
-//   }
-//   // If the state is omitted
-//   else {
-//     myData = yield API.searchTag(data.payload.tag, data.payload.token);
-//   }
-
-//   // console.log(myData)
-//   // if the response contains an error
-//   if (myData.data.error) {
-//     yield put({ type: "SET_ERROR", val: myData });
-//   }
-//   // if the response contains good data
-//   else {
-//     let setData = {
-//       previousData: {
-//         result: myData.data[0],
-//         search: search
-//       },
-
-//       view: {
-//         viewSearchComponent: false,
-//         viewResultComponent: true,
-//         viewEnterDataComponent: false
-//       }
-//     };
-// ;
-//     // store the latest result in session storage
-//     sessionStorage.setItem("lastResult", JSON.stringify(setData.previousData));
-//     sessionStorage.setItem("view", JSON.stringify(setData.view));
-//     // clear any existing data saved in encounter form
-//     sessionStorage.removeItem("encounterData");
-    
-//     yield put({ type: "SET_TAG_INFO", val: setData });
-//   }
-// }
-//***************************************************************** */
 function* searchTagAsync(data) {
   // console.log(data)
   let myData = [];
@@ -142,10 +81,21 @@ function* searchTagAsync(data) {
       data.payload.tag,
       data.payload.token
     );
+    console.log("this one has a state")
+    console.log(myData)
+    if(myData.data.error) {
+      if (myData.data.error) {
+        yield put({ type: "SET_ERROR", val: myData });
+      }
+    } else {
+      search.tag_id = myData.data[0]._id;
+    }
     // console.log("does this have id")
     // console.log(myData.data[0]._id)
-    search.tag_id = myData.data[0]._id;
+
+    
   }
+
   // If the state is omitted
   else {
     myData = yield API.searchTag(data.payload.tag, data.payload.token);
@@ -185,6 +135,7 @@ function* searchTagAsync(data) {
   }
 
   console.log(myData)
+  // console.log("am i here yet?")
 
 
   // if the response contains an error
@@ -193,6 +144,7 @@ function* searchTagAsync(data) {
   }
   // if the response contains good data
   else {
+    // console.log("am i here yet?")
     let setData = {
       previousData: {
         result: myData.data[0],
