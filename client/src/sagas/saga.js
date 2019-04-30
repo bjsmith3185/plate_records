@@ -62,27 +62,21 @@ function* searchTagAsync(data) {
   // console.log(data)
   let myData = [];
   let multipleMatches = false;
-  // let SearchData = {};
   let search = {
     tag: data.payload.tag,
     state: "",
     tag_id: ""
   };
 
-  // let isState = '';
-
   // If a state is provided
   if (data.payload.state) {
-    console.log("this is with a state search")
     search.state = data.payload.state;
-    // isState = data.payload.state
     myData = yield API.searchStateTag(
       data.payload.state,
       data.payload.tag,
       data.payload.token
     );
-    console.log("this one has a state")
-    console.log(myData)
+
     if(myData.data.error) {
       if (myData.data.error) {
         yield put({ type: "SET_ERROR", val: myData });
@@ -90,19 +84,14 @@ function* searchTagAsync(data) {
     } else {
       search.tag_id = myData.data[0]._id;
     }
-    // console.log("does this have id")
-    // console.log(myData.data[0]._id)
 
-    
   }
 
   // If the state is omitted
   else {
     myData = yield API.searchTag(data.payload.tag, data.payload.token);
-    // console.log("this is multiple")
-    // console.log(myData.data)
+
     if(myData.data.length > 1) {
-      console.log("more than one result")
       multipleMatches = true;
        // define a new dispach action for a multiple result
 
@@ -127,16 +116,11 @@ function* searchTagAsync(data) {
               // clear any existing data saved in encounter form
               sessionStorage.removeItem("encounterData");
 
-
        return yield put({ type: "SET_MULTI_TAG_INFO", val: setData });
     
     }
 
   }
-
-  console.log(myData)
-  // console.log("am i here yet?")
-
 
   // if the response contains an error
   if (myData.data.error) {
@@ -144,7 +128,6 @@ function* searchTagAsync(data) {
   }
   // if the response contains good data
   else {
-    // console.log("am i here yet?")
     let setData = {
       previousData: {
         result: myData.data[0],
@@ -203,7 +186,6 @@ function* selectTagAsync(data) {
     
   yield put({ type: "SET_TAG_INFO", val: setData });
 
-  // yield put({ type: "SET_SELECT_TAG", val: data });
 }
 
 export function* watchSelectTag() {
@@ -213,7 +195,6 @@ export function* watchSelectTag() {
 //-------------------------------------------------------
 // Toggle  search / result views in the Body component
 function* switchViewAsync(data) {
-  console.log(data.payload.data);
   // set view status in session storage
   sessionStorage.setItem("view", JSON.stringify(data.payload.data));
 
@@ -239,7 +220,7 @@ export function* watchSetPrev() {
 
 // Upload new encounter data
 function* stopDataAsync(data) {
-  console.log(data)
+  // console.log(data)
   // console.log(data.payload.data.vehicle)
 
   const myData = yield API.stopData(
@@ -248,7 +229,7 @@ function* stopDataAsync(data) {
     data.payload.data.encounter,
     data.payload.token
   );
-  console.log(myData.data[0]);
+  // console.log(myData.data[0]);
 
   // Check myData for errors
   // Set myData to currentResult in session storage

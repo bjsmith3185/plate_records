@@ -82,6 +82,9 @@ module.exports = {
     if(objCopy.encounterState) {
       objCopy.encounterState = objCopy.encounterState.toLowerCase().trim();
     }
+    if(objCopy.encounterCity) {
+      objCopy.encounterCity = objCopy.encounterCity.toLowerCase().trim();
+    }
     
     return objCopy;
   },

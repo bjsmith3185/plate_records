@@ -20,15 +20,6 @@ module.exports = function validateNewEncounter(data) {
   let validResult = false;
   let validEncounterInfo = false;
   let validEncounterState = false;
-  let validEncounterCity = false;
-  let validOfficer = false;
-
-  // rs and result are the only required fields
-  // driver length between 0 30
-  // location length between 0 50
-  // encounter State, much not be empty and match array
-  // encounter City, between 0  50
-
 
 
   // check driver
@@ -60,8 +51,8 @@ module.exports = function validateNewEncounter(data) {
   // Check rs
   if (isEmpty(data.rs)) {
     errors.rs = "RS is empty";
-  } else if (!hasLengthBetween(data.rs, 2, 300)) {
-    errors.rs = "RS should have a min 2, max 300 characters";
+  } else if (!hasLengthBetween(data.rs, 2, 1000)) {
+    errors.rs = "RS should have a min 2, max 100 characters";
   } else {
     if (isString(data.rs)) {
       validRs = true;
@@ -83,19 +74,6 @@ module.exports = function validateNewEncounter(data) {
     }
   }
 
-  // check Officer
-  if (isEmpty(data.officer)) {
-    errors.officer = "Officer is empty";
-  } else if (!hasLengthBetween(data.officer, 2, 50)) {
-    errors.officer = "Officer should have a min 2, max 50 characters";
-  } else {
-    if (isString(data.officer)) {
-      validOfficer = true;
-    } else {
-      errors.officer = "Officer must be a string";
-    }
-  }
-  
     // Check encounterInfo
     if (isEmpty(data.encounterInfo)) {
       errors.encounterInfo = "Encounter Info is empty";
@@ -109,18 +87,6 @@ module.exports = function validateNewEncounter(data) {
       }
     }
 
-    // Check City
-    if (isEmpty(data.encounterCity)) {
-      errors.encounterCity = "City is empty";
-    } else if (!hasLengthBetween(data.encounterCity, 2, 50)) {
-      errors.encounterCity = "City should have a min 2, max 50 characters";
-    } else {
-      if (isString(data.encounterCity)) {
-        validEncounterCity = true;
-      } else {
-        errors.encounterCity = "City must be a string";
-      }
-    }
 
     // Check State
   if (isEmpty(data.encounterState)) {
@@ -146,9 +112,7 @@ module.exports = function validateNewEncounter(data) {
     validRs &&
     validResult &&
     validEncounterInfo &&
-    validEncounterState &&
-    validEncounterCity &&
-    validOfficer
+    validEncounterState
   ) {
     isValid = true;
   }

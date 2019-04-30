@@ -58,18 +58,18 @@ router.route("/new/:id/:state").post(check.validateToken, (req, res) => {
     if (err) {
       res.status(403).json({ err: "token not verified" });
     } else {
-      console.log("in the post new encounters route");
-      console.log(req.params.id);
-      console.log(req.params.state)
-      console.log(req.body)
+      // console.log("in the post new encounters route");
+      // console.log(req.params.id);
+      // console.log(req.params.state)
+      // console.log(req.body)
 
       let { paramErrors, data } = conform.conformEncounterParams(req.params.id, req.params.state);
       if(paramErrors) {
         console.log(paramErrors)
         return res.status(400).json(paramErrors);
       }
-      console.log("here?")
-      console.log(data)
+      // console.log("here?")
+      // console.log(data)
       req.body = conform.conformNewEncounterData(req.body);
 
       let { errors, isValid } = validateEncounter(req.body);
@@ -88,11 +88,6 @@ router.route("/new/:id/:state").post(check.validateToken, (req, res) => {
         .catch(err => {
           res.status(403).json({ err: err });
         });
-
-      // res.json({
-      //   text: "protected search route/ encounters with params",
-      //   authData: authData
-      // });
     }
   });
 });

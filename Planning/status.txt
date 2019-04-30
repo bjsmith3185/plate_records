@@ -132,12 +132,27 @@
     * Need to create a component to display multiple results for a search without a state. (maybe when one of these results is clicked it can to to the current displayResults component)
         - Options to consider
             * right now the multi result is saved in session and the store. I should keep it there and let the user view the options somehow before selecting and removing the other selections. 
-                - save the multi result in another var until a selection is made? multi-lastResult?
+                - save the multi result in another var until a selection is made? multi-lastResult?  (done)
 
 
     Encounter Form Validation:
-        * Need to add some form validation on the client in NewEncounter component.
-        * Add a disable funciton to encounter form submit button ( just require rs and result)
+            * Need to add validation on the server for encounter data (done)
+
+        * Need to add some form validation on the client in NewEncounter component. (done)
+
+        * Should I verify the state entered in encounters form is a valid state?
+        * Should the result in encounters form be a dropdown menu? client side hard coded?    
+
+        ** need to set the tag/state/tag_id if only one result is returned for a search without state selected.
+
+        ** If the server rejects a request to add data, need to send back an error and display that error.
+
+        * Add a disable funciton to encounter form submit button 
+
+
+
+
+
 
 
 
