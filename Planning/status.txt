@@ -140,20 +140,21 @@
 
         * Need to add some form validation on the client in NewEncounter component. (done)
 
-        * Should I verify the state entered in encounters form is a valid state?
-        * Should the result in encounters form be a dropdown menu? client side hard coded?    
 
-        ** need to set the tag/state/tag_id if only one result is returned for a search without state selected.
+    4/30 
+        * Should I verify the state entered in encounters form is a valid state? (done)
 
-        ** If the server rejects a request to add data, need to send back an error and display that error.
+        ** need to set the tag/state/tag_id if only one result is returned for a search without state selected. (done)
+
+        * Made the seclect state in encounters form a dropdown (done)
+
+        ** Need to display the city and state in the encoutners display. 
+
+         * Should the result in encounters form be a dropdown menu? client side hard coded?    
+
+         ** If the server rejects a request to add data, need to send back an error and display that error.
 
         * Add a disable funciton to encounter form submit button 
-
-
-
-
-
-
 
 
 TODOS Later

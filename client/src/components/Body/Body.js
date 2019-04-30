@@ -25,7 +25,7 @@ class Body extends Component {
   };
 
   switchView = (view) => {
-    console.log('clicked');
+    // console.log('clicked');
     let newView = {
       viewSearchComponent: false,
       viewResultComponent: false,

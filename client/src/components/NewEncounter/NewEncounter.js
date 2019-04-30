@@ -31,6 +31,8 @@ class NewEncounter extends Component {
     tagIsValid: false
   };
 
+ 
+
   componentWillMount = () => {
     this.checkForTagData();
     this.checkSession();
@@ -89,6 +91,11 @@ class NewEncounter extends Component {
       });
     }
   };
+
+  // submit = event => {
+  //   event.preventDefault();
+  //   console.log(this.state)
+  // }
 
   submit = event => {
     event.preventDefault();
@@ -151,7 +158,21 @@ class NewEncounter extends Component {
     });
   };
 
+  validateStateArray = (inputState) => {
+    const stateList = ['nc', 'sc'];
+
+    for (var i = 0; i < stateList.length; i++) {
+      if(inputState.toLowerCase() === stateList[i]) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
   validate = () => {
+
+
     let driverError = "";
     let locationError = "";
     let rsError = "";
@@ -186,6 +207,8 @@ class NewEncounter extends Component {
 
     if (!this.state.encounterState) {
       encounterStateError = "Please enter a state.";
+    } else if(!this.validateStateArray(this.state.encounterState)) {
+      encounterStateError = "Please enter a valid state"
     }
 
     if (
@@ -254,6 +277,26 @@ class NewEncounter extends Component {
 
               <div className="line-item">
                 <label className="line-title">State</label>
+                  <select
+                    name="encounterState"
+                    onChange={this.handleChange}
+                  >
+                    <option >Select</option>
+                    <option
+                      value="nc"
+                    >North Carolina</option>
+                    <option 
+                      value="nc"
+                    >South Carolina</option>
+                  </select>
+               
+                <div className="stop-form-error">
+                  {this.state.encounterStateError}
+                </div>
+              </div>
+
+              {/* <div className="line-item">
+                <label className="line-title">State</label>
                 <input
                   className="stop-input"
                   value={this.state.encounterState}
@@ -265,7 +308,7 @@ class NewEncounter extends Component {
                 <div className="stop-form-error">
                   {this.state.encounterStateError}
                 </div>
-              </div>
+              </div> */}
 
               <div className="line-item">
                 <label className="line-title">City</label>
@@ -297,14 +340,38 @@ class NewEncounter extends Component {
 
               <div className="line-item">
                 <label className="line-title">Result of Stop</label>
-                <input
+
+                <select
+                    name="result"
+                    onChange={this.handleChange}
+                  >
+                    <option >Select</option>
+                    <option
+                      value="warning"
+                    >warning</option>
+                    <option 
+                      value="citation"
+                    >Citation</option>
+                    <option 
+                      value="arrest"
+                    >Arrest</option>
+                    <option 
+                      value="verbal"
+                    >Verbal</option>
+                    <option 
+                      value="other"
+                    >Other</option>
+                  </select>
+
+
+                {/* <input
                   className="stop-input"
                   value={this.state.result}
                   name="result"
                   onChange={this.handleChange}
                   type="text"
                   placeholder="Result of Stop"
-                />
+                /> */}
                 <div className="stop-form-error">{this.state.resultError}</div>
               </div>
 

@@ -128,6 +128,11 @@ function* searchTagAsync(data) {
   }
   // if the response contains good data
   else {
+    // set the tag state and tag_id to the search {} above
+    search.tag_id = myData.data[0]._id;
+    search.state = myData.data[0].state;
+
+
     let setData = {
       previousData: {
         result: myData.data[0],

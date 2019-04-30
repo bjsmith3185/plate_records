@@ -45,7 +45,7 @@ class SearchForm extends Component {
     });
 
     if (isValid) {
-      console.log("tag format is valid");
+      // console.log("tag format is valid");
 
       let newTag = this.state.tag
         .replace(/\s/g, "")
