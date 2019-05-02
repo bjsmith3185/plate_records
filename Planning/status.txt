@@ -160,8 +160,9 @@
 
         * Should the result in encounters form be a dropdown menu? client side hard coded?  (done)  
 
-        ** If the server rejects a request to add data, need to send back an error and display that error.
+       
 
+       // planning for the UI 
        
 
 
@@ -171,6 +172,8 @@ TODOS Later
     * Would like to create a clear history or search button maybe in the navbar, this would clear store and session storage.
     
     * The search all states function can return more than one result, need to set up the compoent for that. (done)
+
+     ** If the server rejects a request to add data, need to send back an error and display that error.
 
     * Need to add some styling to Results 
         - Change date to a readable form

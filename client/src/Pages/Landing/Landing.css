@@ -1,31 +1,61 @@
 
-.username-error,
-.password-error {
-    font-size: 12px;
-    color: red;
- }
-
-
-
-
-
-
-
 .landing-page-container {
     width: 100%;
-    padding-top: 150px;
+    height: 100%;
+}
+
+.landing-page-background {
+    background-image: url("../../images/Traffic-Stops.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+   
+    min-height: 100%;
+    min-width: 350px;
+
+    width: 100%;
+    height: auto;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    opacity: .7;
+}
+
+
+.landing-page-formbox {
+    width: 70%;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+
+    z-index: 1;
+
+    background: lightgray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-radius: 8px;
+    border: 1px solid black;
 }
 
 .landing-title {
     color: black;
     font-size: 36px;
- 
-    /* margin-top: 250px; */
+    font-weight: bolder;
+}
+
+.landing-demo {
+    color: blue;
 }
 
 .login-form {
-    /* margin-top: 50px; */
-    padding-bottom: 200px;
+    padding-bottom: 10px;
 }
 
 .landing-input-area {
@@ -35,23 +65,13 @@
 .landing-label {
     font-size: 18px;
     color: black;
- 
     font-weight: 700;
 }
 
 
 .landing-input {
-
-    /* background: yellow; */
     color: black;
     padding-left: 5px;
-}
-
-.password-err {
-    margin-top: 4px;
-    font-size: 12px;
-    color: red;
- 
 }
 
 .landing-login-btn {
@@ -59,7 +79,11 @@
  
 }
 
-
+.username-error,
+.password-error {
+    font-size: 12px;
+    color: red;
+ }
 
 
 
