@@ -148,20 +148,29 @@
 
         * Made the seclect state in encounters form a dropdown (done)
 
-        ** Need to display the city and state in the encoutners display. 
+     
 
-         * Should the result in encounters form be a dropdown menu? client side hard coded?    
+        
 
-         ** If the server rejects a request to add data, need to send back an error and display that error.
+    5/2
 
-        * Add a disable funciton to encounter form submit button 
+        ** Need to display the city and state in the encoutners display. (done)
+            * also may have the state default to the original state of the vehicle (done)
+            * also may have the default result a warning (done)
+
+        * Should the result in encounters form be a dropdown menu? client side hard coded?  (done)  
+
+        ** If the server rejects a request to add data, need to send back an error and display that error.
+
+       
+
 
 
 TODOS Later
 
     * Would like to create a clear history or search button maybe in the navbar, this would clear store and session storage.
     
-    * The search all states function can return more than one result, need to set up the compoent for that.
+    * The search all states function can return more than one result, need to set up the compoent for that. (done)
 
     * Need to add some styling to Results 
         - Change date to a readable form

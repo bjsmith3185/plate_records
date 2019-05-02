@@ -9,7 +9,9 @@ const Encounters = props => (
         <div className="encounter-date">Date of Stop: {item.date} </div>
         <div className="encounter-rs">Reason for Stop: {item.rs} </div>
         <div className="encounter-driver">Driver during stop: {item.driver} </div>
-        <div className="encounter-location">Location of stop: {item.location} </div>
+        <div className="encounter-location">Address of stop: {item.location} </div>
+        <div className="encounter-location">City of stop: {item.encounterCity} </div>
+        <div className="encounter-location">State of stop: {item.encounterState} </div>
         <div className="encounter-result">Result from stop: {item.result} </div>
         <div className="encounter-info">Comments: {item.encounterInfo} </div>
         <hr/>

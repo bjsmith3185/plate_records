@@ -49,6 +49,7 @@ class SingleResult extends Component {
         <div className="result-owner-info">
           Owner: {this.props.currentResult.owner}
           Address: {this.props.currentResult.address}
+          City: {this.props.currentResult.city}
           State: {this.props.currentResult.state}
         </div>
         <br />

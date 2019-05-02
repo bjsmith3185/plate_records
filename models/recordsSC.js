@@ -11,6 +11,7 @@ const scRecordsSchema = new Schema({
   vehicleColor: { type: String },
   owner: { type: String },
   address: { type: String },
+  city: { type: String },
   encounters: [{ type: Schema.Types.ObjectId, ref: "Encounters" }]
 });
 

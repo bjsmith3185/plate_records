@@ -9,7 +9,7 @@ class NewEncounter extends Component {
     driver: "",
     location: "",
     rs: "",
-    result: "",
+    result: "warning",
     encounterInfo: "",
     encounterState: "",
     encounterCity: "",
@@ -22,13 +22,16 @@ class NewEncounter extends Component {
     encounterCityError: "",
     encounterStateError: "",
 
+    defaultDisplayState: "", 
+
     // data related to the current vehicle search
     state: "",
     tag_id: "",
     tag: "",
 
     // search data is in local storage
-    tagIsValid: false
+    tagIsValid: false,
+
   };
 
  
@@ -36,7 +39,12 @@ class NewEncounter extends Component {
   componentWillMount = () => {
     this.checkForTagData();
     this.checkSession();
+    // console.log(this.state)
   };
+
+  // componentDidUpdate = () => {
+  //   console.log(this.state)
+  // }
 
   checkForTagData = () => {
     let storedValue = JSON.parse(sessionStorage.getItem("lastResult"));
@@ -47,11 +55,30 @@ class NewEncounter extends Component {
           tagIsValid: true,
           tag: storedValue.search.tag,
           state: storedValue.search.state,
-          tag_id: storedValue.search.tag_id
+          tag_id: storedValue.search.tag_id,
+          // set the encounter state to the tag state by default
+          encounterState: storedValue.search.state
         });
+      }
+
+      if (storedValue.search.state) {
+        this.setDisplayState(storedValue.search.state);
       }
     }
   };
+
+  setDisplayState = (value) => {
+    const stateArray = [{abrev: 'nc', name: "North Carolina"}, {abrev: 'sc', name: "South Carolina"}];
+    if (value) {
+      for (var i = 0; i < stateArray.length; i++) {
+        if ( stateArray[i].abrev === value) {
+          this.setState({
+            defaultDisplayState: stateArray[i].name
+          })
+        }
+      }
+    }
+  }
 
   handleChange = event => {
     const isCheckbox = event.target.type === "checkbox";
@@ -92,10 +119,6 @@ class NewEncounter extends Component {
     }
   };
 
-  // submit = event => {
-  //   event.preventDefault();
-  //   console.log(this.state)
-  // }
 
   submit = event => {
     event.preventDefault();
@@ -193,9 +216,9 @@ class NewEncounter extends Component {
       rsError = "Please enter reason for the stop.";
     }
 
-    if (!this.state.result) {
-      resultError = "Please enter result for the stop.";
-    }
+    // if (!this.state.result) {
+    //   resultError = "Please enter result for the stop.";
+    // }
 
     if (!this.state.encounterInfo) {
       encounterInfoError = "Please enter details about the stop.";
@@ -205,11 +228,11 @@ class NewEncounter extends Component {
       encounterCityError = "Please enter a city.";
     }
 
-    if (!this.state.encounterState) {
-      encounterStateError = "Please enter a state.";
-    } else if(!this.validateStateArray(this.state.encounterState)) {
-      encounterStateError = "Please enter a valid state"
-    }
+    // if (!this.state.encounterState) {
+    //   encounterStateError = "Please enter a state.";
+    // } else if(!this.validateStateArray(this.state.encounterState)) {
+    //   encounterStateError = "Please enter a valid state"
+    // }
 
     if (
       driverError ||
@@ -227,13 +250,40 @@ class NewEncounter extends Component {
         resultError: resultError,
         encounterInfoError: encounterInfoError,
         encounterCityError: encounterCityError,
-        encounterStateError: encounterStateError
+        encounterStateError: encounterStateError,
+        
       });
       return false;
     }
 
     return true;
   };
+
+  clearForm = () => {
+
+    sessionStorage.removeItem("encounterData");
+
+    this.setState({
+      driver: "",
+      location: "",
+      rs: "",
+      result: "warning",
+      encounterInfo: "",
+      encounterCity: "",
+      encounterState: "",
+      // Error data
+      driverError: "",
+      locationError: "",
+      rsError: "",
+      resultError: "",
+      encounterInfoError: "",
+      encounterCityError: "",
+      encounterStateError: ""
+    });
+
+    this.checkForTagData();
+
+  }
 
   render() {
     return (
@@ -246,6 +296,7 @@ class NewEncounter extends Component {
             <div onClick={this.demo} className="newencounter-demo text-center">
               Demo Data
             </div>
+            <div onClick={this.clearForm} className="text-right">Clear Form</div>
             <form className="newencounter-form-area">
               <div className="line-item">
                 <label className="line-title">Driver</label>
@@ -281,12 +332,12 @@ class NewEncounter extends Component {
                     name="encounterState"
                     onChange={this.handleChange}
                   >
-                    <option >Select</option>
+                    <option >{this.state.defaultDisplayState}</option>
                     <option
                       value="nc"
                     >North Carolina</option>
                     <option 
-                      value="nc"
+                      value="sc"
                     >South Carolina</option>
                   </select>
                
@@ -294,21 +345,6 @@ class NewEncounter extends Component {
                   {this.state.encounterStateError}
                 </div>
               </div>
-
-              {/* <div className="line-item">
-                <label className="line-title">State</label>
-                <input
-                  className="stop-input"
-                  value={this.state.encounterState}
-                  name="encounterState"
-                  onChange={this.handleChange}
-                  type="text"
-                  placeholder="State"
-                />
-                <div className="stop-form-error">
-                  {this.state.encounterStateError}
-                </div>
-              </div> */}
 
               <div className="line-item">
                 <label className="line-title">City</label>
@@ -345,7 +381,6 @@ class NewEncounter extends Component {
                     name="result"
                     onChange={this.handleChange}
                   >
-                    <option >Select</option>
                     <option
                       value="warning"
                     >warning</option>
@@ -363,15 +398,6 @@ class NewEncounter extends Component {
                     >Other</option>
                   </select>
 
-
-                {/* <input
-                  className="stop-input"
-                  value={this.state.result}
-                  name="result"
-                  onChange={this.handleChange}
-                  type="text"
-                  placeholder="Result of Stop"
-                /> */}
                 <div className="stop-form-error">{this.state.resultError}</div>
               </div>
 
@@ -396,7 +422,6 @@ class NewEncounter extends Component {
                 <button
                   className="text-center sto-form-btn btn btn-info"
                   onClick={this.submit}
-                  // disabled={this.state.isValid}
                 >
                   Submit
                 </button>
