@@ -163,6 +163,16 @@
        
 
        // planning for the UI 
+
+       * Create a landing page with background image and data box in center of page (done)
+
+       ** May create a new component to be used on the actual landing Page. That way it is easy to modify.
+
+       * Create a navbar with:
+        - menu button
+        - app name
+        - user name
+        - signout button
        
 
 

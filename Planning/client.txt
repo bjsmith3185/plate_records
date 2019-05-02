@@ -27,13 +27,14 @@ Mobile View
 -----------
 
     Navbar:
-        Name of app
-        Users Name
-        menu button
+        - Name of app
+        - Users Name
+        - menu button
             * signout
             * History
             * Manage Account
             * Color settings ( day / night )
+        - SignOut
 
     Body:
         Container holding 2 Tabs
