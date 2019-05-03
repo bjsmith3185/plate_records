@@ -2,6 +2,8 @@
 
 This App could assist a LEO during a traffic stop investigation.
 
+https://knowyourstop.herokuapp.com/
+
 The user can enter vehicle tag information and view 1) vehicle information 2) any previous vehicle stops and interaction with a LEO.
 
 Previously a LEO only had access to the drivers official history record ( a conviction on their driving record ). There was no record of each time the vehicle was stopped and issued a warning or if the citation was dropped in court. 
