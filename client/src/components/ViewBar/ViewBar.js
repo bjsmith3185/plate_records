@@ -52,17 +52,10 @@ class ViewBar extends Component {
     }
   };
 
-  // capitalize = string => {
-  //   return string
-  //     .toLowerCase()
-  //     .split(" ")
-  //     .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-  //     .join(" ");
-  // };
 
   render() {
-    console.log(this.props)
-    console.log(this.state)
+    // console.log(this.props)
+    // console.log(this.state)
     return (
       <div className="viewbar-area">
         <div
@@ -157,29 +150,4 @@ export default connect(
   mapDispachToProps
 )(ViewBar);
 
-{
-  /* <div className="viewbar-header">
-          <span onClick={() => this.switchView("search")} className="search">
-            Search
-          </span>
 
-          {this.state.isActive ? (
-            <span onClick={() => this.switchView("result")} className="results">
-              Results
-            </span>
-          ) : (
-            <span className="results-inactive">Results</span>
-          )}
-
-          {this.state.isActive ? (
-            <span
-              onClick={() => this.switchView("enterData")}
-              className="results"
-            >
-              Enter Data
-            </span>
-          ) : (
-            <span className="results-inactive">Enter Data</span>
-          )}
-        </div> */
-}

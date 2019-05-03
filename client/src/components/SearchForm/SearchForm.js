@@ -11,20 +11,6 @@ class SearchForm extends Component {
     errorState: ""
   };
 
-  componentDidMount() {}
-
-  // componentWillReceiveProps(nextProps) {
-  //   console.log("what is this")
-  //   console.log(nextProps)
-  //   if(nextProps.errors) {
-  //     console.log("true")
-  //     this.setState({
-  //       tag: '',
-  //       state: '',
-  //     })
-  //   }
-    
-  // }
 
   handleChange = event => {
     const isCheckbox = event.target.type === "checkbox";
@@ -118,58 +104,57 @@ class SearchForm extends Component {
 
   render() {
     // console.log(this.props.errors)
-    const errorDiv = this.props.errors.tag ? (<div className="search-error">{this.props.errors.tag}</div>) : (<div className="search-no-error"></div>)
+    const errorDiv = this.props.errors.tag ? (
+      <div className="search-error">{this.props.errors.tag}</div>
+    ) : (
+      <div className="search-no-error" />
+    );
 
     return (
       <div className="search-body">
         <div className="search-title text-center">
-          Enter Tag / State to Search
+          Enter Vehicle Info to Search
         </div>
-        <form>
+        <form className="search-form ">
           <div className="input-line">
             <label className="input-title">Tag</label>
             <input
-              className="search-input"
+              className="search-input-tag"
               value={this.state.tag}
               name="tag"
               onChange={this.handleChange}
               type="text"
               placeholder="Tag"
             />
-            <div className="form-error">{this.state.errorTag}</div>
+            <div className="form-error text-center">{this.state.errorTag}</div>
           </div>
 
           <div className="input-line">
             <label className="input-title">State</label>
             <input
-              className="search-input"
+              className="search-input-state"
               value={this.state.state}
               name="state"
               onChange={this.handleChange}
               type="text"
               placeholder="State"
             />
-            <div className="form-error">{this.state.errorState}</div>
+            <div className="form-error text-center">
+              {this.state.errorState}
+            </div>
           </div>
 
           <div className="search-btn-area text-center">
             <button
               className="text-center search-btn btn btn-info"
               onClick={this.submit}
-              // disabled={this.state.isValid}
             >
               Search
             </button>
           </div>
         </form>
-        {/* {this.props.errors.tag ? (<div className="search-error-area">{this.props.errors.tag}</div>) : (<div className="search-no-error"></div>)} */}
 
-
-        <div className="search-error-area text-center">
-        {errorDiv}
-        </div>
-     
-        {/* <div className="search-errors-area">{this.props.errors}</div> */}
+        <div className="search-error-area text-center">{errorDiv}</div>
       </div>
     );
   }

@@ -1,17 +1,71 @@
 
-
-.newencounter-title {
-    font-size: 30px;
-    font-weight: bold;
-    padding: 20px;
+.newencounter-area {
+    background: lightgray;
+    width: 100%;
+    border-top: 3px solid black;
 }
 
 
+.newencounter-title {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.newencounter-demo {
+    margin-left: 40%;
+    color: blue;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.newencounter-clear-form {
+    margin-left: 20%;
+    color: lightcoral;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.newencounter-form-area {
+    margin-top: 10px;
+}
 
 
+.line-item {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.line-title {
+    display:inline-block;
+    width: 25%;
+    text-align: center;
+    font-size: 14px;
+    color: black;
+    font-weight: 700
+}
+
+.stop-input {
+    display: inline-block;
+    width: 70%;
+}
 
 
+.line-title-rs {
+    vertical-align:text-bottom;
+}
 
+
+.line-title-info {
+    vertical-align: text-bottom;
+}
+
+.stop-form-btn-area {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
 
 
 

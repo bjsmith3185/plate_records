@@ -300,7 +300,6 @@ class NewEncounter extends Component {
             </div>
 
             <form className="newencounter-form-area">
-
               <div className="line-item">
                 <label className="line-title">Driver</label>
                 <input
@@ -358,21 +357,20 @@ class NewEncounter extends Component {
               </div>
 
               <div className="line-item">
-                <label className="line-title line-title-rs">Reason for Stop</label>
-                <textarea
+                <label className="line-title">Reason for Stop</label>
+                <input
                   className="stop-input"
-                  rows="2"
                   value={this.state.rs}
                   name="rs"
                   onChange={this.handleChange}
                   type="text"
                   placeholder="Reason for Stop"
-                ></textarea>
+                />
                 <div className="stop-form-error">{this.state.rsError}</div>
               </div>
 
               <div className="line-item">
-                <label className="line-title">Result</label>
+                <label className="line-title">Result of Stop</label>
 
                 <select name="result" onChange={this.handleChange}>
                   <option value="warning">warning</option>
@@ -386,7 +384,7 @@ class NewEncounter extends Component {
               </div>
 
               <div className="line-item">
-                <label className="line-title line-title-info">Information about the Stop</label>
+                <label className="line-title">Information about the Stop</label>
                 <textarea
                   className="stop-input"
                   value={this.state.encounterInfo}

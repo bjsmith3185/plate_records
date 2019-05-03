@@ -1,10 +1,10 @@
 
 
-.result-body {
-  background: lightcyan;
-  width: 90%;
-  margin-left: 10%;
-  /* height: 500px; */
+.result-area {
+  background: lightgray;
+  width: 100%;
+  border-top: 3px solid black;
+  
 
 }
 

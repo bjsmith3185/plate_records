@@ -182,7 +182,11 @@
             - Results 
             - Enter Encounter Data 
 
-        * Begin layout for search component. 
+        * Begin layout for search component. (done)
+
+        * Begin layout for Encounters component. 
+      
+
 
 
 
