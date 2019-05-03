@@ -47,7 +47,7 @@ class LandingPage extends Component {
       <div className="landing-page-container">
         <div className="landing-page-background"></div>
         <div className="landing-page-formbox">
-          <h1 className="landing-title text-center">Info Stop</h1>
+          <h1 className="landing-title text-center">Know Your Stop</h1>
 
           <div className="landing-demo text-center" onClick={this.demo}>
             demo login

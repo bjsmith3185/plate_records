@@ -4,6 +4,8 @@
   width: 100%;
   height: 75px;
   background: lightgray;
+
+  border-bottom: 1px solid darkgray;
 }
 
 .navbar-dropdown {
