@@ -1,13 +1,67 @@
 
-.encounter-occurance {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+.tag-occurance {
+  width: 80%;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 10px;
-  padding: 10px; 
+}
+
+.tag-state {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+
+.tag-state-var {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bolder;
+  color: red;
+  letter-spacing: 1px;
+}
+
+.tag-make-model-area {
+  width: 100%;
+  text-align: center;
+}
+
+.tag-make,
+.tag-model {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+}
+
+.tag-make-var,
+.tag-model-var {
+  font-size: 14px;
+  font-weight: bolder;
+  color: red;
+}
+
+.tag-make {
+  margin-right: 30px;
 }
 
 
 
+
+
+
+
+
+
+
+.multi-result-info {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: bolder;
+  color: blue;
+}
 
 
 

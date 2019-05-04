@@ -184,10 +184,20 @@
 
         * Begin layout for search component. (done)
 
-        * Begin layout for Encounters component. 
+
       
+    5/4 
+        ** Need to add session storeage to MultipleResults.js so it can be refreshed! (done)
 
+        
+        ** Add the length of the return array in MultipleResults.js line 50
+            - to read: Search returned (5) results from different states. (done)
 
+                * Begin layout for Encounters component. (in process)
+
+        * Add style to displayResults component
+            * Add style to MultipleResults component (in process)
+                - working on the TagList component.
 
 
 TODOS Later

@@ -15,9 +15,11 @@ class HomePage extends Component {
   loadPreviousSearch = () => {
     const savedView = JSON.parse(sessionStorage.getItem('view'))
     const savedData = JSON.parse(sessionStorage.getItem('lastResult'));
+    // check for multiple matches below
+    const savedMultiResult = JSON.parse(sessionStorage.getItem('multipleMatches'));
     if (savedView && savedData) {
       // Send data to store
-      this.props.setLastSearch(savedData, savedView)
+      this.props.setLastSearch(savedData, savedView, savedMultiResult)
     } 
   }
 
@@ -45,8 +47,8 @@ const mapStateToProps = state => {
 
 const mapDispachToProps = dispach => {
   return {
-    setLastSearch: (data, view) => {
-      dispach({ type: "PREV_RESULT", payload: { data, view }})
+    setLastSearch: (data, view, multi) => {
+      dispach({ type: "PREV_RESULT", payload: { data, view, multi }})
     }
 
   };

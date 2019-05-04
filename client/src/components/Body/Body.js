@@ -87,13 +87,13 @@ class Body extends Component {
 
         <ViewBar />
 
-        <div className="body-body">
+        <React.Fragment>
           {this.props.viewSearchComponent && <SearchForm />}
 
           {this.props.viewResultComponent && <DisplayResult />}
 
           {this.props.viewEnterDataComponent && <NewEncounter />}
-        </div>
+        </React.Fragment>
       </div>
     );
   }

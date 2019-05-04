@@ -6,14 +6,14 @@
 }
 
 
-.body-header {
+/* .body-header {
   width: 100%;
   background: orange;
   height: 50px;
   text-align: center;
-}
+} */
 
-.search {
+/* .search {
   width: 50%;
   text-align: left;
   margin-left: 15px;
@@ -21,16 +21,16 @@
   font-weight: bold;
   background: red;
 
-}
+} */
 
-.results {
+/* .results {
   width: 50%;
   text-align: right;
   margin-right: 15px;
   font-size: 14px;
   font-weight: bold;
   background: yellow
-}
+} */
 
 
 

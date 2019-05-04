@@ -43,12 +43,27 @@ class MultipleResults extends Component {
 
   render() {
  
-
+    console.log(this.props)
 
     return (
       <div className="multi-result-body">
-        <div className="multi-result-title text-center">A search without a state entered can provide multiple results</div>
-        <div className="multi-result-current-search text-center">{this.props.currentSearch.tag}</div>
+        
+
+         <div className="multi-result-tagbox text-center">
+            {this.props.currentSearch.tag}
+        </div>
+
+        <div className="multi-result-title text-center">
+        <span className="multi-result-qty"> {this.props.currentResult.length} </span>
+         Results</div>
+
+        {/* <div className="multi-result-title text-center">Search returned 
+        <span className="multi-result-qty"> {this.props.currentResult.length} </span>
+         results from multiple states</div> */}
+
+         {/* <hr className="multi-result-hr" /> */}
+
+     
         <TagList tags={this.props.currentResult} selectTag={this.selectTag} />
         
       </div>

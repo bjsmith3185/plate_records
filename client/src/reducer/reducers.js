@@ -84,7 +84,7 @@ const setData = (state = initialState, action) => {
   }
 
   if (action.type === "SET_MULTI_TAG_INFO") {
-    console.log(action.val)
+    // console.log(action.val)
 
     return {
       ...state,
@@ -110,6 +110,10 @@ const setData = (state = initialState, action) => {
 
   if (action.type === "SET_PREV_RESULT") {
     // console.log(action.val.payload)
+    let newMultiValue = false;
+    if(action.val.payload.multi) {
+      newMultiValue = true;
+    } 
 
     return {
       ...state,
@@ -117,7 +121,8 @@ const setData = (state = initialState, action) => {
       currentSearch: action.val.payload.data.search,
       viewSearchComponent: action.val.payload.view.viewSearchComponent,
       viewResultComponent: action.val.payload.view.viewResultComponent,
-      viewEnterDataComponent: action.val.payload.view.viewEnterDataComponent
+      viewEnterDataComponent: action.val.payload.view.viewEnterDataComponent,
+      multipleMatches: newMultiValue,
     };
   }
 

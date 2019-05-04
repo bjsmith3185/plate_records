@@ -8,6 +8,7 @@
   border-bottom: 1px solid darkgray;
 }
 
+/* need a media query at 700px for current setup */
 .navbar-dropdown {
   background: pink;
   position: fixed;
@@ -16,20 +17,23 @@
   width: 40px;
   height: 40px;
   margin-top: 15px;
-  margin-left: 15px;
+  margin-left: 5%;
   cursor: pointer;
 }
+
+
 
 
 .navbar-center-div {
   width: 100%;
   position: fixed;
   top: 0;
-  /* left: 0;
+  left: 0;
   margin-left: auto;
-  margin-right: auto; */
+  margin-right: auto;
 }
 
+/* need a media query at 700px for current setup */
 .navbar-logout-area {
   /* background: lightgreen; */
   position: fixed;
@@ -37,7 +41,7 @@
   right: 0;
   height: 30px;
   margin-top: 10px;
-  margin-right: 15px;
+  margin-right: 5%;
   cursor: pointer;
 }
 
