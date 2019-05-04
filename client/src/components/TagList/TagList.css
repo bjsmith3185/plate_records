@@ -1,3 +1,7 @@
+.tag-area {
+  margin-bottom: 25px;
+}
+
 
 .tag-occurance {
   width: 80%;
@@ -6,6 +10,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .tag-state {
@@ -23,13 +28,18 @@
   letter-spacing: 1px;
 }
 
-.tag-make-model-area {
+.tag-make-model-area,
+.tag-year-color-area,
+.tag-owner-area {
   width: 100%;
   text-align: center;
 }
 
 .tag-make,
-.tag-model {
+.tag-model,
+.tag-year,
+.tag-color,
+.tag-owner {
   display: inline-block;
   font-size: 12px;
   font-weight: bold;
@@ -37,22 +47,19 @@
 }
 
 .tag-make-var,
-.tag-model-var {
+.tag-model-var,
+.tag-year-var,
+.tag-color-var,
+.tag-owner-var {
   font-size: 14px;
   font-weight: bolder;
   color: red;
 }
 
-.tag-make {
+.tag-make,
+.tag-year {
   margin-right: 30px;
 }
-
-
-
-
-
-
-
 
 
 
@@ -61,6 +68,7 @@
   font-size: 14px;
   font-weight: bolder;
   color: blue;
+  margin-bottom: 10px;
 }
 
 
