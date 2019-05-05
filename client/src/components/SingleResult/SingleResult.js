@@ -20,9 +20,17 @@ class SingleResult extends Component {
     });
   };
 
-  capitalize = string => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
+  // capitalize = string => {
+  //   return string.charAt(0).toUpperCase() + string.slice(1);
+  // };
+
+  capitalize = (string) => {
+    return string
+      .toLowerCase()
+      .split(" ")
+      .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+      .join(" ");
+  }
 
   render() {
  
@@ -32,34 +40,97 @@ class SingleResult extends Component {
 
     return (
       <div className="result-body">
-        <div className="result-title text-center"> Result </div>
-        <div className="result-current-search">
+        <div className="result-title text-center">Vehicle Information </div>
+
+        <div className="single-tagbox text-center">
+            {this.props.currentSearch.tag}
+        </div>
+        <div className="single-tagbox-state text-center">
+          {this.props.currentSearch.state.toUpperCase()}
+        </div>
+
+
+        {/* <div className="result-current-search">
           Tag: {this.props.currentSearch.tag} State: {currentState}
+        </div> */}
+
+
+        <div className="single-result-area">
+
+                <div className="single-make-model-area">
+                  <div className="single-make">
+                    Make:
+                    <span className="single-make-var">
+                      {" "}
+                      {this.capitalize(this.props.currentResult.vehicleMake)}
+                    </span>
+                  </div>
+                  <div className="single-model">
+                    Model:
+                    <span className="single-model-var">
+                      {" "}
+                      {this.capitalize(this.props.currentResult.vehicleModel)}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="single-year-color-area">
+                  <div className="single-year">
+                    Year:
+                    <span className="single-year-var"> {this.props.currentResult.vehicleYear}</span>
+                  </div>
+                  <div className="single-color">
+                    Color:
+                    <span className="single-color-var">
+                      {" "}
+                      {this.capitalize(this.props.currentResult.vehicleColor)}
+                    </span>
+                  </div>
+                </div>
+
+              <hr />
+
+              <div className="single-owner-area">
+                  <div className="single-owner">
+                    Owner:
+                    <span className="single-owner-var"> {this.capitalize(this.props.currentResult.owner)}</span>
+                  </div>
+                  <div className="single-address">
+                    Address:
+                    <span className="single-address-var">
+                      {" "}
+                      {this.capitalize(this.props.currentResult.address)}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="single-city-state-area">
+                  <div className="single-city">
+                    City:
+                    <span className="single-city-var"> {this.capitalize(this.props.currentResult.city)}</span>
+                  </div>
+                  <div className="single-state">
+                    State:
+                    <span className="single-state-var">
+                      {" "}
+                      {this.props.currentResult.state.toUpperCase()}
+                    </span>
+                  </div>
+                </div>
+
+
         </div>
-        <br />
-        <div className="result-current-result-area">
-          <div className="result-vehicle-info">
-            {this.props.currentResult.vehicleYear},{" "}
-            {this.capitalize(this.props.currentResult.vehicleMake)},{" "}
-            {this.capitalize(this.props.currentResult.vehicleModel)},{" "}
-            {this.capitalize(this.props.currentResult.vehicleColor)}
-          </div>
-        </div>
-        <br />
-        <div className="result-owner-info">
-          Owner: {this.props.currentResult.owner}
-          Address: {this.props.currentResult.address}
-          City: {this.props.currentResult.city}
-          State: {this.props.currentResult.state}
-        </div>
+
         <br />
         {this.props.currentResult.encounters.length > 0 ? (
           <div className="result-encounters-area">
-            <div className="result-encounters-qty">This vehicle has had <span className="result-encounters-qty-result">{this.props.currentResult.encounters.length}</span> encounters with a LEO</div>
+            <div className="result-encounters-qty text-center">Number of Encounters with a LEO:
+            <span className="result-encounters-qty-var">{this.props.currentResult.encounters.length}</span> 
+            </div>
             <Encounters encounters={this.props.currentResult.encounters} />
           </div>
         ) : (
-          <div className="result-encoutners-none">
+          <div className="result-encoutners-none text-center">
             No vehicle stops recorded
           </div>
         )}

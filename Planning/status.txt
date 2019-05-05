@@ -193,11 +193,17 @@
         ** Add the length of the return array in MultipleResults.js line 50
             - to read: Search returned (5) results from different states. (done)
 
-                * Begin layout for Encounters component. (in process)
-
         * Add style to displayResults component
-            * Add style to MultipleResults component (in process)
-                - working on the TagList component.
+            * Add style to MultipleResults component (done)
+
+        * Add style to display results single result component. (in process)
+            - style for the vehicle info
+            - style for div that shows if there are encounters or not 
+
+            - Working on style for the encounters component.
+        
+        * Begin layout for Encounters component. (in process)
+     
 
 
 TODOS Later
