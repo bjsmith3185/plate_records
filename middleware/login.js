@@ -12,8 +12,8 @@ module.exports = {
       usersController
         .findOne(search)
         .then(dbresults => {
-          console.log("here")
-          console.log(dbresults);
+          // console.log("here")
+          // console.log(dbresults);
 
           // if the user is not found
           if (dbresults.length === 0) {

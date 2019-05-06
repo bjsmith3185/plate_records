@@ -9,8 +9,8 @@ const {
 } = require("./validateOperators");
 
 module.exports = function validateNewEncounter(data) {
-  console.log("is it here")
-  console.log(data)
+  // console.log("is it here")
+  // console.log(data)
 
   let errors = {};
   let isValid = false;

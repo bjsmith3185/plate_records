@@ -67,6 +67,7 @@ router.route("/:state/:tag").get(check.validateToken, (req, res) => {
       search
         .searchStateThenTag(searchData.state, searchData.tag)
         .then(dbresults => {
+          console.log(dbresults)
            res.json(dbresults);
         })
         .catch(err => {
