@@ -38,7 +38,7 @@ module.exports = {
     if (returnData.length != 0) {
         resolve(returnData);
     } else {
-        resolve({error: {tag: "tag not found" } })
+        resolve({error: {tag: "Tag Not Found" } })
     }
 
     });
@@ -58,7 +58,7 @@ module.exports = {
                 if (dbresult.length != 0) {
                   resolve(dbresult);
               } else {
-                  resolve({error: {tag: "tag not found" } })
+                  resolve({error: {tag: "Tag Not Found" } })
               }
               })
               .catch(err => {
@@ -76,7 +76,7 @@ module.exports = {
                 if (dbresult.length != 0) {
                   resolve(dbresult);
               } else {
-                  resolve({error: {tag: "tag not found" } })
+                  resolve({error: {tag: "Tag Not Found" } })
               }
               })
               .catch(err => {

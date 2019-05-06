@@ -11,7 +11,6 @@ function capitalize(string) {
 
 const TagList = props => (
   <div className="tag-area">
-    {/* <div className="tags-heading text-center">Results, Select one to continue</div> */}
     {props.tags.map((item, index) => (
       <div
         key={item._id}
@@ -68,9 +67,3 @@ const TagList = props => (
 );
 
 export default TagList;
-// vehicleMake
-// vehicleModel
-// vehiclecolor
-// vehicleYear
-// owner
-// state

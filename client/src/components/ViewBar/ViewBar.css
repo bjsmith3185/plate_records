@@ -4,11 +4,9 @@
   height: 25px;
   background-color: lightgray;
   padding-top: 15px;
-
   position: fixed;
   top: 63;
   left: 0;
-
   z-index: 2;
 }
 
@@ -17,9 +15,7 @@
   height: 20px;
   width: 33.3%;
   display: inline-block;
-
   border-bottom: 1px solid black;
- 
   background-color: lightgray;
 }
 
@@ -28,21 +24,14 @@
   background:black;
   margin-left: auto;
   margin-right: auto;
-
   font-size: 14px;
   font-weight: bold;
-
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-
   color: lightgray;
-
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
-
-  
-
 }
 
 .viewbar-search-active {
@@ -50,27 +39,22 @@
   background:lightgray;
   margin-left: auto;
   margin-right: auto;
-
   font-size: 14px;
   font-weight: bold;
-
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
-
   z-index: 2;
 }
-
 
 .vb-result {
   background: lightgray;
   height: 20px;
   width: 33.3%;
   display: inline-block;
- 
-  border-bottom: 1px solid black;
+   border-bottom: 1px solid black;
 }
 
 .viewbar-result {
@@ -78,15 +62,11 @@
   background:black;
   margin-left: auto;
   margin-right: auto;
-
   font-size: 14px;
   font-weight: bold;
-
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-
   color: lightgray;
-
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
@@ -97,16 +77,13 @@
   background:lightgray;
   margin-left: auto;
   margin-right: auto;
-
   font-size: 14px;
   font-weight: bold;
-
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
-
   z-index: 2;
 }
 
@@ -115,7 +92,6 @@
   height: 20px;
   width: 33.3%;
   display: inline-block;
-
   border-bottom: 1px solid black;
 }
 
@@ -124,15 +100,11 @@
   background:black;
   margin-left: auto;
   margin-right: auto;
-
   font-size: 14px;
   font-weight: bold;
-
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-
   color: lightgray;
-
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
@@ -143,64 +115,13 @@
   background:lightgray;
   margin-left: auto;
   margin-right: auto;
-
   font-size: 14px;
   font-weight: bold;
-
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
-
   z-index: 2;
 }
-
-
-
-
-/* .viewbar-search {
-  background: red;
-  height: 15px; 
-
-} */
-
-/* .viewbar-result {
-  background: yellow;
-} */
-
-/* .viewbar-encounter {
-  background: green;
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

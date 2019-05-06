@@ -7,32 +7,12 @@ import MultipleResults from "../MultipleResults";
 
 
 class DisplayResult extends Component {
-  state = {};
-
-  componentDidMount() {}
-
-  componentWillReceiveProps(nextProps) {}
-
-  handleChange = event => {
-    const isCheckbox = event.target.type === "checkbox";
-    this.setState({
-      [event.target.name]: isCheckbox
-        ? event.target.checked
-        : event.target.value
-    });
-  };
-
-  capitalize = string => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
 
   render() {
  
-  
-
-    return (
+  return (
       <div className="result-area">
-        {/* <div className="result-title text-center"> Search Results </div> */}
+
         {this.props.multipleMatches ? (
           <MultipleResults />
         ) : (
@@ -48,22 +28,13 @@ class DisplayResult extends Component {
 const mapStateToProps = state => {
   // console.log(state)
   return {
-    currentResult: state.currentResult,
-    currentSearch: state.currentSearch,
     multipleMatches: state.multipleMatches,
-
   };
 };
 
 // functions to dispatch actions
 const mapDispachToProps = dispach => {
   return {
-    searchTag: (tag, token, state) => {
-      dispach({
-        type: "SEARCH_TAG",
-        payload: { tag, token, state }
-      });
-    }
   };
 };
 

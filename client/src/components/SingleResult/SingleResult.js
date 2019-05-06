@@ -7,10 +7,6 @@ import Encounters from "../Encounters";
 class SingleResult extends Component {
   state = {};
 
-  componentDidMount() {}
-
-  componentWillReceiveProps(nextProps) {}
-
   handleChange = event => {
     const isCheckbox = event.target.type === "checkbox";
     this.setState({
@@ -20,112 +16,106 @@ class SingleResult extends Component {
     });
   };
 
-  // capitalize = string => {
-  //   return string.charAt(0).toUpperCase() + string.slice(1);
-  // };
-
-  capitalize = (string) => {
+  capitalize = string => {
     return string
       .toLowerCase()
       .split(" ")
       .map(s => s.charAt(0).toUpperCase() + s.substring(1))
       .join(" ");
-  }
+  };
 
   render() {
- 
-    const currentState = this.props.currentSearch.state
-      ? this.props.currentSearch.state.toUpperCase()
-      : "No State Entered";
-
     return (
       <div className="result-body">
         <div className="result-title text-center">Vehicle Information </div>
 
         <div className="single-tagbox text-center">
-            {this.props.currentSearch.tag}
+          {this.props.currentSearch.tag}
         </div>
         <div className="single-tagbox-state text-center">
           {this.props.currentSearch.state.toUpperCase()}
         </div>
 
-
-        {/* <div className="result-current-search">
-          Tag: {this.props.currentSearch.tag} State: {currentState}
-        </div> */}
-
-
         <div className="single-result-area">
+          <div className="single-make-model-area">
+            <div className="single-make">
+              Make:
+              <span className="single-make-var">
+                {" "}
+                {this.capitalize(this.props.currentResult.vehicleMake)}
+              </span>
+            </div>
+            <div className="single-model">
+              Model:
+              <span className="single-model-var">
+                {" "}
+                {this.capitalize(this.props.currentResult.vehicleModel)}
+              </span>
+            </div>
+          </div>
 
-                <div className="single-make-model-area">
-                  <div className="single-make">
-                    Make:
-                    <span className="single-make-var">
-                      {" "}
-                      {this.capitalize(this.props.currentResult.vehicleMake)}
-                    </span>
-                  </div>
-                  <div className="single-model">
-                    Model:
-                    <span className="single-model-var">
-                      {" "}
-                      {this.capitalize(this.props.currentResult.vehicleModel)}
-                    </span>
-                  </div>
-                </div>
+          <div className="single-year-color-area">
+            <div className="single-year">
+              Year:
+              <span className="single-year-var">
+                {" "}
+                {this.props.currentResult.vehicleYear}
+              </span>
+            </div>
+            <div className="single-color">
+              Color:
+              <span className="single-color-var">
+                {" "}
+                {this.capitalize(this.props.currentResult.vehicleColor)}
+              </span>
+            </div>
+          </div>
 
-                <div className="single-year-color-area">
-                  <div className="single-year">
-                    Year:
-                    <span className="single-year-var"> {this.props.currentResult.vehicleYear}</span>
-                  </div>
-                  <div className="single-color">
-                    Color:
-                    <span className="single-color-var">
-                      {" "}
-                      {this.capitalize(this.props.currentResult.vehicleColor)}
-                    </span>
-                  </div>
-                </div>
+          <div className="single-line-break" />
 
-                <div className="single-line-break"></div>
+          <div className="single-owner-area">
+            <div className="single-owner">
+              Owner:
+              <span className="single-owner-var">
+                {" "}
+                {this.capitalize(this.props.currentResult.owner)}
+              </span>
+            </div>
+            <div className="single-address">
+              Address:
+              <span className="single-address-var">
+                {" "}
+                {this.capitalize(this.props.currentResult.address)}
+              </span>
+            </div>
+          </div>
 
-                <div className="single-owner-area">
-                  <div className="single-owner">
-                    Owner:
-                    <span className="single-owner-var"> {this.capitalize(this.props.currentResult.owner)}</span>
-                  </div>
-                  <div className="single-address">
-                    Address:
-                    <span className="single-address-var">
-                      {" "}
-                      {this.capitalize(this.props.currentResult.address)}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="single-city-state-area">
-                  <div className="single-city">
-                    City:
-                    <span className="single-city-var"> {this.capitalize(this.props.currentResult.city)}</span>
-                  </div>
-                  <div className="single-state">
-                    State:
-                    <span className="single-state-var">
-                      {" "}
-                      {this.props.currentResult.state.toUpperCase()}
-                    </span>
-                  </div>
-                </div>
-
-
+          <div className="single-city-state-area">
+            <div className="single-city">
+              City:
+              <span className="single-city-var">
+                {" "}
+                {this.capitalize(this.props.currentResult.city)}
+              </span>
+            </div>
+            <div className="single-state">
+              State:
+              <span className="single-state-var">
+                {" "}
+                {this.props.currentResult.state.toUpperCase()}
+              </span>
+            </div>
+          </div>
         </div>
 
         <br />
         {this.props.currentResult.encounters.length > 0 ? (
           <div className="result-encounters-area">
-            <div className="result-encounters-qty text-center">Number of Encounters with a LEO:
-            <span className="result-encounters-qty-var">{this.props.currentResult.encounters.length}</span> 
+            <div className="result-encounters-qty text-center">
+              Number of Encounters with a LEO:
+              <span className="result-encounters-qty-var">
+                {this.props.currentResult.encounters.length}
+              </span>
             </div>
             <Encounters encounters={this.props.currentResult.encounters} />
           </div>
@@ -134,31 +124,6 @@ class SingleResult extends Component {
             No vehicle stops recorded
           </div>
         )}
-
-
-
-        {/* {this.props.currentResult.encounters.length > 0 ? (
-          // if result.length = 0  or if result.lenght is more that one 
-          <div>
-          {this.props.currentResult.enconters.length === 1 ? (
-          <div className="result-encounters-area">
-            <Encounters encounters={this.props.currentResult.encounters} />
-          </div>
-          ) : (
-          <div className="result-encounters-area">
-            <div className="result-encounters-qty">{this.props.currentResult.encounters.length}</div>
-            <Encounters encounters={this.props.currentResult.encounters} />
-          </div>
-          )}
-
-          </div>
-        ) : (
-          <div className="result-encoutners-none">
-            No vehicle stops recorded
-          </div>
-        )} */}
-
-        
       </div>
     );
   }
@@ -166,7 +131,6 @@ class SingleResult extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  
   return {
     currentResult: state.currentResult,
     currentSearch: state.currentSearch

@@ -4,12 +4,9 @@
   background: lightgray;
   width: 100%;
   margin-bottom: 20px;
-
   border-top: 3px solid black;
   margin-top: 32px;
-
 }
-
 
 .result-title {
   font-size: 20px;
@@ -32,14 +29,12 @@
   background: rgb(161, 160, 160);
 }
 
-
 .single-tagbox-state {
   font-size: 16px;
   font-weight: bold;
   color: blue;
   letter-spacing: 1px;
 }
-
 
 .single-result-area {
   width: 90%;
@@ -57,7 +52,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 
 .single-make-model-area,
 .single-year-color-area,
@@ -96,7 +90,6 @@
   margin-right: 30px;
 }
 
-
 .single-owner,
 .single-address {
   font-size: 12px;
@@ -111,7 +104,6 @@
   color: blue;
 }
 
-
 .result-encounters-area {
   width: 100%;
 }
@@ -124,7 +116,6 @@
   border-radius: 10px;
   background: red;
   color: white;
-
 }
 
 .result-encounters-qty-var {

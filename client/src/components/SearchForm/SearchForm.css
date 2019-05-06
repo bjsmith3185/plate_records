@@ -16,11 +16,6 @@
   font-weight: bold;
 }
 
-
-/* .search-form {
-  margin-top: 10px;
-} */
-
 .input-line {
   margin-top: 10px;
 }
@@ -54,7 +49,12 @@
 }
 
 
-
+.search-error-area {
+  color: red;
+  margin-top: 20px;
+  font-weight: bolder;
+  font-size: 20px;
+}
 
 
 

@@ -21,14 +21,12 @@ class NewEncounter extends Component {
     encounterInfoError: "",
     encounterCityError: "",
     encounterStateError: "",
-
+    
     defaultDisplayState: "",
-
     // data related to the current vehicle search
     state: "",
     tag_id: "",
     tag: "",
-
     // search data is in local storage
     tagIsValid: false
   };
@@ -36,18 +34,12 @@ class NewEncounter extends Component {
   componentWillMount = () => {
     this.checkForTagData();
     this.checkSession();
-    // console.log(this.state)
   };
-
-  // componentDidUpdate = () => {
-  //   console.log(this.state)
-  // }
 
   checkForTagData = () => {
     let storedValue = JSON.parse(sessionStorage.getItem("lastResult"));
     if (storedValue) {
       if (storedValue.search.tag_id) {
-        // console.log("tag _id is in session storage")
         this.setState({
           tagIsValid: true,
           tag: storedValue.search.tag,
@@ -211,10 +203,6 @@ class NewEncounter extends Component {
       rsError = "Please enter reason for the stop.";
     }
 
-    // if (!this.state.result) {
-    //   resultError = "Please enter result for the stop.";
-    // }
-
     if (!this.state.encounterInfo) {
       encounterInfoError = "Please enter details about the stop.";
     }
@@ -222,12 +210,6 @@ class NewEncounter extends Component {
     if (!this.state.encounterCity) {
       encounterCityError = "Please enter a city.";
     }
-
-    // if (!this.state.encounterState) {
-    //   encounterStateError = "Please enter a state.";
-    // } else if(!this.validateStateArray(this.state.encounterState)) {
-    //   encounterStateError = "Please enter a valid state"
-    // }
 
     if (
       driverError ||

@@ -29,15 +29,12 @@ class Navbar extends Component {
       <div className="navbar-area">
         <div className="navbar-dropdown">
             <button className="navbar-menu-button btn-default">&#9776;</button>
-
-          {/* <div className="navbar-menu text-center">&#9776;</div> */}
         </div>
 
         <div className="navbar-center-div text-center">
           <div className="navbar-appname text-center">Know Your Stop</div>
 
           <div className="navbar-username text-center">
-            {/* {this.props.name} */}
             {this.capitalize(this.props.name)}
           </div>
 

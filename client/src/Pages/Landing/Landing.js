@@ -45,7 +45,7 @@ class LandingPage extends Component {
 
     return (
       <div className="landing-page-container">
-        <div className="landing-page-background"></div>
+        <div className="landing-page-background" />
         <div className="landing-page-formbox">
           <h1 className="landing-title text-center">Know Your Stop</h1>
 

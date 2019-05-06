@@ -6,11 +6,6 @@ import TagList from "../TagList";
 
 
 class MultipleResults extends Component {
-  state = {};
-
-  componentDidMount() {}
-
-  componentWillReceiveProps(nextProps) {}
 
   handleChange = event => {
     const isCheckbox = event.target.type === "checkbox";
@@ -21,13 +16,9 @@ class MultipleResults extends Component {
     });
   };
 
-  capitalize = string => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
+
 
   selectTag = (index) => {
-    // console.log("select this tag " + index)
-    // set this id to the store, change multipleMatches: false
     let data = {
       currentResult: this.props.currentResult[index],
       multipleMatches: false,
@@ -37,18 +28,14 @@ class MultipleResults extends Component {
         state: this.props.currentResult[index].state
       }
     }
-    // console.log(data)
-    this.props.selectTag(data)
+     this.props.selectTag(data)
   }
 
   render() {
- 
-    console.log(this.props)
-
+    // console.log(this.props)
     return (
       <div className="multi-result-body">
         
-
          <div className="multi-result-tagbox text-center">
             {this.props.currentSearch.tag}
         </div>
@@ -56,13 +43,6 @@ class MultipleResults extends Component {
         <div className="multi-result-title text-center">
         <span className="multi-result-qty"> {this.props.currentResult.length} </span>
          Results</div>
-
-        {/* <div className="multi-result-title text-center">Search returned 
-        <span className="multi-result-qty"> {this.props.currentResult.length} </span>
-         results from multiple states</div> */}
-
-         {/* <hr className="multi-result-hr" /> */}
-
      
         <TagList tags={this.props.currentResult} selectTag={this.selectTag} />
         

@@ -3,11 +3,8 @@
 .multi-result-body {
   background: lightgray;
   width: 100%;
-  
   border-top: 3px solid black;
   margin-top: 32px;
-
-
 }
 
 
@@ -55,8 +52,6 @@
 .multi-result-hr {
   border-bottom: 1px solid black;
   width: 95%;
-
-
 }
 
 

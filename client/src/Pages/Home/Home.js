@@ -6,7 +6,6 @@ import Navbar from "../../components/Navbar";
 import Body from "../../components/Body";
 import ViewBar from "../../components/ViewBar";
 
-
 class HomePage extends Component {
   componentWillMount() {
     // Check session storage for any search data
@@ -14,30 +13,27 @@ class HomePage extends Component {
   }
 
   loadPreviousSearch = () => {
-    const savedView = JSON.parse(sessionStorage.getItem('view'))
-    const savedData = JSON.parse(sessionStorage.getItem('lastResult'));
+    const savedView = JSON.parse(sessionStorage.getItem("view"));
+    const savedData = JSON.parse(sessionStorage.getItem("lastResult"));
     // check for multiple matches below
-    const savedMultiResult = JSON.parse(sessionStorage.getItem('multipleMatches'));
+    const savedMultiResult = JSON.parse(
+      sessionStorage.getItem("multipleMatches")
+    );
     if (savedView && savedData) {
       // Send data to store
-      this.props.setLastSearch(savedData, savedView, savedMultiResult)
-    } 
-  }
-
+      this.props.setLastSearch(savedData, savedView, savedMultiResult);
+    }
+  };
 
   render() {
     // console.log(this.props)
     return (
       <div className="home-area">
-      {/* <div className="home-navbar-area"> */}
-      <Navbar />
+        <Navbar />
 
-      <ViewBar />
-      {/* </div> */}
-      
-      
-      <Body />
-   
+        <ViewBar />
+
+        <Body />
       </div>
     );
   }
@@ -46,17 +42,14 @@ class HomePage extends Component {
 // this brings in the state to display on this component
 const mapStateToProps = state => {
   // console.log(state)
-  return {
- 
-  };
+  return {};
 };
 
 const mapDispachToProps = dispach => {
   return {
     setLastSearch: (data, view, multi) => {
-      dispach({ type: "PREV_RESULT", payload: { data, view, multi }})
+      dispach({ type: "PREV_RESULT", payload: { data, view, multi } });
     }
-
   };
 };
 

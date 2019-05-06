@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./ViewBar.css";
-// import history from "../../history/history";
 
 // Redux
 import { connect } from "react-redux";
@@ -23,7 +22,6 @@ class ViewBar extends Component {
   };
 
   switchView = view => {
-    // console.log('clicked');
     let newView = {
       viewSearchComponent: false,
       viewResultComponent: false,
@@ -52,7 +50,6 @@ class ViewBar extends Component {
     }
   };
 
-
   render() {
     // console.log(this.props)
     // console.log(this.state)
@@ -69,8 +66,6 @@ class ViewBar extends Component {
           )}
         </div>
 
-
-
         {this.state.isActive ? (
           <div
             onClick={() => this.switchView("result")}
@@ -83,9 +78,7 @@ class ViewBar extends Component {
             )}
           </div>
         ) : (
-          <div
-            className="vb-result text-center"
-          >
+          <div className="vb-result text-center">
             {this.props.viewResultComponent ? (
               <div className="viewbar-result-active">Results</div>
             ) : (
@@ -106,9 +99,7 @@ class ViewBar extends Component {
             )}
           </div>
         ) : (
-          <div
-            className="vb-encounter text-center"
-          >
+          <div className="vb-encounter text-center">
             {this.props.viewEnterDataComponent ? (
               <div className="viewbar-encounter-active">Enter Data</div>
             ) : (
@@ -149,5 +140,3 @@ export default connect(
   mapStateToProps,
   mapDispachToProps
 )(ViewBar);
-
-

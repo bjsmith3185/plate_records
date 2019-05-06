@@ -211,7 +211,11 @@
         ** navbar need z-index. now it is sticky when the page can be scrolled. (done)
         ** also need to make the ViewBar component sticky so the user can change views without scrolling to the top. (done)
 
-        * Add hamburger icon to navbar 
+        * Add hamburger icon to navbar (done)
+
+        * Clean up client side code, remove unnecessary lines (done)
+
+        * trouble shoot the deployed version. 
 
 
 
