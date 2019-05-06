@@ -17,6 +17,8 @@ class SingleResult extends Component {
   };
 
   capitalize = string => {
+    console.log("this is the string parameter")
+    console.log(string)
     return string
       .toLowerCase()
       .split(" ")
