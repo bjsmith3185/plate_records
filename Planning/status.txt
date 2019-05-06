@@ -193,17 +193,26 @@
         ** Add the length of the return array in MultipleResults.js line 50
             - to read: Search returned (5) results from different states. (done)
 
-        * Add style to displayResults component
-            * Add style to MultipleResults component (done)
+        * Add style to displayResults component (done)
 
-        * Add style to display results single result component. (in process)
-            - style for the vehicle info
-            - style for div that shows if there are encounters or not 
+    5/5
 
-            - Working on style for the encounters component.
+        * Add style to display results single result component. (done)
+            - style for the vehicle info (done)
+            - style for div that shows if there are encounters or not (done)
+
+            - Working on style for the encounters component. (done)
         
-        * Begin layout for Encounters component. (in process)
-     
+        * Begin layout for Encounters component. (done)
+
+        
+
+    5/6
+        ** navbar need z-index. now it is sticky when the page can be scrolled. (done)
+        ** also need to make the ViewBar component sticky so the user can change views without scrolling to the top. (done)
+
+        * Add hamburger icon to navbar 
+
 
 
 TODOS Later

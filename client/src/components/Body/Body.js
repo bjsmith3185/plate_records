@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Body.css";
-import ViewBar from "../../components/ViewBar";
+// import ViewBar from "../../components/ViewBar";
 import SearchForm from "../../components/SearchForm";
 import DisplayResult from "../../components/DisplayResult";
 import NewEncounter from "../../components/NewEncounter";
@@ -85,7 +85,7 @@ class Body extends Component {
           )}
         </div> */}
 
-        <ViewBar />
+        {/* <ViewBar /> */}
 
         <React.Fragment>
           {this.props.viewSearchComponent && <SearchForm />}

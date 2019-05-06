@@ -1,7 +1,11 @@
 
 
 .multi-result-body {
-  margin-top: 10px;
+  background: lightgray;
+  width: 100%;
+  
+  border-top: 3px solid black;
+  margin-top: 32px;
 
 
 }

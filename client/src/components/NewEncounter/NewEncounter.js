@@ -414,8 +414,8 @@ class NewEncounter extends Component {
           </div>
         ) : (
           <div>
-            <div className="newencounter-notag-area">
-              Enter a vehicle tag before proceding
+            <div className="newencounter-notag-area text-center">
+              Enter/Select a vehicle tag before proceding
             </div>
           </div>
         )}

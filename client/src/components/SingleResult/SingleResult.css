@@ -3,8 +3,10 @@
 .result-body {
   background: lightgray;
   width: 100%;
-
   margin-bottom: 20px;
+
+  border-top: 3px solid black;
+  margin-top: 32px;
 
 }
 
@@ -16,7 +18,7 @@
 
 .single-tagbox {
   margin-top: 15px;
-  border: 2px solid rgb(148, 142, 142);
+  border: 2px solid rgb(105, 104, 104);
   width: 90px;
   margin-left: auto;
   margin-right: auto;
@@ -27,6 +29,7 @@
   padding-bottom: 7px;
   border-radius: 3px;
   color: blue;
+  background: rgb(161, 160, 160);
 }
 
 
@@ -45,6 +48,14 @@
   border: 1px solid black;
   border-radius: 10px;
   margin-top: 10px;
+  background: rgb(161, 160, 160);
+}
+
+.single-line-break {
+  border-bottom: 1px solid gray;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -76,7 +87,7 @@
 .single-state-var {
   font-size: 14px;
   font-weight: bolder;
-  color: red;
+  color: blue;
 }
 
 .single-make,
@@ -97,7 +108,7 @@
 .single-address-var {
   font-size: 14px;
   font-weight: bolder;
-  color: red;
+  color: blue;
 }
 
 

@@ -28,7 +28,9 @@ class Navbar extends Component {
     return (
       <div className="navbar-area">
         <div className="navbar-dropdown">
-          <div className="navbar-menu">Menu</div>
+            <button className="navbar-menu-button btn-default">&#9776;</button>
+
+          {/* <div className="navbar-menu text-center">&#9776;</div> */}
         </div>
 
         <div className="navbar-center-div text-center">

@@ -4,6 +4,7 @@ import "./Home.css";
 import { connect } from "react-redux";
 import Navbar from "../../components/Navbar";
 import Body from "../../components/Body";
+import ViewBar from "../../components/ViewBar";
 
 
 class HomePage extends Component {
@@ -28,7 +29,12 @@ class HomePage extends Component {
     // console.log(this.props)
     return (
       <div className="home-area">
+      {/* <div className="home-navbar-area"> */}
       <Navbar />
+
+      <ViewBar />
+      {/* </div> */}
+      
       
       <Body />
    

@@ -88,9 +88,9 @@ class SingleResult extends Component {
                   </div>
                 </div>
 
-              <hr />
+                <div className="single-line-break"></div>
 
-              <div className="single-owner-area">
+                <div className="single-owner-area">
                   <div className="single-owner">
                     Owner:
                     <span className="single-owner-var"> {this.capitalize(this.props.currentResult.owner)}</span>

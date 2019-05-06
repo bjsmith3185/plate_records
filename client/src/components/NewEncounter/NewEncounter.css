@@ -3,6 +3,8 @@
     background: lightgray;
     width: 100%;
     border-top: 3px solid black;
+    margin-top: 35px;
+    
 }
 
 
@@ -68,7 +70,12 @@
 }
 
 
-
+.newencounter-notag-area {
+    margin-top: 15px;
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+}
 
 
 
