@@ -217,6 +217,7 @@
 
         * trouble shoot the deployed version. 
 
+        ** On SingleResults component: the state-var below the tag image need to be "north carolina" instead of nc.
 
 
 TODOS Later
