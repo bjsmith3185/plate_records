@@ -31,8 +31,8 @@ router.route("/all/:tag").get(check.validateToken, (req, res) => {
       search
         .searchAllCollections(searchData.tag)
         .then(dbresults => {
-          console.log("what is this")
-          console.log(dbresults)
+          // console.log("what is this")
+          // console.log(dbresults)
           res.json(dbresults);
         })
         .catch(err => {

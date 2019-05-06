@@ -17,8 +17,6 @@ class SingleResult extends Component {
   };
 
   capitalize = string => {
-    console.log("this is the string parameter")
-    console.log(string)
     return string
       .toLowerCase()
       .split(" ")
@@ -27,8 +25,7 @@ class SingleResult extends Component {
   };
 
   render() {
-    console.log("below is the props coming into render function")
-    console.log(this.props)
+
     return (
       <div className="result-body">
         <div className="result-title text-center">Vehicle Information </div>
@@ -135,8 +132,6 @@ class SingleResult extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  console.log("below is the state coming into SingleResult.js")
-  console.log(state)
   return {
     currentResult: state.currentResult,
     currentSearch: state.currentSearch
