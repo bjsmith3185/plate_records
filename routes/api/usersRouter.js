@@ -21,7 +21,8 @@ router.route("/all").get((req, res) => {
 
 // create new user route
 router.route("/new").post((req, res) => {
-  // console.log("in the create user route");
+  console.log("in the create user route");
+  console.log(req.body)
   // check input thru validator
   let { errors, isValid } = validate.validateLogin(req.body);
   if (!isValid) {

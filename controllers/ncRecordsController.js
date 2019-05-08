@@ -67,10 +67,11 @@ module.exports = {
     return db.NCRecords
       .create(data)
   },
-  // update: function (id, data) {
-  //   return db.NCRecords
-  //     .findOneAndUpdate(id, data, {upsert: true})
-  // },
+
+  createMany: function (data) {
+    return db.NCRecords
+      .insertMany(data)
+  },
   update: function (id, data) {
     return db.NCRecords
       .findOneAndUpdate({_id: id}, data, {upsert: true})

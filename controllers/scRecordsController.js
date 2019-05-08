@@ -63,6 +63,12 @@ module.exports = {
     return db.SCRecords
       .create(data)
   },
+  createMany: function (data) {
+    console.log("in controller")
+    console.log(data)
+    return db.SCRecords
+      .insertMany(data)
+  },
   update: function (id, data) {
     return db.SCRecords
       .findOneAndUpdate(id, data, {upsert: true})

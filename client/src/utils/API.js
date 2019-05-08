@@ -23,10 +23,24 @@ export default {
 
   stopData: function (state, tag, data, token) {
     var config = { "headers": {'authorization': token}};
-    console.log(data)
-    console.log(config)
+    // console.log(data)
+    // console.log(config)
     return axios.post("/api/encounter/new/" + tag + "/" + state, data, config)
-  }
+  },
+
+  addNewUser: function (data) {
+    return axios.post("/api/users/new", data)
+  },
+
+  addNewTags: function (state, data) {
+    return axios.post("/api/tag/new/multi/" + state, data)
+  },
+
+  removeEncounters: function () {
+    // console.log("!!!!!!")
+    return axios.delete("/api/encounter/delete/all")
+  },
+  
 
 };
 

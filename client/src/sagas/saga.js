@@ -293,3 +293,78 @@ export function* watchStopData() {
 }
 
 //-------------------------------------------------------
+// Add new user
+function* addUserAsync(data) {
+  // set view status in session storage
+  // console.log("saga add new user")
+  // console.log(data)
+
+  const newUser = yield API.addNewUser(data.payload.data);
+
+  yield put({ type: "ADDED_USER", val: newUser.data });
+}
+
+export function* watchAddUser() {
+  yield takeLatest("ADD_USER", addUserAsync);
+}
+
+//-------------------------------------------------------------
+
+// Add multiple tags
+function* addTagsAsync(data) {
+  // set view status in session storage
+ 
+  const newTags = yield API.addNewTags(data.payload.state, data.payload.data);
+
+  yield put({ type: "ADDED_TAGS", val: newTags.data });
+}
+
+export function* watchAddTags() {
+  yield takeLatest("ADD_TAGS", addTagsAsync);
+}
+
+//-------------------------------------------------------------
+
+// Clear Encounters collection
+function* clearEncountersAsync() {
+  // console.log("in the saga for delete encounters")
+  const noEncounters = yield API.removeEncounters();
+  // console.log(newTags)
+
+  yield put({ type: "ENCOUNTERS_CLEARED", val: noEncounters });
+}
+
+export function* watchClearEncounters() {
+  yield takeLatest("CLEAR_ENCOUNTERS", clearEncountersAsync);
+}
+
+//-------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

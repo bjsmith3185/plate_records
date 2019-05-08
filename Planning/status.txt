@@ -215,9 +215,14 @@
 
         * Clean up client side code, remove unnecessary lines (done)
 
-        * trouble shoot the deployed version. 
+    5/8 
 
         ** On SingleResults component: the state-var below the tag image need to be "north carolina" instead of nc.
+
+        * Add a populate page that will
+            - Add a new user (done)
+            - Clear various collections in the DB (done)
+
 
 
 TODOS Later

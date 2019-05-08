@@ -124,8 +124,43 @@ const setData = (state = initialState, action) => {
       viewEnterDataComponent: action.val.payload.view.viewEnterDataComponent,
       multipleMatches: newMultiValue,
     };
-  }
+  };
 
+  if (action.type === "ADDED_USER") {
+
+    let userData = false;
+    if(action.val._id) {
+      userData = true;
+    }
+    return {
+      ...state,
+     newUserAdded: userData,
+    };
+  };
+
+  if (action.type === "ADDED_TAGS") {
+
+    let multipleTags = false;
+    if(action.val.length > 0) {
+      multipleTags = true;
+    }
+    return {
+      ...state,
+     newTagRecords: multipleTags,
+    };
+  };
+
+  if (action.type === "ENCOUNTERS_CLEARED") {
+
+    let encountersCleared = false;
+    if(action.val.data.ok) {
+      encountersCleared = true;
+    }
+    return {
+      ...state,
+      encountersCleared: encountersCleared,
+    };
+  };
   return newState;
 };
 

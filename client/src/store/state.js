@@ -17,6 +17,9 @@ const initState = {
     // may need to leave multipleMatches set to : ''
     multipleMatches: false,
     // multipleCurrentResult: {},
+    newUserAdded: false,
+    newTagRecords: false,
+    encountersCleared: false,
 
   
 }
