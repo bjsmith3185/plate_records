@@ -223,6 +223,9 @@
             - Add a new user (done)
             - Clear various collections in the DB (done)
 
+    5/9
+
+    
 
 
 TODOS Later
