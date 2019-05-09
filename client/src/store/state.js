@@ -21,6 +21,8 @@ const initState = {
     newTagRecords: false,
     encountersCleared: false,
 
+    showDropDown: false,
+
   
 }
 

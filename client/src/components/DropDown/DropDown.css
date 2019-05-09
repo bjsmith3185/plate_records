@@ -1,0 +1,90 @@
+
+
+
+
+.dropdown-area {
+  min-width: 75px;
+  min-height: 150px;
+  /* padding-top: 15px; */
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  background: black;
+  border: 3px solid white;
+  border-radius: 8px;
+}
+
+.dropdown-li {
+  cursor: pointer;
+  color: lightgray;
+  font-size: 12px;
+  font-weight: bold;
+  height: 20px;
+  margin-top: 13px;
+}
+
+
+.dropdown-logout {
+  cursor: pointer;
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  height: 20px;
+  margin-top: 20px;
+  /* background:yellow; */
+
+}
+
+/* why doesnt this work???? */
+.dropdown-logout:focus {
+  color: red;
+  font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

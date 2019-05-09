@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Navbar from "../../components/Navbar";
 import Body from "../../components/Body";
 import ViewBar from "../../components/ViewBar";
+import DropDown from "../../components/DropDown";
 
 class HomePage extends Component {
   componentWillMount() {
@@ -34,6 +35,8 @@ class HomePage extends Component {
         <ViewBar />
 
         <Body />
+
+        {this.props.showDropDown && <div className="show-menu"> <DropDown /></div>}
       </div>
     );
   }
@@ -42,7 +45,9 @@ class HomePage extends Component {
 // this brings in the state to display on this component
 const mapStateToProps = state => {
   // console.log(state)
-  return {};
+  return {
+    showDropDown: state.showDropDown,
+  };
 };
 
 const mapDispachToProps = dispach => {

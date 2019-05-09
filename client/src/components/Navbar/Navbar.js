@@ -23,12 +23,23 @@ class Navbar extends Component {
       .join(" ");
   };
 
+  toggle = () => {
+    let newValue = true;
+    if(this.props.showDropDown) {
+      newValue = false;
+    } 
+
+    console.log(newValue)
+
+    this.props.toggleMenu(newValue);
+  }
+
   render() {
     // console.log(this.props)
     return (
       <div className="navbar-area">
         <div className="navbar-dropdown">
-            <button className="navbar-menu-button btn-default">&#9776;</button>
+            <button onClick={this.toggle} className="navbar-menu-button btn-default">&#9776;</button>
         </div>
 
         <div className="navbar-center-div text-center">
@@ -59,7 +70,8 @@ const mapStateToProps = state => {
     userId: state.userId,
     name: state.name,
     org: state.org.toUpperCase(),
-    code: state.code
+    code: state.code,
+    showDropDown: state.showDropDown,
   };
 };
 
@@ -70,6 +82,12 @@ const mapDispachToProps = dispach => {
         type: "LOG_OUT",
         payload: { userId }
       });
+    },
+    toggleMenu: (value) => {
+      dispach({
+        type: "DROP_DOWN",
+        payload: { value }
+      })
     }
   };
 };

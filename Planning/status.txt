@@ -225,6 +225,12 @@
 
     5/9
 
+        * Add dropdown menu. Have the button in the navbar component toggle it. (done)
+
+        * Add links to teh dropdown, search, result, enter data, logout. (done)
+
+        * Add an admin link in the dropdown to take the user to the /populate page. This link would be for testing/demo only.
+
     
 
 

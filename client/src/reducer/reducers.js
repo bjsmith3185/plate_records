@@ -161,6 +161,28 @@ const setData = (state = initialState, action) => {
       encountersCleared: encountersCleared,
     };
   };
+
+  if (action.type === "SET_DROP_DOWN") {
+    // console.log(action.val.payload.data)
+
+    return {
+      ...state,
+      showDropDown: action.val.payload.value,
+    };
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   return newState;
 };
 

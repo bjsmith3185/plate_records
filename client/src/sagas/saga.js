@@ -340,7 +340,18 @@ export function* watchClearEncounters() {
 
 //-------------------------------------------------------------
 
+// Toggle Dropdown menu
+function* dropDownAsync(data) {
+  console.log(data)
 
+  yield put({ type: "SET_DROP_DOWN", val: data });
+}
+
+export function* watchDropDown() {
+  yield takeLatest("DROP_DOWN", dropDownAsync);
+}
+
+//-------------------------------------------------------------
 
 
 
