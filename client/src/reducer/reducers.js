@@ -65,7 +65,8 @@ const setData = (state = initialState, action) => {
       currentSearch: {},
       viewSearchComponent: true,
       viewEnterDataComponent: false,
-      viewResultComponent: false
+      viewResultComponent: false,
+      showDropDown: false,
     };
   }
 

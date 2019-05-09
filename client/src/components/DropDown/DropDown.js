@@ -51,6 +51,7 @@ class DropDown extends Component {
     // console.log(this.props)
     return (
       <div className="dropdown-area">
+        <div onClick={this.toggle} className="dropdown-close-btn">X</div>
         <div 
           onClick={() => this.select('search')} 
           className="dropdown-li">
