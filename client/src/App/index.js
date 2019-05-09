@@ -21,7 +21,7 @@ const App = () => (
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
       <Route exact path={ROUTES.HOME} component={withAuth(HomePage)} />
       {/* <Route exact path={ROUTES.ACCOUNT} component={AccountPage} /> */}
-      <Route exact path={'/populate'} component={PopulatePage} />
+      <Route exact path={ROUTES.POPULATE} component={PopulatePage} />
        
     </div>
   </Router>
