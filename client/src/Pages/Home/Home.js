@@ -36,7 +36,13 @@ class HomePage extends Component {
 
         <Body />
 
-        {this.props.showDropDown && <div className="show-menu"> <DropDown /></div>}
+        {this.props.showDropDown && 
+        
+        
+            <div className="show-menu"> 
+              <DropDown />
+            </div>}
+            
       </div>
     );
   }

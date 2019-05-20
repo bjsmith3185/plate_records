@@ -6,6 +6,19 @@ import history from "../../history/history";
 import { connect } from "react-redux";
 
 class DropDown extends Component {
+
+  state = {
+    isActive: false
+  };
+
+  componentWillMount = () => {
+    this.hasDataSaved();
+  };
+
+  componentWillReceiveProps = () => {
+    this.hasDataSaved();
+  };
+
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -42,6 +55,16 @@ class DropDown extends Component {
     }
   };
 
+  hasDataSaved = () => {
+    let searchData = JSON.parse(sessionStorage.getItem("lastResult"));
+    // console.log(searchData)
+    if (searchData) {
+      this.setState({
+        isActive: true
+      });
+    }
+  };
+
   select = (view) => {
     this.switchView(view);
     this.toggle();
@@ -58,6 +81,8 @@ class DropDown extends Component {
           Search
           </div>
 
+      {this.state.isActive ? (
+        <div>
           <div 
           onClick={() => this.select('result')} 
           className="dropdown-li">
@@ -69,6 +94,26 @@ class DropDown extends Component {
           className="dropdown-li">
           Enter Data
           </div>
+
+        </div>
+      ) : (
+        <div>
+   
+          <div 
+          
+          className="dropdown-li-inactive">
+          Results
+          </div>
+
+          <div 
+          
+          className="dropdown-li-inactive">
+          Enter Data
+          </div>
+
+        </div>
+      )}
+          
 
         <div onClick={this.logout} className="dropdown-logout">Logout</div>
 
