@@ -8,6 +8,7 @@
   padding-top: 15px;
   border-top: 3px solid black;
   margin-top: 35px;
+  border: 3px solid black;
 }
 
 
@@ -17,10 +18,8 @@
 }
 
 .search-form {
-margin-right: 10%;
+  margin-right: 10%;
 }
-
-
 
 .input-line {
   margin-top: 10px;
@@ -58,13 +57,26 @@ margin-right: 10%;
   font-weight: bold;
 }
 
-
 .search-error-area {
   color: red;
   margin-top: 20px;
   font-weight: bolder;
   font-size: 20px;
 }
+
+.search-demo-tag-window {
+  width: 50%;
+  min-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+
+
+
+
+
 
 
 

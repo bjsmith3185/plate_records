@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./SearchForm.css";
 
+import DemoInfo from "../../components/DemoInfo";
+
 class SearchForm extends Component {
   state = {
     tag: "",
@@ -155,6 +157,10 @@ class SearchForm extends Component {
         </form>
 
         <div className="search-error-area text-center">{errorDiv}</div>
+
+        <div className="search-demo-tag-window text-center">
+          <DemoInfo />
+        </div>
       </div>
     );
   }

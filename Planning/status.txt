@@ -238,7 +238,9 @@
     5/21
         * Set the max-width of all components to 800px. (done)
         * Need to center the search input fields. (done)
-
+        ** add a window to show the demo user what tags are in the database. (done)
+        ? add on on click to the window above to auto populate a tag? 
+        
 
 TODOS Later
 
