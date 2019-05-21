@@ -234,7 +234,10 @@
     5/20
         * Add functions to dropdown links (done)
         ** Need to add an onclick to the body to hide the dropdown menu.
-        
+    
+    5/21
+        * Set the max-width of all components to 800px. (done)
+        * Need to center the search input fields. (done)
 
 
 TODOS Later

@@ -115,7 +115,7 @@ class SearchForm extends Component {
         <div className="search-title text-center">
           Enter Vehicle Info to Search
         </div>
-        <form className="search-form ">
+        <form className="search-form text-center">
           <div className="input-line">
             <label className="input-title">Tag</label>
             <input

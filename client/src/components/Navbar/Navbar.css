@@ -108,22 +108,21 @@
 }
 
 
+@media only screen and (min-width: 500px) {
+
+  .navbar-dropdown {
+    margin-left: 30px;;
+   }
+    
+  }
+
+
 @media only screen and (min-width: 800px) {
   
 .navbar-logout-area {
-  position: fixed;
-  top: 0;
   left: 730px;
-  height: 30px;
-  margin-top: 10px;
-  /* margin-right: 5%; */
-  cursor: pointer;
-  /* background: red; */
-
   width: 50px;
-  
-}
-
+  }
 
 }
 

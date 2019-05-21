@@ -16,6 +16,12 @@
   font-weight: bold;
 }
 
+.search-form {
+margin-right: 10%;
+}
+
+
+
 .input-line {
   margin-top: 10px;
 }
@@ -36,6 +42,10 @@
 .search-input-state {
   margin-left: 5px;
   padding-left: 5px;
+}
+
+.search-btn-area {
+  margin-left: 6%;
 }
 
 .search-btn {
