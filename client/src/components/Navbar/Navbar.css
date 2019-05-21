@@ -2,10 +2,14 @@
 
 .navbar-area {
   width: 100%;
+
+  max-width: 800px;
+  
   height: 63px;
   background-color: lightgray;
   position: relative;
   z-index: 2;
+
 }
 
 /* need a media query at 700px for current setup */
@@ -28,15 +32,28 @@
 
 .navbar-center-div {
   width: 100%;
+
+  max-width: 800px;
+
   position: fixed;
   top: 0;
   left: 0;
   margin-left: auto;
   margin-right: auto;
-  background-color: lightgray;
+  /* background-color: rgb(228, 107, 107); */
 }
 
 /* need a media query at 700px for current setup */
+.navbar-logout-area {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 30px;
+  margin-top: 10px;
+  margin-right: 5%;
+  cursor: pointer;
+  
+}
 .navbar-logout-area {
   position: fixed;
   top: 0;
@@ -91,7 +108,24 @@
 }
 
 
+@media only screen and (min-width: 800px) {
+  
+.navbar-logout-area {
+  position: fixed;
+  top: 0;
+  left: 730px;
+  height: 30px;
+  margin-top: 10px;
+  /* margin-right: 5%; */
+  cursor: pointer;
+  /* background: red; */
 
+  width: 50px;
+  
+}
+
+
+}
 
 
 

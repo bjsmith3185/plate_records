@@ -1,6 +1,10 @@
 
 .viewbar-area {
   width: 100%;
+
+max-width: 800px;;
+
+
   height: 25px;
   background-color: lightgray;
   padding-top: 15px;

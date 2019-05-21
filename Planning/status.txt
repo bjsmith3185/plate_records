@@ -231,7 +231,10 @@
 
         * Add an admin link in the dropdown to take the user to the /populate page. This link would be for testing/demo only.
 
-    
+    5/20
+        * Add functions to dropdown links (done)
+        ** Need to add an onclick to the body to hide the dropdown menu.
+        
 
 
 TODOS Later
