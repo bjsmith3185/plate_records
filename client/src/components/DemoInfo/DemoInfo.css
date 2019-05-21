@@ -16,7 +16,7 @@
   text-align: right;
   color: red;
   font-size: 14px;
-  /* font-weight: bold; */
+  font-weight: bold;
   padding-right: 5px;
   cursor: pointer;
 }
@@ -26,13 +26,11 @@
   font-weight: bold;
   color: black;
   margin-bottom: 10px;
-  /* text-decoration: underline; */
 }
 
 .demoinfo-tag {
   display: inline-block;
   width: 30%;
-  /* background: orange; */
 }
 
 .demoinfo-li-tag,
@@ -46,7 +44,6 @@
 .demoinfo-state {
   display: inline-block;
   width: 30%;
-  /* background: yellow; */
 }
 
 .a {
@@ -61,11 +58,6 @@ background: lightgray;
 
   margin-bottom: 5px;
 }
-
-
-
-
-
 
 
 .demoinfo-btn-area {

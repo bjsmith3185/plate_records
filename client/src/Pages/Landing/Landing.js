@@ -40,8 +40,7 @@ class LandingPage extends Component {
   }
 
   render = () => {
-    // console.log(this.props)
-    const submitForm = this.state.userName && this.state.myPassword;
+     const submitForm = this.state.userName && this.state.myPassword;
 
     return (
       <div className="landing-page-container">
@@ -103,7 +102,6 @@ class LandingPage extends Component {
 
 // this brings in the state to display on this component
 const mapStateToProps = state => {
-  // console.log(state)
   return {
     token: state.token,
     errors: state.errors
