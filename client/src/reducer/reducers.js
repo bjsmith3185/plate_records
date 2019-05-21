@@ -5,7 +5,7 @@ const setData = (state = initialState, action) => {
 
   // set errors
   if (action.type === "SET_ERROR") {
-    console.log(action.val)
+    // console.log(action.val)
     let errorData = {};
     if (action.val.data.error) {
       errorData = action.val.data.error;

@@ -87,7 +87,6 @@ module.exports = {
       if (state === "sc") {
         SCController.removeAll()
         .then(dbresult => {
-          console.log('deleting records from ' + state)
           SCController.createMany(data)
             .then(dbresult => {
               resolve(dbresult);
@@ -102,7 +101,6 @@ module.exports = {
       } else if (state === "nc") {
         NCController.removeAll()
           .then(dbresult => {
-            console.log('deleting records from ' + state)
             NCController.createMany(data)
               .then(dbresult => {
                 resolve(dbresult);

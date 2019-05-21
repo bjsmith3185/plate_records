@@ -56,7 +56,7 @@ class SearchForm extends Component {
         state: ""
       });
     } else {
-      console.log("errors");
+      // console.log("errors");
       this.setState({
         tag: "",
         state: ""

@@ -8,7 +8,6 @@ const check = require('../../middleware/jsonWebToken')
 router
   .route("/")
   .post(check.validateToken, (req, res) => {
-    console.log("in the search/main route");
 
     jwt.verify(req.token, 'secret', (err, authData) => {
       if(err) {

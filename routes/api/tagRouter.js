@@ -9,7 +9,6 @@ const conform = require("../../validate/conformInput");
 
 // create new record
 router.route("/new").post((req, res) => {
-  console.log("in the create new tag route");
 
       req.body = conform.conformNewTagData(req.body);
 
@@ -18,8 +17,6 @@ router.route("/new").post((req, res) => {
         console.log(errors);
         return res.status(400).json(errors);
       }
-
-      console.log("success");
 
       newTag
         .enterTag(req.body.state, req.body)
@@ -34,7 +31,6 @@ router.route("/new").post((req, res) => {
 
 // create multiple records
 router.route("/new/multi/:state").post((req, res) => {
-  console.log("in the create new multi tag route");
 
       let state = req.params.state;
 

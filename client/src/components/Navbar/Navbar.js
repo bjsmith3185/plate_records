@@ -29,8 +29,6 @@ class Navbar extends Component {
       newValue = false;
     } 
 
-    console.log(newValue)
-
     this.props.toggleMenu(newValue);
   }
 

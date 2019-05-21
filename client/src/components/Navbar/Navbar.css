@@ -90,6 +90,9 @@
 .navbar-userinfo {
   line-height: 1;
   background-color: lightgray;
+
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .navbar-org {

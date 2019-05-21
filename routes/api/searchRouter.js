@@ -11,7 +11,7 @@ const conform = require("../../validate/conformInput");
 
 // search by only tag
 router.route("/all/:tag").get(check.validateToken, (req, res) => {
-  console.log("in the search by ONLY tag  protected route");
+
   jwt.verify(req.token, "secret", (err, authData) => {
     if (err) {
       res.status(403).json({ err: "token not verified" });
@@ -46,7 +46,7 @@ router.route("/all/:tag").get(check.validateToken, (req, res) => {
 
 // search by tag and state
 router.route("/:state/:tag").get(check.validateToken, (req, res) => {
-  console.log("in the search by tag/state  protected route");
+
 
   jwt.verify(req.token, "secret", (err, authData) => {
     if (err) {
@@ -67,7 +67,6 @@ router.route("/:state/:tag").get(check.validateToken, (req, res) => {
       search
         .searchStateThenTag(searchData.state, searchData.tag)
         .then(dbresults => {
-          console.log(dbresults)
            res.json(dbresults);
         })
         .catch(err => {
